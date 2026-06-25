@@ -5,8 +5,6 @@ import { useAuth } from '../context/AuthContext'
 import { exportAll, importAll, clearAll } from '../lib/storage'
 import type { AppData } from '../types'
 
-const DAYS = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb']
-
 export function SettingsPage() {
   const { settings, updateSettings } = useSettings()
   const { user, signOut, syncToCloud } = useAuth()
@@ -65,18 +63,11 @@ export function SettingsPage() {
     document.documentElement.classList.toggle('dark', next)
   }
 
-  function toggleRestDay(day: number) {
-    const current = settings.restDays
-    const next = current.includes(day) ? current.filter((d) => d !== day) : [...current, day]
-    updateSettings({ restDays: next })
-  }
-
   return (
     <div className="pb-24 min-h-dvh bg-gray-50 dark:bg-gray-950">
       <div className="max-w-lg mx-auto px-4 pt-6 space-y-5">
         <h1 className="text-xl font-bold text-gray-900 dark:text-white">Ajustes</h1>
 
-        {/* User info */}
         {user && (
           <Section title="Cuenta">
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">{user.email}</p>
@@ -92,12 +83,8 @@ export function SettingsPage() {
           </Section>
         )}
 
-        {/* Appearance */}
         <Section title="Apariencia">
-          <button
-            onClick={toggleDark}
-            className="flex items-center gap-3 w-full"
-          >
+          <button onClick={toggleDark} className="flex items-center gap-3 w-full">
             {settings.darkMode ? <Moon className="w-5 h-5 text-primary-500" /> : <Sun className="w-5 h-5 text-yellow-500" />}
             <span className="text-gray-800 dark:text-gray-200 flex-1 text-left">
               {settings.darkMode ? 'Modo oscuro' : 'Modo claro'}
@@ -106,55 +93,28 @@ export function SettingsPage() {
           </button>
         </Section>
 
-        {/* Weekly goal */}
-        <Section title="Meta semanal de cirugías">
+        <Section title="Meta semanal">
           <div className="flex items-center gap-4">
             <input
               type="number"
               min={1}
               max={30}
               value={settings.weeklyGoal}
-              onChange={(e) => updateSettings({ weeklyGoal: Math.max(1, parseInt(e.target.value) || 1) })}
+              onChange={e => updateSettings({ weeklyGoal: Math.max(1, parseInt(e.target.value) || 1) })}
               className="w-20 px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white text-center focus:outline-none focus:ring-2 focus:ring-primary-500"
             />
             <span className="text-sm text-gray-500 dark:text-gray-400">cirugías por semana</span>
           </div>
         </Section>
 
-        {/* Rest days */}
-        <Section title="Días sin pabellón">
-          <div className="flex gap-2 flex-wrap">
-            {DAYS.map((d, i) => (
-              <button
-                key={i}
-                onClick={() => toggleRestDay(i)}
-                className={`w-10 h-10 rounded-full text-sm font-medium transition-colors ${
-                  settings.restDays.includes(i)
-                    ? 'bg-primary-600 text-white'
-                    : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300'
-                }`}
-              >
-                {d}
-              </button>
-            ))}
-          </div>
-          <Row
-            label="¿Las guardias mantienen la racha?"
-            checked={settings.restDaysKeepStreak}
-            onChange={(v) => updateSettings({ restDaysKeepStreak: v })}
-          />
-        </Section>
-
-        {/* Auto enrich */}
         <Section title="Enriquecimiento automático">
           <Row
             label="Autocompletar datos desde la base de conocimiento"
             checked={settings.autoEnrich}
-            onChange={(v) => updateSettings({ autoEnrich: v })}
+            onChange={v => updateSettings({ autoEnrich: v })}
           />
         </Section>
 
-        {/* Data */}
         <Section title="Mis datos">
           <div className="space-y-2">
             <button
@@ -177,7 +137,7 @@ export function SettingsPage() {
           </div>
         </Section>
 
-        <p className="text-xs text-center text-gray-400 dark:text-gray-600 pb-2">QuiroLog v1.0</p>
+        <p className="text-xs text-center text-gray-400 dark:text-gray-600 pb-2">QuiroLog v2.0</p>
       </div>
     </div>
   )

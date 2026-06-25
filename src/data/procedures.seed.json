@@ -1,0 +1,1071 @@
+{
+  "meta": {
+    "version": "1.0",
+    "description": "QuiroLog procedure knowledge base — traumatology",
+    "enums": {
+      "category": [
+        "osteosynthesis", "osteotomy", "arthroplasty", "arthroscopy",
+        "arthrodesis", "soft-tissue-repair", "amputation", "tumor-resection",
+        "deformity-correction", "nerve-release", "fasciotomy", "other"
+      ]
+    }
+  },
+  "procedures": [
+    {
+      "id": "atr",
+      "name": "Artroplastia Total de Rodilla (ATR)",
+      "aliases": ["ATR", "prótesis total de rodilla", "reemplazo total de rodilla", "PTR"],
+      "anatomicRegion": "knee",
+      "specialty": "prosthesis",
+      "ageGroup": "adult",
+      "category": "arthroplasty",
+      "approach": ["anterior"],
+      "patientPosition": "Decúbito supino, rodilla en flexión 90°",
+      "anesthesia": "Raquídea o general",
+      "preopImaging": ["Rx rodilla AP y lateral", "Rx bilateral con carga", "RMN si sospecha ligamentaria"],
+      "indications": [
+        "Gonartrosis severa grado IV (Kellgren-Lawrence)",
+        "Artritis reumatoide con destrucción articular",
+        "Osteonecrosis de cóndilo femoral o plateau tibial",
+        "Fractura periarticular con destrucción severa en adulto mayor",
+        "Fracaso de osteotomía tibial previa"
+      ],
+      "contraindications": [
+        "Infección activa (local o sistémica)",
+        "Articulación de Charcot",
+        "Extensor mechanism insuficiente sin posibilidad de reconstrucción",
+        "Demencia severa que impida rehabilitación"
+      ],
+      "classifications": [
+        "Clasificación de Kellgren-Lawrence (gonartrosis)",
+        "Alineamiento (varo/valgo/neutro)",
+        "Tipo de implante: CR (cruciato-retaining) vs PS (posterior-stabilized)"
+      ],
+      "steps": [
+        "Incisión longitudinal anterior de rodilla, abordaje parapatelar medial",
+        "Retracción de rótula, exposición del espacio articular",
+        "Resección del menisco medial y lateral",
+        "Corte distal de fémur perpendicular al eje mecánico (guía de 5–7°)",
+        "Cortes femorales anterior, posterior y en bisel",
+        "Corte tibial perpendicular al eje mecánico tibial, 7° de inclinación posterior",
+        "Balanceo de tejidos blandos en extensión y flexión",
+        "Selección de talla de prueba y verificación del espaciado",
+        "Preparación de la rótula (resuperficialización opcional)",
+        "Cementación e implantación del componente tibial",
+        "Cementación e implantación del componente femoral",
+        "Fijación del polietileno tibial y componente patelar",
+        "Lavado, hemostasia, cierre por planos con drenaje"
+      ],
+      "implants": [
+        "Prótesis total de rodilla cementada (sistema CR o PS)",
+        "Componente femoral de cromo-cobalto",
+        "Inserto de polietileno tibial (UHMWPE)",
+        "Botón patelar de polietileno (opcional)"
+      ],
+      "complications": [
+        "Infección periprotésica (superficial o profunda)",
+        "Trombosis venosa profunda / Tromboembolismo pulmonar",
+        "Rigidez articular (flexión < 90°)",
+        "Inestabilidad (falla ligamentaria o desbalance de partes blandas)",
+        "Fractura periprotésica",
+        "Falla aséptica del implante (aflojamiento)",
+        "Lesión vascular (arteria poplítea)",
+        "Lesión del nervio peroneal (valgo severo)",
+        "Dolor anterior de rodilla / síndrome patelar"
+      ],
+      "pearls": [
+        "El eje mecánico es la referencia, no el anatómico",
+        "Balancear flexión y extensión antes de cementar",
+        "Verificar la tensión del ligamento patelar antes de cerrar",
+        "Movilización activa el primer día postoperatorio reduce rigidez"
+      ],
+      "durationMin": 90,
+      "durationMax": 150,
+      "recovery": "Marcha con andador a las 24–48 h. Descarga completa a las 6 semanas. Retorno a actividad de bajo impacto a los 3 meses. Resultado funcional óptimo a los 6–12 meses.",
+      "references": [],
+      "level": "specialist",
+      "dataCompleteness": "full",
+      "tags": ["rodilla", "prótesis", "cementado", "electivo"],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "atc",
+      "name": "Artroplastia Total de Cadera (ATC)",
+      "aliases": ["ATC", "prótesis total de cadera", "reemplazo total de cadera", "PTC", "THR"],
+      "anatomicRegion": "hip",
+      "specialty": "prosthesis",
+      "ageGroup": "adult",
+      "category": "arthroplasty",
+      "approach": ["posterior"],
+      "patientPosition": "Decúbito lateral, cadera a 90°",
+      "anesthesia": "Raquídea o general",
+      "preopImaging": ["Rx pelvis AP", "Rx cadera axial (Cross-table lateral)", "Templado preoperatorio digital"],
+      "indications": [
+        "Coxartrosis severa (Kellgren-Lawrence III–IV)",
+        "Fractura medial de cuello femoral Garden III–IV en paciente activo",
+        "Displasia de cadera con artrosis secundaria",
+        "Necrosis avascular de cabeza femoral (Ficat III–IV)",
+        "Artritis reumatoide con destrucción articular",
+        "Fracaso de osteotomía o hemiartroplastia previa"
+      ],
+      "contraindications": [
+        "Infección activa",
+        "Parálisis del glúteo medio sin posibilidad de reconstrucción",
+        "Osteoporosis severa que impida fijación del implante",
+        "Obesidad mórbida (IMC > 40 contraindicación relativa)"
+      ],
+      "classifications": [
+        "Kellgren-Lawrence para coxartrosis",
+        "Garden para fractura de cuello femoral",
+        "Ficat para necrosis avascular",
+        "Clasificación de Dorr para morfología del canal femoral (A/B/C)"
+      ],
+      "steps": [
+        "Incisión posterior de Moore (8–10 cm), división de fascia lata",
+        "Sección de rotadores externos cortos (piriforme, obturadores, géminos)",
+        "Capsulotomía posterior",
+        "Luxación de la cadera en rotación interna",
+        "Osteotomía del cuello femoral según templado preoperatorio",
+        "Fresado acetabular progresivo hasta hueso subcondral sangrante",
+        "Implante de cotilo press-fit (± tornillos) en posición de abducción 40–45° y anteversión 15–20°",
+        "Apertura del canal femoral, fresado progresivo",
+        "Implante del vástago (cementado o no cementado según Dorr/calidad ósea)",
+        "Selección de cuello y cabeza de prueba, reducción y verificación de estabilidad",
+        "Reparación de rotadores externos cortos",
+        "Cierre por planos, drenaje aspirativo"
+      ],
+      "implants": [
+        "Cotilo press-fit titanio con liner de polietileno o cerámica",
+        "Vástago femoral (cementado Exeter/Lubinus o no cementado Corail/Zweymüller)",
+        "Cabeza cerámica o metal (diámetro 28–36 mm)",
+        "Tornillos de anclaje acetabular (opcional)"
+      ],
+      "complications": [
+        "Luxación (más frecuente en abordaje posterior sin reparación capsular)",
+        "Infección periprotésica",
+        "Trombosis venosa profunda / TEP",
+        "Fractura periprotésica (Vancouver A/B/C)",
+        "Dismetría de miembros",
+        "Parálisis del nervio ciático o femoral",
+        "Lesión vascular (arteria femoral o iliaca en casos complejos)",
+        "Osificación heterotópica",
+        "Falla aséptica (aflojamiento femoral o acetabular)"
+      ],
+      "pearls": [
+        "Reparar la cápsula posterior reduce luxación sin aumentar rigidez",
+        "El offset femoral correcto preserva la tensión abductora",
+        "Verificar dismetría con Rx intraoperatoria si hay duda",
+        "La anteversión combinada (cotilo + vástago) debe estar entre 25–40°"
+      ],
+      "durationMin": 75,
+      "durationMax": 120,
+      "recovery": "Carga parcial inmediata (24–48 h). Carga completa a las 6 semanas. Precauciones de luxación 3 meses. Alta funcional a los 3–6 meses.",
+      "references": [],
+      "level": "specialist",
+      "dataCompleteness": "full",
+      "tags": ["cadera", "prótesis", "electivo"],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "artroscopia-rodilla-meniscectomia",
+      "name": "Artroscopía de Rodilla — Meniscectomía Parcial",
+      "aliases": ["meniscectomía artroscópica", "artroscopía de rodilla", "menisco", "meniscectomía"],
+      "anatomicRegion": "knee",
+      "specialty": "arthroscopy",
+      "ageGroup": "adult",
+      "category": "arthroscopy",
+      "approach": ["arthroscopic"],
+      "patientPosition": "Decúbito supino, rodilla a 90° con pie apoyado en soporte lateral",
+      "anesthesia": "Raquídea o general",
+      "preopImaging": ["RMN de rodilla (confirmar localización y tipo de rotura)", "Rx AP y lateral"],
+      "indications": [
+        "Rotura meniscal sintomática (menisco medial o lateral) con fracaso de tratamiento conservador ≥ 6 semanas",
+        "Rotura en asa de balde bloqueante",
+        "Rotura degenerativa con derrame recurrente"
+      ],
+      "contraindications": [
+        "Artrosis avanzada sin síntomas predominantemente meniscales",
+        "Infección activa de rodilla",
+        "Rotura reparable en zona vascularizada en paciente joven (→ considerar reparación)"
+      ],
+      "classifications": [
+        "Clasificación de ISAKOS: zona (roja-roja / roja-blanca / blanca-blanca)",
+        "Morfología: longitudinal, radial, horizontal, compleja, en asa de balde",
+        "Menisco medial vs lateral"
+      ],
+      "steps": [
+        "Portal anterolateral: incisión longitudinal 5 mm, inserción de artroscopio",
+        "Inspección sistemática: compartimento lateral, intercóndilo, compartimento medial, retropatelar",
+        "Portal anteromedial de trabajo bajo visión artroscópica directa",
+        "Identificación y caracterización de la rotura meniscal",
+        "Resección del fragmento inestable con punch y shaver (preservar máximo menisco estable)",
+        "Alisado del borde meniscal residual",
+        "Verificación de estabilidad del remanente con probe",
+        "Inspección de ligamentos cruzados y cartílago",
+        "Lavado articular, retirada de instrumental, cierre portales"
+      ],
+      "implants": [],
+      "complications": [
+        "Hemartrosis postoperatoria",
+        "Infección articular (artritis séptica)",
+        "Daño condral iatrogénico",
+        "Lesión de estructuras neurovasculares (arteria poplítea, nervio peroneal)",
+        "Síndrome compartimental (raro)",
+        "Fístula artrocutánea"
+      ],
+      "pearls": [
+        "El portal de trabajo debe crearse bajo visión directa para evitar el cartílago",
+        "Preservar la mayor cantidad de menisco estable posible",
+        "En rotura en asa de balde: primero reducir el fragmento, luego decidir reparación o resección",
+        "Revisar siempre cartílago y LCA/LCP antes de cerrar"
+      ],
+      "durationMin": 30,
+      "durationMax": 60,
+      "recovery": "Marcha inmediata. Retorno a trabajo sedentario a los 7–10 días. Actividad deportiva a las 4–6 semanas.",
+      "references": [],
+      "level": "resident",
+      "dataCompleteness": "full",
+      "tags": ["rodilla", "artroscopía", "menisco", "electivo"],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "plastia-lca-hth",
+      "name": "Ligamentoplastia de LCA (Hueso-Tendón-Hueso)",
+      "aliases": ["LCA", "plastia de LCA", "reconstrucción LCA", "HTH", "BPTB", "ACL reconstruction"],
+      "anatomicRegion": "knee",
+      "specialty": "arthroscopy",
+      "ageGroup": "adult",
+      "category": "soft-tissue-repair",
+      "approach": ["arthroscopic", "anterior"],
+      "patientPosition": "Decúbito supino, torniquete en muslo, soporte lateral",
+      "anesthesia": "Raquídea o general",
+      "preopImaging": ["RMN rodilla (confirmar rotura LCA y lesiones asociadas)", "Rx AP y lateral"],
+      "indications": [
+        "Rotura completa del LCA con inestabilidad funcional en paciente activo",
+        "Episodios repetidos de 'dando en vacío'",
+        "Asociación con lesión meniscal reparable o rotura del LCP"
+      ],
+      "contraindications": [
+        "Inmadurez esquelética (fisis abiertas — técnica modificada)",
+        "Artrosis avanzada (contraindicación relativa)",
+        "Infección activa",
+        "Lesión del mecanismo extensor ipsilateral"
+      ],
+      "classifications": [
+        "Clasificación de la rotura: parcial vs completa",
+        "Tiempo de evolución: aguda (< 3 semanas) vs crónica",
+        "Lesiones asociadas: meniscal, condral, colateral (O'Donoghue)"
+      ],
+      "steps": [
+        "Extracción del injerto HTH: incisión longitudinal sobre tercio central del tendón rotuliano",
+        "Osteotomía de bloques óseos rotulianos y tibiales (25 × 9 × 9 mm aprox.)",
+        "Preparación del injerto, perforación y sutura de los bloques óseos",
+        "Evaluación artroscópica: meniscos, cartílago, remanente del LCA",
+        "Escisión del remanente del LCA y limpieza del intercóndilo",
+        "Tunelización tibial con guía a 55° desde punto de referencia (5 mm medial a espina medial)",
+        "Tunelización femoral: posición de las 10–11 h (rodilla a 90° o hiperflejada), 7 mm de pared posterior",
+        "Paso del injerto a través de los túneles (sutura guía)",
+        "Fijación femoral con tornillo de interferencia (bloque femoral a 30° de flexión)",
+        "Fijación tibial con tornillo de interferencia (bloque tibial en extensión completa)",
+        "Verificación de la isometría y el pivot-shift",
+        "Lavado, cierre de portales y herida donante"
+      ],
+      "implants": [
+        "Tornillos de interferencia biodegradables o metálicos (femoral y tibial)",
+        "Sutura no reabsorbible para los bloques óseos"
+      ],
+      "complications": [
+        "Rigidez articular (pérdida de extensión por posición femoral anterior del túnel, o ciclops)",
+        "Fracaso del injerto (rotura o estiramiento)",
+        "Infección articular",
+        "Daño condral intraoperatorio",
+        "Dolor anterior de rodilla (extractor del injerto)",
+        "Fractura de la rótula (osteotomía excesiva del bloque)",
+        "Mala posición de túneles (causa de fracaso funcional)"
+      ],
+      "pearls": [
+        "El túnel femoral en posición anatómica (10–11 h) reproduce mejor la función",
+        "No fijar el implante tibial con la rodilla en hiperextensión",
+        "Verificar el pivot-shift al final antes de cerrar",
+        "La rehabilitación acelerada (carga inmediata) no compromete el resultado"
+      ],
+      "durationMin": 75,
+      "durationMax": 120,
+      "recovery": "Carga parcial inmediata con ortesis. Retorno deportivo a los 9–12 meses con criterios funcionales y de fuerza.",
+      "references": [],
+      "level": "specialist",
+      "dataCompleteness": "full",
+      "tags": ["rodilla", "LCA", "artroscopía", "injerto", "electivo"],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "osteosintesis-femur-clavo",
+      "name": "Osteosíntesis de Fémur — Clavo Endomedular Anterógrado",
+      "aliases": ["clavo de fémur", "enclavado femoral", "clavo endomedular de fémur", "clavo femoral"],
+      "anatomicRegion": "femur",
+      "specialty": "trauma",
+      "ageGroup": "adult",
+      "category": "osteosynthesis",
+      "approach": ["percutaneous"],
+      "patientPosition": "Decúbito supino en mesa de tracción ortopédica (Judet o similar)",
+      "anesthesia": "Raquídea o general",
+      "preopImaging": ["Rx fémur completo AP y lateral", "TAC si trazo intraarticular o conminución severa"],
+      "indications": [
+        "Fractura diafisaria de fémur (AO 32-A/B/C)",
+        "Fractura subtrocantérea",
+        "Fractura segmentaria de fémur",
+        "Fractura patológica diafisaria"
+      ],
+      "contraindications": [
+        "Canal medular < 8 mm (contraindicación relativa)",
+        "Infección activa del hueso",
+        "Fractura muy proximal con extensión subcapital (→ opción retrógrada o placa)"
+      ],
+      "classifications": [
+        "AO/OTA: 32-A (simple), 32-B (cuña), 32-C (compleja)",
+        "Winquist (grado de conminución, I–IV)",
+        "Gustilo-Anderson si fractura abierta"
+      ],
+      "steps": [
+        "Reducción cerrada con mesa de tracción (confirmación Rx C-arm AP y L)",
+        "Incisión proximal sobre trocánter mayor, exposición del punto de entrada",
+        "Apertura del canal con lezna (entrada trocantérica o piriforme según implante)",
+        "Fresado progresivo del canal (seco o con fluidos) hasta diámetro objetivo + 1,5 mm",
+        "Inserción del clavo del diámetro seleccionado con guía de paso",
+        "Bloqueo distal con clavos estáticos (guía de imagen)",
+        "Bloqueo proximal (estático o dinámico según patrón de fractura)",
+        "Verificación de la reducción en AP y L, confirmación de bloqueo",
+        "Cierre de incisiones"
+      ],
+      "implants": [
+        "Clavo endomedular femoral bloqueado anterógrado (titanio o acero)",
+        "Tornillos de bloqueo distal y proximal"
+      ],
+      "complications": [
+        "Infección (superficial o profunda)",
+        "Pseudoartrosis o retardo de consolidación",
+        "Malrotación (diferencia de rotación femoral)",
+        "Lesión de la arteria femoral profunda (apertura del canal)",
+        "Fractura periimplante",
+        "Lesión del nervio ciático (posición en mesa de tracción)",
+        "Falla del implante (rotura del clavo o del tornillo de bloqueo)"
+      ],
+      "pearls": [
+        "La reducción antes de fresar es fundamental — después es difícil corregirla",
+        "La malrotación es la complicación más frecuente y prevenible; evaluar con perfil de cadera y rodilla",
+        "El fresado debe ser progresivo y suave para no fragmentar el periostio",
+        "El bloqueo estático previene acortamiento en fracturas conminutas"
+      ],
+      "durationMin": 60,
+      "durationMax": 120,
+      "recovery": "Movilización articular inmediata. Carga parcial a las 4–6 semanas según consolidación. Consolidación completa a los 3–4 meses.",
+      "references": [],
+      "level": "resident",
+      "dataCompleteness": "full",
+      "tags": ["fémur", "clavo endomedular", "trauma", "urgencia"],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "osteosintesis-tibia-clavo",
+      "name": "Osteosíntesis de Tibia — Clavo Endomedular",
+      "aliases": ["clavo tibial", "enclavado tibial", "clavo endomedular de tibia"],
+      "anatomicRegion": "tibia",
+      "specialty": "trauma",
+      "ageGroup": "adult",
+      "category": "osteosynthesis",
+      "approach": ["percutaneous"],
+      "patientPosition": "Decúbito supino, rodilla a 90° en soporte de pierna, torniquete opcional",
+      "anesthesia": "Raquídea o general",
+      "preopImaging": ["Rx tibia completa AP y lateral", "TAC si trazo complejo"],
+      "indications": [
+        "Fractura diafisaria de tibia (AO 42-A/B/C)",
+        "Fractura metafisaria proximal o distal (con técnica modificada)",
+        "Fractura segmentaria de tibia",
+        "Fractura abierta tipo I–II (y seleccionadas III-A)"
+      ],
+      "contraindications": [
+        "Canal medular muy estrecho",
+        "Fractura abierta contaminada tipo IIIB–C (→ fijador externo como puente)",
+        "Fractura intraarticular sin extensión a diáfisis"
+      ],
+      "classifications": [
+        "AO/OTA: 42-A (simple), 42-B (cuña), 42-C (compleja)",
+        "Gustilo-Anderson para fracturas abiertas",
+        "Runx et al. para fracturas metafisarias"
+      ],
+      "steps": [
+        "Reducción cerrada de la fractura (asistida con ligamentotaxis)",
+        "Incisión longitudinal medial al tendón rotuliano (abordaje transpatelar o parapatelar medial)",
+        "Apertura del canal con lezna en el punto de entrada (plato tibial anterior, levemente medial)",
+        "Guía metálica a través del canal hasta la fractura, luego distal",
+        "Fresado progresivo bajo control de imagen",
+        "Inserción del clavo tibial",
+        "Bloqueo proximal (estático en conminución) y distal",
+        "Verificación de la reducción y rotación en AP y L",
+        "Cierre de incisión"
+      ],
+      "implants": [
+        "Clavo endomedular tibial bloqueado",
+        "Tornillos de bloqueo proximal y distal"
+      ],
+      "complications": [
+        "Síndrome compartimental (fractura de tibia es la causa más frecuente — urgencia diagnóstica)",
+        "Infección",
+        "Retardo de consolidación / pseudoartrosis",
+        "Lesión del nervio peroneal superficial (portal lateral)",
+        "Mala alineación (valgo o procurvatum en fracturas metafisarias proximales)",
+        "Dolor anterior de rodilla en el punto de entrada"
+      ],
+      "pearls": [
+        "El síndrome compartimental debe descartarse activamente en las primeras 24–48 h",
+        "En fracturas metafisarias proximales, usar bloqueo proximal múltiple para prevenir angulación en valgo",
+        "El punto de entrada correcto es clave: demasiado anterior genera procurvatum",
+        "La rotación se evalúa comparando el perfil de la cadera y del tobillo"
+      ],
+      "durationMin": 60,
+      "durationMax": 100,
+      "recovery": "Carga parcial a las 2–4 semanas según estabilidad. Consolidación a los 3–4 meses.",
+      "references": [],
+      "level": "resident",
+      "dataCompleteness": "full",
+      "tags": ["tibia", "clavo endomedular", "trauma"],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "osteosintesis-perone-placa",
+      "name": "Osteosíntesis de Peroné — Placa y Tornillos",
+      "aliases": ["placa de peroné", "fractura de tobillo", "fractura maleolar", "ORIF peroné"],
+      "anatomicRegion": "ankle",
+      "specialty": "trauma",
+      "ageGroup": "adult",
+      "category": "osteosynthesis",
+      "approach": ["lateral"],
+      "patientPosition": "Decúbito supino con saco bajo el muslo ipsilateral, torniquete neumático",
+      "anesthesia": "Raquídea o general",
+      "preopImaging": ["Rx tobillo AP, lateral y mortaja", "TAC si sospecha de lesión posterior o compleja"],
+      "indications": [
+        "Fractura de peroné distal Weber B/C",
+        "Fractura bimaleolar o trimaleolar desplazada",
+        "Fractura del peroné con inestabilidad de la mortaja tibioastragalina",
+        "Fractura abierta reducible"
+      ],
+      "contraindications": [
+        "Infección activa local",
+        "Cobertura cutánea comprometida (esperar mejoría o cobertura plástica)",
+        "Fractura no desplazada estable (→ tratamiento ortopédico)"
+      ],
+      "classifications": [
+        "Weber: A (infrasindesmático), B (transsindesmático), C (suprasindesmático)",
+        "Lauge-Hansen (mecanismo de lesión)",
+        "Denis-Weber modificada para lesiones del maléolo posterior"
+      ],
+      "steps": [
+        "Incisión longitudinal lateral centrada sobre el peroné distal (3–4 cm anterior al tendón del peroneo largo)",
+        "Disección por planos, protección del nervio sural (posterior)",
+        "Exposición del foco de fractura, limpieza del hematoma",
+        "Reducción anatómica del peroné (pinzas de reducción, longitud y rotación)",
+        "Osteosíntesis con placa de tercio de tubo o placa bloqueada lateral",
+        "Tornillos de córtex proximales y distales (mínimo 3 cortexes por fragmento)",
+        "Evaluación de la sindesmosis: stress externo y prueba de tracción (hook test), tornillo sindesmal si inestable",
+        "Si fractura bimaleolar: osteosíntesis del maléolo medial con tornillos maleolares o placa en T",
+        "Si fractura trimaleolar: reducción y fijación del maléolo posterior (artroscópica o abierta, si > 25% de la superficie articular)",
+        "Verificación de reducción de la mortaja con Rx intraoperatoria",
+        "Cierre por planos, vendaje compresivo"
+      ],
+      "implants": [
+        "Placa de tercio de tubo o placa bloqueada lateral de peroné",
+        "Tornillos de córtex 3,5 mm",
+        "Tornillo sindesmal 3,5 mm (opcional)",
+        "Tornillos maleolares o placa en T para maléolo medial"
+      ],
+      "complications": [
+        "Dehiscencia de herida / necrosis cutánea (complicación más frecuente en tobillo)",
+        "Infección superficial o profunda",
+        "Lesión del nervio sural",
+        "Artritis postraumática",
+        "Malunión / pérdida de reducción",
+        "Dolor por el implante (indicación de retiro)"
+      ],
+      "pearls": [
+        "La longitud y la rotación del peroné son más importantes que la reducción perfecta del foco",
+        "Siempre evaluar la sindesmosis con el hook test antes de cerrar",
+        "La piel del tobillo es delicada: planificar la incisión lejos de lesiones ampollares o contusión",
+        "Si hay edema importante, diferir la cirugía hasta que aparezca el signo del pliegue cutáneo"
+      ],
+      "durationMin": 45,
+      "durationMax": 90,
+      "recovery": "Yeso o bota de descarga 6 semanas. Carga progresiva a las 6–8 semanas. Retorno a actividad a los 3 meses.",
+      "references": [],
+      "level": "resident",
+      "dataCompleteness": "full",
+      "tags": ["tobillo", "peroné", "trauma", "placa"],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "osteosintesis-humero-placa",
+      "name": "Osteosíntesis de Húmero Proximal — Placa Bloqueada",
+      "aliases": ["placa de húmero", "fractura de húmero proximal", "PHILOS", "ORIF húmero proximal"],
+      "anatomicRegion": "humerus",
+      "specialty": "trauma",
+      "ageGroup": "adult",
+      "category": "osteosynthesis",
+      "approach": ["anterior"],
+      "patientPosition": "Beach-chair (silla de playa) o decúbito supino con saco dorsal",
+      "anesthesia": "General (preferida) o bloqueo interescalénico",
+      "preopImaging": ["Rx hombro AP, axilar y Y de escapula", "TAC 2D y 3D (fracturas en 3–4 partes, impactadas o conminutas)"],
+      "indications": [
+        "Fractura proximal de húmero en 3 o 4 partes (Neer) desplazada en paciente activo con hueso viable",
+        "Fractura en 2 partes del cuello quirúrgico desplazada e inestable",
+        "Fractura-luxación con tuberosidades preservadas",
+        "Fractura proximal de húmero en paciente joven con riesgo de necrosis"
+      ],
+      "contraindications": [
+        "Fractura en 4 partes en adulto mayor con baja demanda (→ hemiartroplastia o prótesis inversa)",
+        "Calidad ósea extremadamente mala (osteoporosis severa)",
+        "Infección activa",
+        "Necrosis avascular establecida de la cabeza humeral"
+      ],
+      "classifications": [
+        "Neer (en partes: 2, 3, 4 partes + fractura-luxación)",
+        "AO/OTA: 11-A, 11-B, 11-C",
+        "Hertel (vascularity score, riesgo de necrosis avascular)"
+      ],
+      "steps": [
+        "Incisión deltopectoral (surco deltopectoral, desde coracoides hasta inserción del deltoides)",
+        "Disección entre deltoides y pectoral mayor, respetando vena cefálica (retracción medial)",
+        "Sección de la bursa subdeltoidea, exposición del hombro",
+        "Identificación del tendón del bíceps largo (referencia para la tuberosidad menor)",
+        "Reducción de los fragmentos: cabeza, tuberosidad mayor, tuberosidad menor, diáfisis",
+        "Posicionamiento de la placa bloqueada proximal de húmero (PHILOS u equivalente): 8–10 mm distal a la punta del trocánter mayor, centrada en la diáfisis",
+        "Fijación provisional con Kirschner, confirmación con C-arm en AP y axilar",
+        "Inserción de tornillos de bloqueo en la cabeza (mínimo 4 divergentes)",
+        "Tornillos corticales en la diáfisis",
+        "Sutura de las tuberosidades con puntos transóseos o anclas si fue necesario movilizarlas",
+        "Lavado, hemostasia, drenaje, cierre"
+      ],
+      "implants": [
+        "Placa bloqueada proximal de húmero (PHILOS, Synthes o equivalente)",
+        "Tornillos bloqueados cefálicos de titanio",
+        "Tornillos corticales diafisarios",
+        "Anclas de sutura o sutura transósea para tuberosidades"
+      ],
+      "complications": [
+        "Necrosis avascular de la cabeza humeral (hasta 30% en fracturas en 4 partes)",
+        "Rigidez articular (complicación más frecuente)",
+        "Perforación intraarticular de los tornillos cefálicos (cut-out)",
+        "Lesión del nervio axilar (abordaje y retracción del deltoides)",
+        "Falla del implante (especialmente en osteoporosis)",
+        "Infección superficial o profunda",
+        "Pérdida de reducción de las tuberosidades"
+      ],
+      "pearls": [
+        "El nivel de la placa es crítico: demasiado proximal → impingement subacromial",
+        "Los tornillos cefálicos deben ser subcondrales y divergentes para maximizar la fijación",
+        "Siempre verificar con C-arm en proyección axilar que ningún tornillo penetra la articulación",
+        "En osteoporosis: aumentar con cemento o considerar hemiartroplastia desde el inicio"
+      ],
+      "durationMin": 75,
+      "durationMax": 120,
+      "recovery": "Cabestrillo 4–6 semanas. Movilización pasiva precoz supervisada. Activa a las 6–8 semanas. Retorno funcional a los 4–6 meses.",
+      "references": [],
+      "level": "specialist",
+      "dataCompleteness": "full",
+      "tags": ["hombro", "húmero", "trauma", "placa bloqueada"],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "osteosintesis-radio-distal-placa-volar",
+      "name": "Osteosíntesis de Radio Distal — Placa Volar Bloqueada",
+      "aliases": ["placa volar de radio", "fractura de muñeca", "fractura de Colles", "ORIF radio distal"],
+      "anatomicRegion": "wrist",
+      "specialty": "trauma",
+      "ageGroup": "adult",
+      "category": "osteosynthesis",
+      "approach": ["anterior"],
+      "patientPosition": "Decúbito supino, miembro superior en mesa de mano, torniquete neumático en antebrazo",
+      "anesthesia": "Bloqueo regional (WALANT, bloqueo del plexo braquial) o general",
+      "preopImaging": ["Rx muñeca AP y lateral", "TAC si intraarticular compleja o clasificación dudosa"],
+      "indications": [
+        "Fractura intraarticular desplazada del radio distal (Fernandez II–IV)",
+        "Fractura extraarticular inestable (angulación dorsal > 20°, acortamiento > 5 mm)",
+        "Fractura con conminución volar o dorsal que impide mantener la reducción con yeso",
+        "Fractura en paciente activo > 60 años con baja tolerancia al yeso"
+      ],
+      "contraindications": [
+        "Fractura no desplazada o mínimamente desplazada estable",
+        "Contaminación severa (fractura abierta grado III)",
+        "Osteoporosis extrema sin posibilidad de fijación con tornillos"
+      ],
+      "classifications": [
+        "AO/OTA: 23-A (extraarticular), 23-B (parcialmente articular), 23-C (completamente articular)",
+        "Fernandez: I–V",
+        "Frykman: I–VIII"
+      ],
+      "steps": [
+        "Incisión longitudinal volar radial sobre el surco del FCR (flexor carpi radialis)",
+        "Disección entre el FCR y la arteria radial, sección de la vaina del FCR",
+        "Exposición del pronador cuadrado, elevación desde su inserción radial",
+        "Exposición del radio distal, limpieza del foco de fractura",
+        "Reducción de los fragmentos (maniobra de tracción + dorsiflexión del carpo)",
+        "Posicionamiento de la placa volar bloqueada (con referencia distal al watershed line)",
+        "Tornillos de bloqueo subcondrales distales (±1–2 mm del cartílago articular)",
+        "Tornillos corticales proximales en la diáfisis radial",
+        "Control con C-arm en AP y lateral (verificar articulación y perfil de la placa)",
+        "Reparación del pronador cuadrado sobre la placa",
+        "Cierre por planos, férula postoperatoria"
+      ],
+      "implants": [
+        "Placa volar bloqueada de radio distal (DVR, VA-LCP, VariAx u equivalente)",
+        "Tornillos bloqueados distales de titanio",
+        "Tornillos corticales proximales"
+      ],
+      "complications": [
+        "Lesión del nervio mediano (síndrome del túnel carpiano postquirúrgico)",
+        "Rotura del tendón del flexor pollicis longus (FPL) por prominencia de la placa distal al watershed line)",
+        "Pérdida de reducción intraarticular",
+        "Síndrome compartimental (raro, fractura de alta energía)",
+        "Infección",
+        "Rigidez de la muñeca o los dedos"
+      ],
+      "pearls": [
+        "La placa no debe quedar distal al watershed line para evitar la rotura tardía del FPL",
+        "Verificar en C-arm lateral que los tornillos distales son subcondrales y no penetran la articulación",
+        "La técnica WALANT (anestesia local + adrenalina, sin torniquete) permite verificar la función tendinosa intraoperatoriamente",
+        "El pronador cuadrado actúa como barrera protectora; repararlo siempre que sea posible"
+      ],
+      "durationMin": 45,
+      "durationMax": 90,
+      "recovery": "Movilización activa de dedos desde el primer día. Movilización de muñeca a las 2–4 semanas. Alta funcional a las 8–12 semanas.",
+      "references": [],
+      "level": "resident",
+      "dataCompleteness": "full",
+      "tags": ["muñeca", "radio", "trauma", "placa volar"],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "reparacion-manguito-artroscopica",
+      "name": "Reparación Artroscópica de Manguito Rotador",
+      "aliases": ["reparación de manguito", "manguito rotador", "supraespinoso", "rotator cuff repair"],
+      "anatomicRegion": "shoulder",
+      "specialty": "arthroscopy",
+      "ageGroup": "adult",
+      "category": "soft-tissue-repair",
+      "approach": ["arthroscopic"],
+      "patientPosition": "Beach-chair o decúbito lateral (preferencia del cirujano)",
+      "anesthesia": "General + bloqueo interescalénico",
+      "preopImaging": ["RMN de hombro (caracterizar la rotura: tamaño, retracción, atrofia grasa)", "Rx AP con rotaciones y outlet"],
+      "indications": [
+        "Rotura del manguito rotador (supraespinoso ± infraespinoso) con déficit funcional",
+        "Fracaso de tratamiento conservador ≥ 3–6 meses",
+        "Rotura aguda postraumática en paciente activo",
+        "Rotura masiva en paciente joven sin pseudoparálisis (candidato a reparación)"
+      ],
+      "contraindications": [
+        "Artropatía del manguito con artrosis glenohumeral avanzada (→ prótesis inversa)",
+        "Rotura masiva irreparable con pseudoparálisis en adulto mayor",
+        "Infección activa",
+        "Compliance insuficiente para la rehabilitación"
+      ],
+      "classifications": [
+        "Tamaño: pequeña (< 1 cm), media (1–3 cm), grande (3–5 cm), masiva (> 5 cm o ≥ 2 tendones)",
+        "Bateman/DeOrio: estadios de retracción tendinosa",
+        "Goutallier: atrofia grasa (0–IV)",
+        "Ellman: compromiso de espesor (parcial I–III vs completa)"
+      ],
+      "steps": [
+        "Portal posterior de diagnóstico: inspección glenohumeral (labrum, cartílago, bíceps)",
+        "Portal lateral subacromial y portal anterosuperior",
+        "Bursectomía y exposición del espacio subacromial",
+        "Acromioplastia anterior si espolón o impingement (opcional en roturas grandes)",
+        "Movilización del tendón con suturas de tracción si hay retracción",
+        "Preparación del footprint (fresado o abrasión de la huella del supraespinoso)",
+        "Inserción de anclas de sutura en el footprint (fila medial)",
+        "Paso de suturas a través del tendón con lanzador o crochets",
+        "Anudado (configuración simple, en colchonero o sin nudo — sin-knot anchors)",
+        "Para reparación en doble fila: anclas laterales adicionales que comprimen la fila medial",
+        "Verificación artroscópica de la reparación desde la articulación y desde el espacio subacromial"
+      ],
+      "implants": [
+        "Anclas de sutura metálicas o biodegradables (PEEK u otros materiales bioinert)",
+        "Sutura no reabsorbible para la reparación",
+        "Anclas de fila lateral (doble fila)"
+      ],
+      "complications": [
+        "Falla de la reparación (más frecuente en roturas masivas y pacientes > 70 años)",
+        "Rigidez articular postoperatoria",
+        "Infección articular",
+        "Lesión del nervio axilar (portal anterosuperior o trocares laterales)",
+        "Lesión del nervio musculocutáneo (portal anterior demasiado medial)",
+        "Dolor por ancla prominente"
+      ],
+      "pearls": [
+        "La calidad del tendón (Goutallier < II y retracción mínima) predice el resultado más que la técnica",
+        "La doble fila mejora la resistencia biomecánica inicial pero no siempre el resultado clínico",
+        "Movilizar el tendón antes de insertar anclas; si no alcanza al footprint, reposicionarlo más medial",
+        "El período de inmovilización es la principal barrera para el retorno; explicarlo al paciente antes de operar"
+      ],
+      "durationMin": 75,
+      "durationMax": 120,
+      "recovery": "Cabestrillo estricto 6 semanas. Movilización pasiva supervisada desde semana 1. Activa a las 6–8 semanas. Retorno funcional a los 4–6 meses.",
+      "references": [],
+      "level": "specialist",
+      "dataCompleteness": "full",
+      "tags": ["hombro", "manguito", "artroscopía", "electivo"],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "bankart-artroscopico",
+      "name": "Bankart Artroscópico — Estabilización de Hombro",
+      "aliases": ["Bankart", "SLAP", "inestabilidad de hombro", "labrum", "estabilización glenohumeral"],
+      "anatomicRegion": "shoulder",
+      "specialty": "arthroscopy",
+      "ageGroup": "adult",
+      "category": "soft-tissue-repair",
+      "approach": ["arthroscopic"],
+      "patientPosition": "Beach-chair o decúbito lateral",
+      "anesthesia": "General + bloqueo interescalénico",
+      "preopImaging": ["RMN artrografía (lesión de Bankart, Hill-Sachs, ALPSA, defecto glenoides)", "TAC 3D si pérdida ósea glenoidal (Bankart óseo, defecto > 20–25%)"],
+      "indications": [
+        "Inestabilidad anterior de hombro con lesión de Bankart confirmada en paciente activo",
+        "Primer episodio en joven deportista de contacto (relativa)",
+        "SLAP II–IV sintomático con fracaso conservador",
+        "Inestabilidad recurrente postoperatoria (→ revisar si pérdida ósea < 20%)"
+      ],
+      "contraindications": [
+        "Pérdida ósea glenoidal > 20–25% (→ Latarjet u otra técnica ósea)",
+        "Lesión de Hill-Sachs enganchable (engager — también puede necesitar Latarjet o remplissage)",
+        "Laxitud generalizada ligamentaria sin lesión estructural (→ tratamiento muscular)",
+        "Inestabilidad posterior (técnica diferente)"
+      ],
+      "classifications": [
+        "Bony Bankart vs Soft-tissue Bankart",
+        "Glenoid track (on-track vs off-track para Hill-Sachs)",
+        "SLAP: I–IV (Snyder), V–X (extensiones)",
+        "Instability Severity Index Score (ISIS)"
+      ],
+      "steps": [
+        "Portal posterior diagnóstico: evaluación de labrum, Hill-Sachs, defecto glenoides, SLAP, cápsula",
+        "Portales anteriores (anterosuperior y antero-inferior) bajo visión directa",
+        "Fresado del reborde glenoides anterior (preparación del hueso para la reparación)",
+        "Inserción de anclas en el reborde anterior de la glena (posición horaria: 3–6 h en hombro derecho)",
+        "Paso de suturas a través del labrum y la cápsula inferior",
+        "Anudado con el nudo fuera del espacio articular, creando tensión capsulolabral",
+        "Para SLAP: inserción de ancla superior, paso de sutura a través del labrum superior, verificación de tensión del bíceps",
+        "Evaluación final de la estabilidad con maniobra de tracción-compresión y rotación"
+      ],
+      "implants": [
+        "Anclas de sutura glenoideales (3–4 para Bankart, 1–2 para SLAP)",
+        "Sutura no reabsorbible"
+      ],
+      "complications": [
+        "Recurrencia de la inestabilidad (factor principal: pérdida ósea y mala posición de anclas)",
+        "Rigidez (pérdida de rotación externa, especialmente si plicatura capsular excesiva)",
+        "Lesión del nervio axilar",
+        "Infección articular",
+        "Falla de las anclas (pull-out en hueso de mala calidad)"
+      ],
+      "pearls": [
+        "Calcular el Glenoid Track preoperatoriamente; si off-track → Latarjet",
+        "Las anclas deben quedar sobre el reborde articular, no en la cara plana de la glena",
+        "Restablecer el volumen capsular: la plicatura debe ser suficiente sin limitar la rotación externa",
+        "En SLAP: verificar intraoperatoriamente que el bíceps no queda atrapado al anudar"
+      ],
+      "durationMin": 60,
+      "durationMax": 90,
+      "recovery": "Cabestrillo 4–6 semanas. Movilización activa desde semana 6. Retorno deportivo a los 4–6 meses.",
+      "references": [],
+      "level": "specialist",
+      "dataCompleteness": "full",
+      "tags": ["hombro", "inestabilidad", "artroscopía", "electivo"],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "tlif-lumbar",
+      "name": "Artrodesis Lumbar — TLIF (Transforaminal Lumbar Interbody Fusion)",
+      "aliases": ["TLIF", "fusión lumbar", "artrodesis lumbar", "fijación lumbar", "instrumentación lumbar"],
+      "anatomicRegion": "spine",
+      "specialty": "spine",
+      "ageGroup": "adult",
+      "category": "arthrodesis",
+      "approach": ["posterior"],
+      "patientPosition": "Decúbito prono en mesa radiotransparente, abdomen libre",
+      "anesthesia": "General (intubación orotraqueal) con monitoreo neurofisiológico intraoperatorio",
+      "preopImaging": ["RMN lumbar (columna entera)", "TAC lumbar con reconstrucciones", "Rx dinámica (flexo-extensión para inestabilidad)", "Rx columna entera si deformidad asociada"],
+      "indications": [
+        "Espondilolistesis degenerativa grados I–II con inestabilidad",
+        "Estenosis de canal lumbar con inestabilidad (monosegmento o bisegmento)",
+        "Degeneración discal severa sintomática con fracaso conservador ≥ 6 meses",
+        "Hernia discal recidivante en el mismo nivel con inestabilidad",
+        "Pseudoartrosis de artrodesis previa"
+      ],
+      "contraindications": [
+        "Infección activa",
+        "Osteoporosis severa sin posibilidad de fijación con tornillos pediculares",
+        "Estenosis multisegmento sin inestabilidad (→ solo laminectomía)",
+        "Patología médica que contraindica cirugía prolongada"
+      ],
+      "classifications": [
+        "Meyerding para espondilolistesis (I–IV)",
+        "Clasificación de Lenke para deformidades (si extensión a escoliosis)",
+        "Tipo de estenosis: central, foraminal, subarticular"
+      ],
+      "steps": [
+        "Incisión posterior longitudinal centrada, exposición de las apófisis espinosas, láminas y facetas",
+        "Inserción de tornillos pediculares bilaterales (confirmación con C-arm o navegación)",
+        "Hemilaminectomía y facetectomía del lado de trabajo (generalmente sintomático)",
+        "Foraminotomía amplia para acceder al espacio intervertebral",
+        "Discectomía completa por vía transforaminal (curetas y pinzas de Kerrison anguladas)",
+        "Preparación de los platillos vertebrales (fresado hasta hueso subcondral sangrante)",
+        "Relleno del espacio intersomático con injerto óseo (banco o hueso local)",
+        "Inserción del cage TLIF de tamaño apropiado (PEEK, titanio o carbono)",
+        "Montaje de las barras de titanio, corrección de la alineación sagital",
+        "Bloqueo final de los tornillos, descompresión laminectomía contralateral si necesario",
+        "Colocación de injerto óseo posterolateral (facetas y transversas)",
+        "Cierre por planos, drenaje"
+      ],
+      "implants": [
+        "Tornillos pediculares (titanio, diámetro y longitud según TAC preoperatorio)",
+        "Barras de titanio o cromo-cobalto",
+        "Cage intersomático TLIF (PEEK o titanio con superficie porosa)",
+        "Injerto óseo (banco alógeno + hueso local autólogo)"
+      ],
+      "complications": [
+        "Lesión dural (fístula de LCR, pseudomeningocele)",
+        "Lesión neurológica (radiculopatía o déficit motor por retracción o mala posición de tornillo)",
+        "Infección profunda (discitis, infección del implante — grave, requiere revisión)",
+        "Pseudoartrosis (fracaso de la fusión)",
+        "Síndrome de instrumento fallido (fractura de tornillo o barra)",
+        "Hematoma epidural",
+        "Síndrome de cauda equina (emergencia)"
+      ],
+      "pearls": [
+        "La hemostasia epidural antes de la discectomía evita el campo sangrante y reduce el tiempo",
+        "El cage debe estar centrado en la vista AP y en el tercio anterior en lateral para restaurar lordosis",
+        "El monitoreo neurofisiológico avisa antes de que el daño sea irreversible",
+        "Si hay duda sobre la posición del tornillo, navegar o hacer TAC intraoperatorio"
+      ],
+      "durationMin": 150,
+      "durationMax": 240,
+      "recovery": "Deambulación con andador a las 24 h. Corsé o faja 6–12 semanas. Alta funcional a los 3–6 meses. Fusión completa a los 6–12 meses.",
+      "references": [],
+      "level": "specialist",
+      "dataCompleteness": "full",
+      "tags": ["columna", "fusión", "TLIF", "electivo"],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "hemiartroplastia-cadera",
+      "name": "Hemiartroplastia de Cadera",
+      "aliases": ["hemiprótesis de cadera", "Austin Moore", "fractura de cuello femoral", "hemiarthroplasty"],
+      "anatomicRegion": "hip",
+      "specialty": "prosthesis",
+      "ageGroup": "adult",
+      "category": "arthroplasty",
+      "approach": ["posterior"],
+      "patientPosition": "Decúbito lateral",
+      "anesthesia": "Raquídea (preferida en adulto mayor) o general",
+      "preopImaging": ["Rx pelvis AP y cadera axial", "Templado para selección de vástago y cabeza"],
+      "indications": [
+        "Fractura medial de cuello femoral Garden III–IV en adulto mayor de baja demanda funcional (> 70 años, < 4 actividades fuera del hogar)",
+        "Fractura subcapital Garden IV en paciente con comorbilidades que contraindican cirugía prolongada",
+        "Osteonecrosis avascular estadio IV en paciente mayor con cartílago acetabular preservado"
+      ],
+      "contraindications": [
+        "Paciente joven o activo (→ ATC o reducción y fijación interna)",
+        "Cartílago acetabular destruido (→ ATC)",
+        "Infección activa",
+        "Demencia severa con incapacidad para la rehabilitación mínima"
+      ],
+      "classifications": [
+        "Garden para fractura de cuello femoral: I (impactada valgus), II (no desplazada), III (parcialmente desplazada), IV (completamente desplazada)",
+        "Monopolar vs bipolar (cabeza móvil de dos piezas)"
+      ],
+      "steps": [
+        "Incisión posterior de Moore",
+        "Sección de rotadores cortos externos",
+        "Capsulotomía, luxación en rotación interna",
+        "Osteotomía del cuello femoral según templado",
+        "Extracción de la cabeza femoral (medir su diámetro)",
+        "Fresado del canal femoral progresivo",
+        "Inserción del vástago (cementado con cemento de 2.ª generación o press-fit monopolar tipo Austin-Moore)",
+        "Elección de cabeza bipolar de diámetro equivalente a la cabeza extraída",
+        "Reducción de la cadera, verificación de estabilidad y rango de movimiento",
+        "Reparación de los rotadores cortos",
+        "Cierre por planos, drenaje"
+      ],
+      "implants": [
+        "Vástago femoral cementado (Exeter, Lubinus, Müller) o press-fit (Austin-Moore)",
+        "Cabeza unipolar o bipolar (diámetro 44–54 mm habitualmente)"
+      ],
+      "complications": [
+        "Luxación",
+        "Infección periprotésica",
+        "Protrusión acetabular (dolor inguinal por migración de la cabeza)",
+        "Fractura periprotésica (Vancouver B)",
+        "Parálisis del nervio ciático",
+        "Dismetría de miembros"
+      ],
+      "pearls": [
+        "En pacientes con demencia leve o baja funcionalidad: monopolar cementado tiene buenos resultados y es más rápido",
+        "La cabeza bipolar reduce el desgaste acetabular en pacientes activos",
+        "La carga inmediata (24 h) reduce la mortalidad en adultos mayores con fractura de cadera",
+        "Verificar el offset y la longitud del cuello antes de cementar"
+      ],
+      "durationMin": 60,
+      "durationMax": 90,
+      "recovery": "Carga total inmediata (andador). Alta hospitalaria a los 3–5 días. Rehabilitación ambulatoria. Alta funcional a las 6–8 semanas.",
+      "references": [],
+      "level": "resident",
+      "dataCompleteness": "full",
+      "tags": ["cadera", "fractura", "adulto mayor", "urgencia", "semiprogramada"],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "liberacion-tunel-carpiano",
+      "name": "Liberación del Túnel Carpiano",
+      "aliases": ["túnel carpiano", "descompresión del nervio mediano", "STC", "CTR", "carpal tunnel release"],
+      "anatomicRegion": "wrist",
+      "specialty": "soft-tissue",
+      "ageGroup": "adult",
+      "category": "nerve-release",
+      "approach": ["anterior"],
+      "patientPosition": "Decúbito supino, miembro en mesa de mano, torniquete en antebrazo",
+      "anesthesia": "Anestesia local con adrenalina (WALANT) o bloqueo del plexo braquial",
+      "preopImaging": ["Electromiografía/velocidad de conducción nerviosa (confirmar diagnóstico y descartar doble compresión)", "Ecografía de muñeca (opcional, para evaluar patología del tendón o variantes anatómicas)"],
+      "indications": [
+        "Síndrome del túnel carpiano moderado a severo con fracaso de tratamiento conservador ≥ 3 meses",
+        "STC con atrofia tenar",
+        "STC severo con déficit sensitivo constante",
+        "STC durante el embarazo refractario a férula (parto previo o urgente)"
+      ],
+      "contraindications": [
+        "STC leve sin déficit funcional (→ AINES, férula nocturna, corticoides)",
+        "Infección activa de la mano o muñeca",
+        "Trastorno hemorrágico no controlado"
+      ],
+      "classifications": [
+        "Gravedad por EMG: leve (solo sensitivo), moderado (sensitivo + motor latencia prolongada), severo (ausencia de conducción motora)",
+        "Clínica: Phalen, Tinel, test de compresión carpal"
+      ],
+      "steps": [
+        "Incisión longitudinal palmar de 3–4 cm en la eminencia hipotenar (medial a la línea tenar)",
+        "Disección subcutánea, exposición del ligamento transverso del carpo (retináculo flexor)",
+        "Sección completa del ligamento transverso bajo visión directa (distal a proximal, o proximal a distal)",
+        "Identificación y protección del nervio mediano y de su rama tenar",
+        "Hemostasia, cierre de la piel (puntos simples o intradérmico)"
+      ],
+      "implants": [],
+      "complications": [
+        "Lesión del nervio mediano o de la rama tenar (la peor complicación)",
+        "Cicatriz dolorosa o adherida (pilar del carpo)",
+        "Síndrome del pilar (dolor en la eminencia hipotenar, frecuente y transitorio)",
+        "Lesión de la arteria ulnar o superficial palmar",
+        "Sección incompleta del ligamento (recurrencia del STC)",
+        "Infección superficial"
+      ],
+      "pearls": [
+        "La incisión medial al eje del anular evita la rama tenar del mediano (en 80% de los casos)",
+        "La WALANT permite verificar la función tendinosa y nerviosa intraoperatoriamente",
+        "Sección distal a proximal reduce el riesgo de lesión del mediano en la muñeca",
+        "El dolor del pilar es la causa más frecuente de insatisfacción temprana; advertir al paciente"
+      ],
+      "durationMin": 20,
+      "durationMax": 40,
+      "recovery": "Movilización inmediata de dedos. Retiro de puntos a los 10–14 días. Retorno a trabajo liviano a las 2–3 semanas. Alta funcional a las 6 semanas.",
+      "references": [],
+      "level": "resident",
+      "dataCompleteness": "full",
+      "tags": ["muñeca", "nervio mediano", "electivo", "ambulatorio"],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "fasciotomia-pierna",
+      "name": "Fasciotomía de Pierna — Síndrome Compartimental",
+      "aliases": ["fasciotomía", "síndrome compartimental pierna", "compartment syndrome leg", "descompresión de pierna"],
+      "anatomicRegion": "tibia",
+      "specialty": "trauma",
+      "ageGroup": "both",
+      "category": "fasciotomy",
+      "approach": ["lateral"],
+      "patientPosition": "Decúbito supino",
+      "anesthesia": "General o raquídea (urgencia — mínima demora)",
+      "preopImaging": ["Clínico + medición de presión compartimental (> 30 mmHg o delta-P < 30 mmHg)", "No demorar por imágenes si el diagnóstico es clínico"],
+      "indications": [
+        "Síndrome compartimental agudo de pierna (presión > 30 mmHg o delta-P < 30 mmHg)",
+        "Síndrome compartimental clínico con signos de isquemia muscular (dolor desproporcionado, dolor al estiramiento pasivo, parestesias, pulso ausente tardío)"
+      ],
+      "contraindications": [
+        "No hay contraindicaciones absolutas cuando el diagnóstico está establecido"
+      ],
+      "classifications": [
+        "Síndrome compartimental agudo (postraumático, no traumático, de esfuerzo)",
+        "4 compartimentos de la pierna: anterior, lateral, posterior superficial, posterior profundo"
+      ],
+      "steps": [
+        "INCISIÓN LATERAL (compartimentos anterior y lateral): incisión longitudinal 15–20 cm a 2 cm anterior al peroné",
+        "Apertura del compartimento anterior: fascia del tibial anterior",
+        "Apertura del compartimento lateral: fascia del peroneo largo",
+        "INCISIÓN MEDIAL (compartimentos posteriores): incisión longitudinal 15–20 cm a 2 cm posterior al borde medial de la tibia",
+        "Apertura del compartimento posterior superficial: fascia del gastrocnemio-soleo",
+        "Apertura del compartimento posterior profundo: fascia del flexor profundo (detrás del soleo)",
+        "Inspección del color y contractilidad muscular (músculo rosado y contráctil = viable; negro y no contráctil = necrosis)",
+        "Desbridamiento del tejido muscular claramente necrótico",
+        "Dejar heridas abiertas (NO cerrar en urgencia)",
+        "Apósito húmedo estéril o VAC (vacío)"
+      ],
+      "implants": [],
+      "complications": [
+        "Infección superficial o profunda (heridas abiertas obligatorias)",
+        "Necrosis muscular residual (mionecrosis) si el diagnóstico fue tardío",
+        "Daño nervioso permanente (nervio peroneal, tibial posterior)",
+        "Síndrome de reperfusión (hiperkaliemia, insuficiencia renal aguda por mioglobinuria)",
+        "Cicatrización compleja al cierre diferido",
+        "Hernia muscular transfascial crónica"
+      ],
+      "pearls": [
+        "URGENCIA: cada hora de demora aumenta el daño permanente; no esperar imágenes ni evolución si el diagnóstico es clínico",
+        "La sección del compartimento posterior profundo requiere disecar detrás del soleo — es el que más se olvida",
+        "El cierre diferido (48–72 h) se hace en segunda cirugía; con frecuencia requiere injerto de piel",
+        "Monitorear la diuresis y los electrolitos por riesgo de mioglobinuria renal"
+      ],
+      "durationMin": 45,
+      "durationMax": 75,
+      "recovery": "UCI o cuidados postoperatorios de alta dependencia. Segunda cirugía para cierre o injerto a las 48–72 h. Alta funcional variable según daño muscular.",
+      "references": [],
+      "level": "resident",
+      "dataCompleteness": "full",
+      "tags": ["pierna", "urgencia", "compartimento", "emergencia"],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    }
+  ]
+}

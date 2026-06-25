@@ -1,15 +1,13 @@
-import type { SurgeryLog, Procedure, Settings, AppData } from '../types'
+import type { SurgicalCase, Procedure, Settings, AppData } from '../types'
 
 const KEYS = {
-  surgeries: 'quirolog_surgeries',
+  cases: 'quirolog_cases',
   procedures: 'quirolog_procedures',
   settings: 'quirolog_settings',
 }
 
 const DEFAULT_SETTINGS: Settings = {
   weeklyGoal: 3,
-  restDays: [],
-  restDaysKeepStreak: false,
   darkMode: false,
   autoEnrich: true,
   externalSearch: false,
@@ -32,12 +30,12 @@ function save(key: string, value: unknown) {
   }
 }
 
-export function getSurgeries(): SurgeryLog[] {
-  return parse<SurgeryLog[]>(KEYS.surgeries, [])
+export function getCases(): SurgicalCase[] {
+  return parse<SurgicalCase[]>(KEYS.cases, [])
 }
 
-export function saveSurgeries(logs: SurgeryLog[]) {
-  save(KEYS.surgeries, logs)
+export function saveCases(cases: SurgicalCase[]) {
+  save(KEYS.cases, cases)
 }
 
 export function getProcedures(): Procedure[] {
@@ -59,22 +57,22 @@ export function saveSettings(settings: Settings) {
 
 export function hasLocalData(): boolean {
   return (
-    localStorage.getItem(KEYS.surgeries) !== null ||
+    localStorage.getItem(KEYS.cases) !== null ||
     localStorage.getItem(KEYS.procedures) !== null
   )
 }
 
 export function exportAll(): AppData {
   return {
-    surgeryLogs: getSurgeries(),
+    cases: getCases(),
     procedures: getProcedures(),
     settings: getSettings(),
-    version: '1.0',
+    version: '2.0',
   }
 }
 
 export function importAll(data: AppData) {
-  if (data.surgeryLogs) saveSurgeries(data.surgeryLogs)
+  if (data.cases) saveCases(data.cases)
   if (data.procedures) saveProcedures(data.procedures)
   if (data.settings) saveSettings({ ...DEFAULT_SETTINGS, ...data.settings })
 }

@@ -1,15 +1,13 @@
 import { useState, useCallback } from 'react'
-import type { Procedure, AnatomicRegion, SurgicalSpecialty } from '../types'
+import type { Procedure } from '../types'
 import { getProcedures, saveProcedures } from '../lib/storage'
-import { enrichProcedureFromKnowledgeBase } from '../lib/enrichProcedure'
+import { normalize, kbBySlug, kbByAlias } from '../data/procedureKnowledgeBase'
 
 function newId(): string {
   return `proc-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`
 }
 
-function normalizeName(name: string): string {
-  return name.toLowerCase().trim().replace(/\s+/g, ' ')
-}
+type NewProcedureData = Omit<Procedure, 'id' | 'source' | 'userEdited'>
 
 export function useProcedures() {
   const [procedures, setProcedures] = useState<Procedure[]>(() => getProcedures())
@@ -19,35 +17,27 @@ export function useProcedures() {
     setProcedures(list)
   }, [])
 
-  const addProcedure = useCallback(
-    (data: Omit<Procedure, 'id' | 'nameLower' | 'createdAt' | 'updatedAt' | 'referenceStatus'>) => {
-      const now = new Date().toISOString()
-      const procedure: Procedure = {
-        ...data,
-        id: newId(),
-        nameLower: normalizeName(data.name),
-        referenceStatus: 'none',
-        createdAt: now,
-        updatedAt: now,
-      }
-      setProcedures((prev) => {
-        const next = [...prev, procedure]
-        saveProcedures(next)
-        return next
-      })
-      return procedure
-    },
-    []
-  )
+  const addProcedure = useCallback((data: NewProcedureData) => {
+    const procedure: Procedure = {
+      ...data,
+      id: newId(),
+      source: 'user',
+      userEdited: false,
+    }
+    setProcedures((prev) => {
+      const next = [...prev, procedure]
+      saveProcedures(next)
+      return next
+    })
+    return procedure
+  }, [])
 
   const updateProcedure = useCallback(
-    (id: string, updates: Partial<Omit<Procedure, 'id' | 'createdAt'>>) => {
+    (id: string, updates: Partial<Omit<Procedure, 'id' | 'source'>>) => {
       setProcedures((prev) => {
         const next = prev.map((p) => {
           if (p.id !== id) return p
-          const updated = { ...p, ...updates, updatedAt: new Date().toISOString() }
-          if (updates.name) updated.nameLower = normalizeName(updates.name)
-          return updated
+          return { ...p, ...updates, userEdited: true }
         })
         saveProcedures(next)
         return next
@@ -64,21 +54,46 @@ export function useProcedures() {
     })
   }, [])
 
-  const getOrCreate = useCallback(
-    (name: string, region: AnatomicRegion = 'other', specialty: SurgicalSpecialty = 'other') => {
-      const lower = normalizeName(name)
-      const existing = procedures.find((p) => p.nameLower === lower)
-      if (existing) return existing
-      return addProcedure({ name, anatomicRegion: region, specialty })
-    },
-    [procedures, addProcedure]
-  )
-
   const enrichExisting = useCallback(() => {
     let changed = false
     const next = procedures.map((p) => {
-      const enriched = enrichProcedureFromKnowledgeBase(p)
-      if (enriched) { changed = true; return enriched }
+      if (p.userEdited) return p
+
+      const kbMatch = kbBySlug.get(p.id) ?? kbByAlias.get(normalize(p.name))
+      if (!kbMatch) return p
+
+      let updated = { ...p }
+      let dirty = false
+
+      function fill<K extends keyof Procedure>(key: K, val: Procedure[K]) {
+        const cur = updated[key]
+        const isEmpty = cur === undefined || cur === null || cur === '' ||
+          (Array.isArray(cur) && cur.length === 0)
+        if (isEmpty) { (updated as Record<string, unknown>)[key] = val; dirty = true }
+      }
+
+      fill('anatomicRegion', kbMatch.anatomicRegion)
+      fill('specialty', kbMatch.specialty)
+      fill('ageGroup', kbMatch.ageGroup)
+      fill('category', kbMatch.category)
+      fill('approach', kbMatch.approach)
+      fill('indications', kbMatch.indications)
+      fill('contraindications', kbMatch.contraindications)
+      fill('classifications', kbMatch.classifications)
+      fill('steps', kbMatch.steps)
+      fill('implants', kbMatch.implants)
+      fill('complications', kbMatch.complications)
+      fill('pearls', kbMatch.pearls)
+      fill('durationMin', kbMatch.durationMin)
+      fill('durationMax', kbMatch.durationMax)
+      fill('aliases', kbMatch.aliases)
+      fill('tags', kbMatch.tags)
+      fill('level', kbMatch.level)
+      if (kbMatch.recovery) fill('recovery', kbMatch.recovery)
+      if (kbMatch.anesthesia) fill('anesthesia', kbMatch.anesthesia)
+      if (kbMatch.patientPosition) fill('patientPosition', kbMatch.patientPosition)
+
+      if (dirty) { changed = true; return updated }
       return p
     })
     if (changed) persist(next)
@@ -89,7 +104,6 @@ export function useProcedures() {
     addProcedure,
     updateProcedure,
     deleteProcedure,
-    getOrCreate,
     enrichExisting,
     setProcedures: persist,
   }
