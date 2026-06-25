@@ -13,7 +13,7 @@ import { es } from 'date-fns/locale'
 import { ChevronLeft, ChevronRight, Plus, X } from 'lucide-react'
 import { useCases } from '../hooks/useCases'
 import { AddCaseModal } from '../components/AddCaseModal'
-import { ROLE_LABELS } from '../types'
+import { ROLE_LABELS, STATUS_LABELS } from '../types'
 import type { SurgicalCase } from '../types'
 
 function DayModal({ date, onClose }: { date: string; onClose: () => void }) {
@@ -44,7 +44,14 @@ function DayModal({ date, onClose }: { date: string; onClose: () => void }) {
                     key={c.id}
                     className="p-3 rounded-xl bg-gray-50 dark:bg-gray-800"
                   >
-                    <p className="font-medium text-gray-900 dark:text-white text-sm">{c.procedureNameSnapshot}</p>
+                    <div className="flex items-start justify-between gap-2">
+                      <p className="font-medium text-gray-900 dark:text-white text-sm">{c.procedureNameSnapshot}</p>
+                      {c.status === 'planned' && (
+                        <span className="text-[10px] bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 px-1.5 py-0.5 rounded-full flex-shrink-0">
+                          {STATUS_LABELS.planned}
+                        </span>
+                      )}
+                    </div>
                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
                       {ROLE_LABELS[c.role]}
                       {c.actualDurationMin ? ` · ${c.actualDurationMin} min` : ''}
@@ -83,9 +90,13 @@ export function CalendarPage() {
   const days = eachDayOfInterval({ start: monthStart, end: monthEnd })
   const startPad = (getDay(monthStart) + 6) % 7
 
+  const doneDateSet = new Set<string>()
+  const plannedDateSet = new Set<string>()
   const caseCountByDate = new Map<string, number>()
   cases.forEach(c => {
     caseCountByDate.set(c.date, (caseCountByDate.get(c.date) ?? 0) + 1)
+    if (c.status === 'planned') plannedDateSet.add(c.date)
+    else doneDateSet.add(c.date)
   })
 
   function prevMonth() { setCurrent(d => new Date(d.getFullYear(), d.getMonth() - 1, 1)) }
@@ -117,21 +128,29 @@ export function CalendarPage() {
           {days.map(day => {
             const dateStr = format(day, 'yyyy-MM-dd')
             const count = caseCountByDate.get(dateStr) ?? 0
-            const today = isToday(day)
+            const todayDay = isToday(day)
             const inMonth = isSameMonth(day, current)
+            const hasDone = doneDateSet.has(dateStr)
+            const hasPlanned = plannedDateSet.has(dateStr)
 
             return (
               <button
                 key={dateStr}
                 onClick={() => setSelectedDate(dateStr)}
                 className={`relative aspect-square flex flex-col items-center justify-center rounded-xl text-sm transition-colors ${
-                  today ? 'ring-2 ring-primary-500 font-bold' : ''
+                  todayDay ? 'ring-2 ring-primary-500 font-bold' : ''
                 } ${
                   inMonth ? 'text-gray-900 dark:text-white' : 'text-gray-300 dark:text-gray-700'
                 } hover:bg-gray-100 dark:hover:bg-gray-800`}
               >
-                {count > 0 && (
+                {hasDone && (
                   <div className="absolute top-1 right-1 w-2 h-2 rounded-full bg-primary-500" />
+                )}
+                {!hasDone && hasPlanned && (
+                  <div className="absolute top-1 right-1 w-2 h-2 rounded-full border-2 border-amber-400 bg-transparent" />
+                )}
+                {hasDone && hasPlanned && (
+                  <div className="absolute top-1 left-1 w-2 h-2 rounded-full border-2 border-amber-400 bg-transparent" />
                 )}
                 {day.getDate()}
                 {count > 1 && (

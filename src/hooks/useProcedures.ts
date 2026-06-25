@@ -83,6 +83,13 @@ export function useProcedures() {
     }
   }, [user])
 
+  const togglePin = useCallback((id: string) => {
+    const next = proceduresStore.get().map((p) =>
+      p.id === id ? { ...p, pinned: !p.pinned } : p
+    )
+    proceduresStore.set(next)
+  }, [])
+
   const enrichExisting = useCallback(() => {
     let changed = false
     const next = proceduresStore.get().map((p) => {

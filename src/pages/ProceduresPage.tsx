@@ -1,7 +1,8 @@
 import { useState, useMemo } from 'react'
-import { Plus, Search, Stethoscope, ChevronDown, ChevronUp, Pencil, Trash2 } from 'lucide-react'
+import { Plus, Search, Stethoscope, ChevronDown, ChevronUp, Pencil, Trash2, Star } from 'lucide-react'
 import { useProcedures } from '../hooks/useProcedures'
 import { useCases } from '../hooks/useCases'
+import { normalize } from '../data/procedureKnowledgeBase'
 import type { Procedure, AnatomicRegion, Specialty, SurgicalApproach, ProcedureLevel, AgeGroup } from '../types'
 import {
   ANATOMIC_REGION_LABELS,
@@ -299,11 +300,13 @@ function ProcedureCard({
   usageCount,
   onEdit,
   onDelete,
+  onPin,
 }: {
   procedure: Procedure
   usageCount: number
   onEdit: () => void
   onDelete: (id: string) => void
+  onPin: (id: string) => void
 }) {
   const [expanded, setExpanded] = useState(false)
 
@@ -314,10 +317,13 @@ function ProcedureCard({
         className="w-full p-4 flex items-start gap-3 text-left"
       >
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             <p className="font-semibold text-gray-900 dark:text-white leading-tight">{procedure.name}</p>
             {procedure.userEdited && (
               <span className="text-[10px] bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 px-1.5 py-0.5 rounded-full flex-shrink-0">editado</span>
+            )}
+            {procedure.dataCompleteness === 'standard' && (
+              <span className="text-[10px] bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 px-1.5 py-0.5 rounded-full flex-shrink-0">Por revisar</span>
             )}
           </div>
           <div className="flex flex-wrap gap-1 mt-1">
@@ -334,11 +340,22 @@ function ProcedureCard({
             )}
           </div>
         </div>
-        {expanded ? (
-          <ChevronUp className="w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" />
-        ) : (
-          <ChevronDown className="w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" />
-        )}
+        <div className="flex items-center gap-1 flex-shrink-0">
+          <button
+            onClick={e => { e.stopPropagation(); onPin(procedure.id) }}
+            className="p-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+            aria-label={procedure.pinned ? 'Quitar favorito' : 'Marcar favorito'}
+          >
+            <Star
+              className={`w-4 h-4 ${procedure.pinned ? 'fill-amber-400 text-amber-400' : 'text-gray-300 dark:text-gray-600'}`}
+            />
+          </button>
+          {expanded ? (
+            <ChevronUp className="w-4 h-4 text-gray-400 mt-0.5" />
+          ) : (
+            <ChevronDown className="w-4 h-4 text-gray-400 mt-0.5" />
+          )}
+        </div>
       </button>
 
       {expanded && (
@@ -453,7 +470,7 @@ function ProcedureModal({
 }
 
 export function ProceduresPage() {
-  const { procedures, addProcedure, updateProcedure, deleteProcedure } = useProcedures()
+  const { procedures, addProcedure, updateProcedure, deleteProcedure, togglePin } = useProcedures()
   const { cases } = useCases()
   const [search, setSearch] = useState('')
   const [filterRegion, setFilterRegion] = useState<AnatomicRegion | ''>('')
@@ -467,9 +484,19 @@ export function ProceduresPage() {
   }, [cases])
 
   const filtered = useMemo(() => {
-    const q = search.toLowerCase()
+    const q = normalize(search)
     return procedures.filter(p => {
-      if (q && !p.name.toLowerCase().includes(q)) return false
+      if (q) {
+        const hay = normalize([
+          p.name,
+          ...p.aliases,
+          ...p.tags,
+          ...p.classifications,
+          ANATOMIC_REGION_LABELS[p.anatomicRegion],
+          SPECIALTY_LABELS[p.specialty],
+        ].join(' '))
+        if (!hay.includes(q)) return false
+      }
       if (filterRegion && p.anatomicRegion !== filterRegion) return false
       if (filterSpecialty && p.specialty !== filterSpecialty) return false
       return true
@@ -543,6 +570,7 @@ export function ProceduresPage() {
                 usageCount={usageMap[p.id] ?? 0}
                 onEdit={() => setModal(p)}
                 onDelete={deleteProcedure}
+                onPin={togglePin}
               />
             ))}
           </div>
