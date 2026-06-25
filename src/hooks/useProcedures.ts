@@ -1,16 +1,19 @@
-import { useState, useCallback } from 'react'
+import { useCallback, useSyncExternalStore } from 'react'
 import type { Procedure } from '../types'
 import { getProcedures, saveProcedures, getKbSeededVersion, setKbSeededVersion } from '../lib/storage'
 import { normalize, kbBySlug, kbByAlias, knowledgeBase, KB_VERSION } from '../data/procedureKnowledgeBase'
+import { createPersistentStore } from '../lib/store'
+
+const proceduresStore = createPersistentStore<Procedure[]>(getProcedures, saveProcedures)
 
 export function seedKnowledgeBaseIfNeeded(): void {
   const storedVersion = getKbSeededVersion()
   if (storedVersion === KB_VERSION) return
-  const stored = getProcedures()
+  const stored = proceduresStore.get()
   const storedIds = new Set(stored.map((p) => p.id))
   const missing = knowledgeBase.filter((p) => !storedIds.has(p.id))
   if (missing.length > 0) {
-    saveProcedures([...missing, ...stored])
+    proceduresStore.set([...missing, ...stored])
   }
   setKbSeededVersion(KB_VERSION)
 }
@@ -22,12 +25,7 @@ function newId(): string {
 type NewProcedureData = Omit<Procedure, 'id' | 'source' | 'userEdited'>
 
 export function useProcedures() {
-  const [procedures, setProcedures] = useState<Procedure[]>(() => getProcedures())
-
-  const persist = useCallback((list: Procedure[]) => {
-    saveProcedures(list)
-    setProcedures(list)
-  }, [])
+  const procedures = useSyncExternalStore(proceduresStore.subscribe, proceduresStore.get)
 
   const addProcedure = useCallback((data: NewProcedureData) => {
     const procedure: Procedure = {
@@ -36,39 +34,28 @@ export function useProcedures() {
       source: 'user',
       userEdited: false,
     }
-    setProcedures((prev) => {
-      const next = [...prev, procedure]
-      saveProcedures(next)
-      return next
-    })
+    proceduresStore.set([...proceduresStore.get(), procedure])
     return procedure
   }, [])
 
   const updateProcedure = useCallback(
     (id: string, updates: Partial<Omit<Procedure, 'id' | 'source'>>) => {
-      setProcedures((prev) => {
-        const next = prev.map((p) => {
-          if (p.id !== id) return p
-          return { ...p, ...updates, userEdited: true }
-        })
-        saveProcedures(next)
-        return next
+      const next = proceduresStore.get().map((p) => {
+        if (p.id !== id) return p
+        return { ...p, ...updates, userEdited: true }
       })
+      proceduresStore.set(next)
     },
     []
   )
 
   const deleteProcedure = useCallback((id: string) => {
-    setProcedures((prev) => {
-      const next = prev.filter((p) => p.id !== id)
-      saveProcedures(next)
-      return next
-    })
+    proceduresStore.set(proceduresStore.get().filter((p) => p.id !== id))
   }, [])
 
   const enrichExisting = useCallback(() => {
     let changed = false
-    const next = procedures.map((p) => {
+    const next = proceduresStore.get().map((p) => {
       if (p.userEdited) return p
 
       const kbMatch = kbBySlug.get(p.id) ?? kbByAlias.get(normalize(p.name))
@@ -108,8 +95,8 @@ export function useProcedures() {
       if (dirty) { changed = true; return updated }
       return p
     })
-    if (changed) persist(next)
-  }, [procedures, persist])
+    if (changed) proceduresStore.set(next)
+  }, [])
 
   return {
     procedures,
@@ -117,6 +104,6 @@ export function useProcedures() {
     updateProcedure,
     deleteProcedure,
     enrichExisting,
-    setProcedures: persist,
+    setProcedures: proceduresStore.set,
   }
 }
