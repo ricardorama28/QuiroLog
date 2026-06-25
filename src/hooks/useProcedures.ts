@@ -1,10 +1,10 @@
 import { useCallback, useSyncExternalStore } from 'react'
 import type { Procedure } from '../types'
-import { getProcedures, saveProcedures, getKbSeededVersion, setKbSeededVersion } from '../lib/storage'
+import { getKbSeededVersion, setKbSeededVersion, addTombstone } from '../lib/storage'
 import { normalize, kbBySlug, kbByAlias, knowledgeBase, KB_VERSION } from '../data/procedureKnowledgeBase'
-import { createPersistentStore } from '../lib/store'
-
-const proceduresStore = createPersistentStore<Procedure[]>(getProcedures, saveProcedures)
+import { proceduresStore } from '../lib/proceduresStore'
+import { upsertOverride, deleteRemoteOverride, isOverride } from '../lib/sync'
+import { useAuth } from '../context/AuthContext'
 
 export function seedKnowledgeBaseIfNeeded(): void {
   const storedVersion = getKbSeededVersion()
@@ -26,6 +26,7 @@ type NewProcedureData = Omit<Procedure, 'id' | 'source' | 'userEdited'>
 
 export function useProcedures() {
   const procedures = useSyncExternalStore(proceduresStore.subscribe, proceduresStore.get)
+  const { user } = useAuth()
 
   const addProcedure = useCallback((data: NewProcedureData) => {
     const procedure: Procedure = {
@@ -35,8 +36,9 @@ export function useProcedures() {
       userEdited: false,
     }
     proceduresStore.set([...proceduresStore.get(), procedure])
+    if (user) upsertOverride(procedure, user.id)
     return procedure
-  }, [])
+  }, [user])
 
   const updateProcedure = useCallback(
     (id: string, updates: Partial<Omit<Procedure, 'id' | 'source'>>) => {
@@ -45,13 +47,41 @@ export function useProcedures() {
         return { ...p, ...updates, userEdited: true }
       })
       proceduresStore.set(next)
+      if (user) {
+        const updated = proceduresStore.get().find(p => p.id === id)
+        if (updated && isOverride(updated)) upsertOverride(updated, user.id)
+      }
     },
-    []
+    [user]
   )
 
   const deleteProcedure = useCallback((id: string) => {
     proceduresStore.set(proceduresStore.get().filter((p) => p.id !== id))
-  }, [])
+    if (user) {
+      deleteRemoteOverride(id).then(ok => {
+        if (!ok) addTombstone({ id, kind: 'procedure' })
+      })
+    } else {
+      addTombstone({ id, kind: 'procedure' })
+    }
+  }, [user])
+
+  const togglePin = useCallback((id: string) => {
+    const next = proceduresStore.get().map((p) =>
+      p.id === id ? { ...p, pinned: !p.pinned } : p
+    )
+    proceduresStore.set(next)
+    if (user) {
+      const toggled = proceduresStore.get().find(p => p.id === id)
+      if (toggled) {
+        if (isOverride(toggled)) {
+          upsertOverride(toggled, user.id)
+        } else {
+          deleteRemoteOverride(id)
+        }
+      }
+    }
+  }, [user])
 
   const enrichExisting = useCallback(() => {
     let changed = false
@@ -103,6 +133,7 @@ export function useProcedures() {
     addProcedure,
     updateProcedure,
     deleteProcedure,
+    togglePin,
     enrichExisting,
     setProcedures: proceduresStore.set,
   }

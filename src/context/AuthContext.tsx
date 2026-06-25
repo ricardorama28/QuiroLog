@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from 'react'
 import { supabase } from '../lib/supabase'
 import type { User, Session } from '@supabase/supabase-js'
-import { exportAll, importAll, hasLocalData } from '../lib/storage'
+import { reconcile, flushPending } from '../lib/sync'
 
 const LOCAL_ONLY_KEY = 'quirolog_local_only'
 
@@ -71,30 +71,23 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [])
 
   const syncToCloud = useCallback(async () => {
-    if (!supabase || !user) return
-    const data = exportAll()
-    await supabase.from('user_data').upsert({ user_id: user.id, data: JSON.stringify(data) }, { onConflict: 'user_id' })
+    if (!user) return
+    await reconcile(user.id)
   }, [user])
 
-  // Cloud-first: on login, pull data if cloud has more; push local if cloud is empty
+  // On login: reconcile local and remote data (LWW merge)
   useEffect(() => {
     if (!supabase || !user) return
-    ;(async () => {
-      const { data: row } = await supabase!
-        .from('user_data')
-        .select('data')
-        .eq('user_id', user.id)
-        .single()
-      if (row?.data) {
-        try {
-          const cloudData = JSON.parse(row.data)
-          importAll(cloudData)
-        } catch {}
-      } else if (hasLocalData()) {
-        await syncToCloud()
-      }
-    })()
-  }, [user, syncToCloud])
+    reconcile(user.id).catch(console.error)
+  }, [user]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // On reconnect: flush any pending writes
+  useEffect(() => {
+    if (!user) return
+    const handle = () => flushPending(user.id).catch(console.error)
+    window.addEventListener('online', handle)
+    return () => window.removeEventListener('online', handle)
+  }, [user])
 
   return (
     <AuthContext.Provider value={{ user, session, loading, localOnly, signInWithGoogle, signInWithEmail, signUpWithEmail, signOut, continueLocally, syncToCloud }}>

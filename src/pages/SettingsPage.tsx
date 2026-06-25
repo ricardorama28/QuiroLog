@@ -2,14 +2,17 @@ import { useState } from 'react'
 import { Moon, Sun, Download, Upload, RefreshCw, LogOut, Trash2 } from 'lucide-react'
 import { useSettings } from '../hooks/useSettings'
 import { useAuth } from '../context/AuthContext'
+import { useCases } from '../hooks/useCases'
 import { exportAll, importAll, clearAll } from '../lib/storage'
 import type { AppData } from '../types'
 
 export function SettingsPage() {
   const { settings, updateSettings } = useSettings()
   const { user, signOut, syncToCloud } = useAuth()
+  const { cases } = useCases()
   const [syncMsg, setSyncMsg] = useState('')
   const [importError, setImportError] = useState('')
+  const pendingCount = cases.filter(c => c.syncState === 'pending').length
 
   function handleExport() {
     const data = exportAll()
@@ -71,6 +74,11 @@ export function SettingsPage() {
         {user && (
           <Section title="Cuenta">
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">{user.email}</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
+              {pendingCount > 0
+                ? `${pendingCount} caso${pendingCount > 1 ? 's' : ''} pendiente${pendingCount > 1 ? 's' : ''} de sincronizar`
+                : 'Datos sincronizados'}
+            </p>
             <div className="flex gap-2">
               <button onClick={handleSync} className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl border border-gray-300 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-300">
                 <RefreshCw className="w-4 h-4" /> Sincronizar

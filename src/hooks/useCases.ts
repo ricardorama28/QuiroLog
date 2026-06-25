@@ -1,9 +1,9 @@
 import { useCallback, useSyncExternalStore } from 'react'
 import type { SurgicalCase } from '../types'
-import { getCases, saveCases } from '../lib/storage'
-import { createPersistentStore } from '../lib/store'
-
-const casesStore = createPersistentStore<SurgicalCase[]>(getCases, saveCases)
+import { addTombstone } from '../lib/storage'
+import { casesStore } from '../lib/casesStore'
+import { pushCase, deleteRemoteCase } from '../lib/sync'
+import { useAuth } from '../context/AuthContext'
 
 function newId(): string {
   return `case-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`
@@ -11,6 +11,7 @@ function newId(): string {
 
 export function useCases() {
   const cases = useSyncExternalStore(casesStore.subscribe, casesStore.get)
+  const { user } = useAuth()
 
   const addCase = useCallback(
     (data: Omit<SurgicalCase, 'id' | 'createdAt' | 'updatedAt' | 'syncState'>) => {
@@ -23,9 +24,16 @@ export function useCases() {
         syncState: 'local',
       }
       casesStore.set([...casesStore.get(), entry])
+      if (user) {
+        pushCase(entry, user.id).then(ok => {
+          casesStore.set(casesStore.get().map(c =>
+            c.id === entry.id ? { ...c, syncState: ok ? 'synced' : 'pending' } : c
+          ))
+        })
+      }
       return entry
     },
-    []
+    [user]
   )
 
   const updateCase = useCallback(
@@ -36,13 +44,32 @@ export function useCases() {
           : c
       )
       casesStore.set(next)
+      if (user) {
+        const updated = casesStore.get().find(c => c.id === id)
+        if (updated) {
+          pushCase(updated, user.id).then(ok => {
+            if (!ok) {
+              casesStore.set(casesStore.get().map(c =>
+                c.id === id ? { ...c, syncState: 'pending' } : c
+              ))
+            }
+          })
+        }
+      }
     },
-    []
+    [user]
   )
 
   const deleteCase = useCallback((id: string) => {
     casesStore.set(casesStore.get().filter((c) => c.id !== id))
-  }, [])
+    if (user) {
+      deleteRemoteCase(id).then(ok => {
+        if (!ok) addTombstone({ id, kind: 'case' })
+      })
+    } else {
+      addTombstone({ id, kind: 'case' })
+    }
+  }, [user])
 
   const getCasesByDate = useCallback(
     (date: string) => cases.filter((c) => c.date === date),

@@ -1,10 +1,11 @@
-import type { SurgicalCase, Procedure, Settings, AppData } from '../types'
+import type { SurgicalCase, SurgicalCaseStatus, Procedure, Settings, AppData } from '../types'
 
 const KEYS = {
   cases: 'quirolog_cases',
   procedures: 'quirolog_procedures',
   settings: 'quirolog_settings',
   kbSeededVersion: 'quirolog_kb_seeded_version',
+  tombstones: 'quirolog_tombstones',
 }
 
 const DEFAULT_SETTINGS: Settings = {
@@ -32,7 +33,8 @@ function save(key: string, value: unknown) {
 }
 
 export function getCases(): SurgicalCase[] {
-  return parse<SurgicalCase[]>(KEYS.cases, [])
+  const raw = parse<SurgicalCase[]>(KEYS.cases, [])
+  return raw.map(c => ({ ...c, status: (c.status as SurgicalCaseStatus | undefined) ?? 'done' }))
 }
 
 export function saveCases(cases: SurgicalCase[]) {
@@ -84,6 +86,21 @@ export function importAll(data: AppData) {
   if (data.cases) saveCases(data.cases)
   if (data.procedures) saveProcedures(data.procedures)
   if (data.settings) saveSettings({ ...DEFAULT_SETTINGS, ...data.settings })
+}
+
+export interface Tombstone { id: string; kind: 'case' | 'procedure' }
+
+export function getTombstones(): Tombstone[] {
+  return parse<Tombstone[]>(KEYS.tombstones, [])
+}
+
+export function addTombstone(t: Tombstone) {
+  const existing = getTombstones()
+  if (!existing.some(x => x.id === t.id)) save(KEYS.tombstones, [...existing, t])
+}
+
+export function clearTombstones() {
+  localStorage.removeItem(KEYS.tombstones)
 }
 
 export function clearAll() {
