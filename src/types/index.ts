@@ -1,113 +1,136 @@
-export type DayType = 'surgery' | 'free' | 'guard' | 'academic'
-
-export type ComplexityType = 'routine' | 'moderate' | 'complex' | 'emergency'
+// ─── Enums ────────────────────────────────────────────────────────────────────
 
 export type AnatomicRegion =
-  | 'spine'
-  | 'knee'
-  | 'hip'
-  | 'shoulder'
-  | 'elbow'
-  | 'ankle'
-  | 'wrist'
-  | 'pelvis'
-  | 'other'
+  | 'knee' | 'hip' | 'shoulder' | 'spine' | 'ankle' | 'wrist' | 'elbow'
+  | 'pelvis' | 'femur' | 'tibia' | 'foot' | 'forearm' | 'humerus'
+  | 'clavicle' | 'hand' | 'other'
 
-export type SurgicalSpecialty =
-  | 'trauma'
-  | 'arthroscopy'
-  | 'spine'
-  | 'prosthesis'
-  | 'soft-tissue'
-  | 'pediatric'
-  | 'other'
+export type Specialty =
+  | 'trauma' | 'arthroscopy' | 'spine' | 'prosthesis' | 'soft-tissue'
+  | 'oncology' | 'deformity' | 'pediatric' | 'other'
 
 export type SurgicalApproach =
-  | 'anterior'
-  | 'posterior'
-  | 'lateral'
-  | 'arthroscopic'
-  | 'percutaneous'
-  | 'other'
+  | 'anterior' | 'posterior' | 'lateral' | 'medial' | 'anterolateral'
+  | 'posterolateral' | 'posteromedial' | 'arthroscopic' | 'percutaneous'
+  | 'supraclavicular' | 'transarticular' | 'other'
 
-export type SurgeonRole = 'primary' | 'assistant' | 'observer'
+export type SurgeonRole = 'primary' | 'assistant' | 'instrumentation' | 'observer'
 
-export type ReferenceStatus = 'none' | 'pending' | 'found' | 'manual' | 'accepted' | 'failed'
-export type ReferenceType = 'youtube' | 'vimeo' | 'other'
+export type Laterality = 'left' | 'right' | 'bilateral' | 'na'
+
+export type AgeGroup = 'pediatric' | 'adult' | 'both'
+
+export type DataCompleteness = 'full' | 'partial' | 'standard'
+
+export type ProcedureLevel = 'resident' | 'specialist'
+
+export type ProcedureSource = 'kb' | 'user'
+
+export type SyncState = 'local' | 'synced' | 'pending'
+
+// ─── Procedure (catalog) ──────────────────────────────────────────────────────
 
 export interface Procedure {
-  id: string
+  id: string                     // stable slug (primary key)
   name: string
-  nameLower: string
+  aliases: string[]
   anatomicRegion: AnatomicRegion
-  specialty: SurgicalSpecialty
-  approach?: SurgicalApproach
-  indication?: string
-  technique?: string
-  complications?: string
-  typicalDuration?: number
+  specialty: Specialty
+  ageGroup: AgeGroup
+  category: string
+  approach: SurgicalApproach[]
+  patientPosition?: string
+  anesthesia?: string
+  preopImaging?: string[]
+  indications: string[]
+  contraindications: string[]
+  classifications: string[]
+  steps: string[]                // surgical technique as ordered steps
+  implants: string[]
+  complications: string[]
+  pearls: string[]
+  durationMin: number | null
+  durationMax: number | null
   recovery?: string
-  implants?: string
-  referenceUrl?: string
-  referenceType?: ReferenceType
-  referenceSource?: string
-  referenceStatus: ReferenceStatus
+  references: string[]
+  level: ProcedureLevel
+  dataCompleteness: DataCompleteness
+  tags: string[]
   videoUrl?: string
-  aliases?: string[]
-  createdAt: string
-  updatedAt: string
+  source: ProcedureSource
+  userEdited: boolean
 }
 
-export interface SurgeryLog {
+// ─── SurgicalCase ─────────────────────────────────────────────────────────────
+
+export interface SurgicalCase {
   id: string
-  date: string
-  type: DayType
-  procedureId?: string
-  procedureName?: string
-  complexity?: ComplexityType
-  duration?: number
-  collaborators?: string[]
-  complications?: string
-  role?: SurgeonRole
+  procedureId: string
+  procedureNameSnapshot: string  // copy of name; survives catalog renames
+  date: string                   // ISO yyyy-MM-dd
+  role: SurgeonRole
+  patientLabel?: string          // free text, NOT PII by design
+  diagnosis?: string
+  laterality?: Laterality
+  institution?: string
+  implantUsed?: string
+  intraopNotes?: string
   notes?: string
+  actualDurationMin?: number | null
+  ownerId?: string               // Phase 1+
+  collaborators?: string[]       // Phase 2+
   createdAt: string
   updatedAt: string
+  syncState?: SyncState
 }
+
+// ─── Settings ─────────────────────────────────────────────────────────────────
 
 export interface Settings {
   weeklyGoal: number
-  restDays: number[]
-  restDaysKeepStreak: boolean
   darkMode: boolean
   autoEnrich: boolean
   externalSearch: boolean
 }
 
+// ─── AppData (export/import) ──────────────────────────────────────────────────
+
 export interface AppData {
-  surgeryLogs: SurgeryLog[]
+  cases: SurgicalCase[]
   procedures: Procedure[]
   settings: Settings
   version: string
 }
 
+// ─── Display labels ───────────────────────────────────────────────────────────
+
 export const ANATOMIC_REGION_LABELS: Record<AnatomicRegion, string> = {
-  spine: 'Columna',
   knee: 'Rodilla',
   hip: 'Cadera',
   shoulder: 'Hombro',
-  elbow: 'Codo',
+  spine: 'Columna',
   ankle: 'Tobillo',
   wrist: 'Muñeca',
+  elbow: 'Codo',
   pelvis: 'Pelvis',
+  femur: 'Fémur',
+  tibia: 'Tibia',
+  foot: 'Pie',
+  forearm: 'Antebrazo',
+  humerus: 'Húmero',
+  clavicle: 'Clavícula',
+  hand: 'Mano',
   other: 'Otra',
 }
 
-export const SPECIALTY_LABELS: Record<SurgicalSpecialty, string> = {
+export const SPECIALTY_LABELS: Record<Specialty, string> = {
   trauma: 'Traumatología',
   arthroscopy: 'Artroscopía',
   spine: 'Columna',
   prosthesis: 'Prótesis',
   'soft-tissue': 'Tejidos blandos',
+  oncology: 'Oncológica',
+  deformity: 'Deformidades',
   pediatric: 'Pediátrica',
   other: 'Otra',
 }
@@ -116,27 +139,75 @@ export const APPROACH_LABELS: Record<SurgicalApproach, string> = {
   anterior: 'Anterior',
   posterior: 'Posterior',
   lateral: 'Lateral',
+  medial: 'Medial',
+  anterolateral: 'Anterolateral',
+  posterolateral: 'Posterolateral',
+  posteromedial: 'Posteromedial',
   arthroscopic: 'Artroscópico',
   percutaneous: 'Percutáneo',
+  supraclavicular: 'Supraclavicular',
+  transarticular: 'Transarticular',
   other: 'Otro',
-}
-
-export const COMPLEXITY_LABELS: Record<ComplexityType, string> = {
-  routine: 'Rutinaria',
-  moderate: 'Moderada',
-  complex: 'Compleja',
-  emergency: 'Urgencia',
 }
 
 export const ROLE_LABELS: Record<SurgeonRole, string> = {
   primary: 'Cirujano principal',
   assistant: 'Ayudante',
+  instrumentation: 'Instrumentación',
   observer: 'Observador',
 }
 
-export const DAY_TYPE_LABELS: Record<DayType, string> = {
-  surgery: 'Pabellón',
-  free: 'Libre',
-  guard: 'Guardia',
-  academic: 'Académico',
+export const LATERALITY_LABELS: Record<Laterality, string> = {
+  left: 'Izquierdo',
+  right: 'Derecho',
+  bilateral: 'Bilateral',
+  na: 'N/A',
+}
+
+export const COMPLETENESS_LABELS: Record<DataCompleteness, string> = {
+  full: 'Completo',
+  partial: 'Parcial',
+  standard: 'Estándar',
+}
+
+export const PROCEDURE_CATEGORIES = [
+  'osteosynthesis',
+  'intramedullary-nailing',
+  'external-fixation',
+  'osteotomy',
+  'arthrodesis',
+  'arthroscopy',
+  'ligament-reconstruction',
+  'soft-tissue-release',
+  'tendon-transfer',
+  'tumor-resection',
+  'curettage',
+  'debridement',
+  'reduction',
+  'decompression',
+  'aspiration',
+  'biopsy',
+  'other',
+] as const
+
+export type ProcedureCategory = typeof PROCEDURE_CATEGORIES[number]
+
+export const CATEGORY_LABELS: Record<ProcedureCategory, string> = {
+  osteosynthesis: 'Osteosíntesis',
+  'intramedullary-nailing': 'Enclavado intramedular',
+  'external-fixation': 'Fijación externa',
+  osteotomy: 'Osteotomía',
+  arthrodesis: 'Artrodesis',
+  arthroscopy: 'Artroscopía',
+  'ligament-reconstruction': 'Reconstrucción ligamentaria',
+  'soft-tissue-release': 'Liberación de tejidos blandos',
+  'tendon-transfer': 'Transferencia tendinosa',
+  'tumor-resection': 'Resección tumoral',
+  curettage: 'Curetaje',
+  debridement: 'Desbridamiento',
+  reduction: 'Reducción',
+  decompression: 'Descompresión',
+  aspiration: 'Aspiración',
+  biopsy: 'Biopsia',
+  other: 'Otra',
 }

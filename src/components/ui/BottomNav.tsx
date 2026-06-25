@@ -1,8 +1,9 @@
 import { NavLink } from 'react-router-dom'
-import { Home, Calendar, Stethoscope, Settings2 } from 'lucide-react'
+import { Home, BookOpen, Calendar, Stethoscope, Settings2 } from 'lucide-react'
 
 const tabs = [
   { to: '/', icon: Home, label: 'Inicio' },
+  { to: '/cases', icon: BookOpen, label: 'Casos' },
   { to: '/calendar', icon: Calendar, label: 'Calendario' },
   { to: '/procedures', icon: Stethoscope, label: 'Procedimientos' },
   { to: '/settings', icon: Settings2, label: 'Ajustes' },

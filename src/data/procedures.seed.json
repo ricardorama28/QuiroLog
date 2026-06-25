@@ -1,0 +1,3956 @@
+{
+  "meta": {
+    "title": "Catálogo de procedimientos de traumatología y ortopedia",
+    "version": "1.0.0",
+    "generatedAt": "2026-06-25",
+    "language": "es",
+    "count": 55,
+    "source": "Sesiones previas (UDELAR) + conocimiento ortopédico general",
+    "dataCompletenessLegend": {
+      "full": "Desarrollado en detalle en sesiones previas",
+      "partial": "Mencionado/parcial en sesiones previas",
+      "standard": "Completado con conocimiento general — revisar/confirmar"
+    },
+    "enums": {
+      "anatomicRegion": [
+        "knee",
+        "hip",
+        "shoulder",
+        "spine",
+        "ankle",
+        "wrist",
+        "elbow",
+        "pelvis",
+        "femur",
+        "tibia",
+        "foot",
+        "forearm",
+        "humerus",
+        "clavicle",
+        "hand",
+        "other"
+      ],
+      "specialty": [
+        "trauma",
+        "arthroscopy",
+        "spine",
+        "prosthesis",
+        "soft-tissue",
+        "oncology",
+        "deformity",
+        "pediatric",
+        "other"
+      ],
+      "ageGroup": [
+        "pediatric",
+        "adult",
+        "both"
+      ],
+      "category": [
+        "osteosynthesis",
+        "intramedullary-nailing",
+        "external-fixation",
+        "osteotomy",
+        "soft-tissue-release",
+        "tendon-transfer",
+        "ligament-reconstruction",
+        "arthrodesis",
+        "arthroscopy",
+        "tumor-resection",
+        "curettage",
+        "debridement",
+        "reduction",
+        "decompression",
+        "aspiration",
+        "biopsy",
+        "other"
+      ],
+      "approach": [
+        "anterior",
+        "posterior",
+        "lateral",
+        "medial",
+        "anterolateral",
+        "posterolateral",
+        "posteromedial",
+        "arthroscopic",
+        "percutaneous",
+        "supraclavicular",
+        "transarticular",
+        "other"
+      ],
+      "level": [
+        "resident",
+        "specialist"
+      ],
+      "dataCompleteness": [
+        "full",
+        "partial",
+        "standard"
+      ]
+    },
+    "fieldSchema": {
+      "id": "slug estable, kebab-case (clave primaria)",
+      "name": "nombre completo del procedimiento",
+      "aliases": "string[] — sinónimos y epónimos",
+      "anatomicRegion": "enum anatomicRegion",
+      "specialty": "enum specialty (subespecialidad/dominio)",
+      "ageGroup": "enum ageGroup",
+      "category": "enum category (tipo de procedimiento)",
+      "approach": "enum approach[] (puede ser combinado)",
+      "patientPosition": "posición quirúrgica",
+      "anesthesia": "tipo de anestesia habitual",
+      "preopImaging": "string[] — estudios preoperatorios clave",
+      "indications": "string[]",
+      "contraindications": "string[]",
+      "classifications": "string[] — sistemas de clasificación asociados",
+      "steps": "string[] — pasos quirúrgicos ordenados",
+      "implants": "string[] — materiales/implantes",
+      "complications": "string[]",
+      "pearls": "string[] — tips & tricks / perlas",
+      "durationMin": "minutos (rango bajo)",
+      "durationMax": "minutos (rango alto)",
+      "recovery": "tiempo y características de recuperación",
+      "references": "string[] — bibliografía",
+      "level": "enum level",
+      "dataCompleteness": "full=detallado en sesiones previas | partial=mencionado | standard=conocimiento general, revisar",
+      "tags": "string[] — etiquetas de búsqueda",
+      "updatedAt": "ISO date",
+      "videoUrl": "string opcional — URL de video de referencia de la técnica",
+      "source": "'kb' (catálogo) | 'user' (creado por el usuario)",
+      "userEdited": "boolean — true si el usuario editó el procedimiento (protege de auto-enriquecimiento)"
+    }
+  },
+  "procedures": [
+    {
+      "id": "debridamiento-limpieza-quirurgica",
+      "name": "Debridamiento / limpieza quirúrgica",
+      "aliases": [
+        "desbridamiento",
+        "limpieza quirúrgica",
+        "lavado quirúrgico",
+        "I&D"
+      ],
+      "anatomicRegion": "other",
+      "specialty": "trauma",
+      "ageGroup": "both",
+      "category": "debridement",
+      "approach": [
+        "other"
+      ],
+      "patientPosition": "Según foco (decúbito según segmento afectado)",
+      "anesthesia": "General o regional",
+      "preopImaging": [
+        "Radiografía del segmento",
+        "RMN si osteomielitis",
+        "Laboratorio: PCR, VES, hemograma"
+      ],
+      "indications": [
+        "Fractura expuesta (Gustilo-Anderson)",
+        "Infección de partes blandas/ósea",
+        "Artritis séptica",
+        "Tejido desvitalizado o contaminado"
+      ],
+      "contraindications": [
+        "Inestabilidad hemodinámica no compensada (estabilizar primero)"
+      ],
+      "classifications": [
+        "Gustilo-Anderson (fracturas expuestas)"
+      ],
+      "steps": [
+        "Ampliación de la herida en sentido del eje del miembro",
+        "Exéresis de tejido desvitalizado (piel, grasa, músculo, hueso no viable)",
+        "Lavado pulsátil abundante con suero fisiológico",
+        "Reevaluación de viabilidad (test de las 4 C en músculo: color, consistencia, contractilidad, capacidad de sangrado)",
+        "Estabilización de la fractura y cobertura/cierre diferido según contaminación"
+      ],
+      "implants": [
+        "No primarios; eventual fijador externo o perlas de antibiótico (PMMA)"
+      ],
+      "complications": [
+        "Infección persistente",
+        "Necrosis tisular",
+        "Necesidad de desbridamientos seriados"
+      ],
+      "pearls": [
+        "En expuestas: ATB precoz (<1 h) + profilaxis antitetánica; el desbridamiento es el pilar, no el ATB",
+        "Desbridamientos seriados cada 48-72 h hasta tejido limpio"
+      ],
+      "durationMin": 45,
+      "durationMax": 120,
+      "recovery": "Variable según foco; suele requerir cirugías sucesivas y cobertura diferida",
+      "references": [
+        "AO Principles of Fracture Management 3ª ed.",
+        "Rockwood & Green 9ª ed."
+      ],
+      "level": "resident",
+      "dataCompleteness": "partial",
+      "tags": [
+        "infección",
+        "fractura expuesta",
+        "séptico"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "curetaje-quirurgico",
+      "name": "Curetaje quirúrgico",
+      "aliases": [
+        "legrado",
+        "curettage"
+      ],
+      "anatomicRegion": "other",
+      "specialty": "oncology",
+      "ageGroup": "both",
+      "category": "curettage",
+      "approach": [
+        "other"
+      ],
+      "patientPosition": "Según localización de la lesión",
+      "anesthesia": "General o regional",
+      "preopImaging": [
+        "Radiografía AP y lateral con articulaciones proximal y distal",
+        "RMN",
+        "TAC",
+        "Biopsia previa"
+      ],
+      "indications": [
+        "Lesiones óseas benignas (quiste óseo simple/aneurismático, fibroma no osificante, condroblastoma)",
+        "Tumor de células gigantes (con adyuvantes)"
+      ],
+      "contraindications": [
+        "Tumor maligno (requiere resección con márgenes)",
+        "Biopsia no realizada en lesión agresiva"
+      ],
+      "classifications": [
+        "Enneking (estadificación tumores)",
+        "Campanacci (TCG)"
+      ],
+      "steps": [
+        "Ventana cortical amplia sobre la lesión",
+        "Curetaje de toda la cavidad bajo visión directa",
+        "Adyuvantes locales si corresponde (fenol, nitrógeno líquido, fresado de alta velocidad)",
+        "Relleno con injerto óseo o cemento (PMMA)"
+      ],
+      "implants": [
+        "Injerto óseo (banco/autólogo)",
+        "Cemento PMMA",
+        "Eventual osteosíntesis de soporte"
+      ],
+      "complications": [
+        "Recidiva local",
+        "Fractura patológica",
+        "Lesión de la fisis en niños"
+      ],
+      "pearls": [
+        "Biopsia SIEMPRE antes del tratamiento definitivo en lesiones agresivas",
+        "El curetaje simple recidiva; los adyuvantes reducen la recidiva en TCG"
+      ],
+      "durationMin": 60,
+      "durationMax": 150,
+      "recovery": "Descarga parcial 4-6 semanas según relleno y localización",
+      "references": [
+        "Tachdjian's Pediatric Orthopaedics",
+        "Campbell's 14ª ed."
+      ],
+      "level": "specialist",
+      "dataCompleteness": "full",
+      "tags": [
+        "tumor",
+        "quiste óseo",
+        "benigno",
+        "TCG"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "biopsia-osea-en-block",
+      "name": "Biopsia ósea en bloque (escisional)",
+      "aliases": [
+        "biopsia escisional",
+        "en block biopsy"
+      ],
+      "anatomicRegion": "other",
+      "specialty": "oncology",
+      "ageGroup": "both",
+      "category": "biopsy",
+      "approach": [
+        "other"
+      ],
+      "patientPosition": "Según localización",
+      "anesthesia": "General",
+      "preopImaging": [
+        "RMN de toda la zona (incluye articulaciones)",
+        "TAC de tórax",
+        "Centellograma óseo",
+        "PET si necesario"
+      ],
+      "indications": [
+        "Lesión pequeña con alta sospecha de benignidad donde la escisión es también el tratamiento"
+      ],
+      "contraindications": [
+        "Sospecha de malignidad que requiera estadificación previa a la resección definitiva"
+      ],
+      "classifications": [
+        "Enneking"
+      ],
+      "steps": [
+        "Planificación del trayecto en línea con la futura incisión de resección",
+        "Exéresis completa de la lesión con margen",
+        "Marcado y orientación de la pieza para anatomía patológica",
+        "Hemostasia cuidadosa (evitar diseminación por hematoma)"
+      ],
+      "implants": [
+        "Ninguno primario"
+      ],
+      "complications": [
+        "Diseminación tumoral por trayecto mal planificado",
+        "Fractura",
+        "Contaminación de compartimentos"
+      ],
+      "pearls": [
+        "'Si no vas a tratar al paciente, no biopsies → derivá al centro de referencia'",
+        "El trayecto de la biopsia debe poder resecarse en bloque en la cirugía definitiva",
+        "Gold standard institucional: biopsia con aguja gruesa (Tru-Cut) guiada por imagen en muchos centros"
+      ],
+      "durationMin": 45,
+      "durationMax": 120,
+      "recovery": "Variable; depende de patología definitiva",
+      "references": [
+        "Tachdjian's Pediatric Orthopaedics, cap. tumores"
+      ],
+      "level": "specialist",
+      "dataCompleteness": "full",
+      "tags": [
+        "tumor",
+        "biopsia",
+        "oncología"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "rafi-dhs",
+      "name": "RAFI con DHS (tornillo-placa dinámico de cadera)",
+      "aliases": [
+        "DHS",
+        "dynamic hip screw",
+        "tornillo deslizante de cadera",
+        "SHS"
+      ],
+      "anatomicRegion": "hip",
+      "specialty": "trauma",
+      "ageGroup": "adult",
+      "category": "osteosynthesis",
+      "approach": [
+        "lateral"
+      ],
+      "patientPosition": "Decúbito supino en mesa de tracción, rotación interna 10-15°, pelvis nivelada",
+      "anesthesia": "Espinal o general (equivalentes, REGAIN trial NEJM 2021)",
+      "preopImaging": [
+        "Radiografía AP de pelvis con fémur sano en rotación interna 15°",
+        "TAC si trazo coronal oculto"
+      ],
+      "indications": [
+        "Fractura pertrocantérica estable AO/OTA 31-A1 con pared lateral íntegra"
+      ],
+      "contraindications": [
+        "Reverse oblique / 31-A3 (DHS contraindicado: desplaza el fragmento)",
+        "Pared lateral comprometida (<20,5 mm, Hsu) → preferir cefalomedular"
+      ],
+      "classifications": [
+        "AO/OTA 31-A",
+        "Evans",
+        "Boyd-Griffin"
+      ],
+      "steps": [
+        "Reducción cerrada anatómica (tracción + rotación interna; corregir varo y apex anterior)",
+        "Incisión lateral; guía angular 135° con clavo guía central-central en cuello",
+        "Verificar TAD <25 mm intraoperatorio",
+        "Triple broca/escariado sobre la guía; tornillo deslizante a 5-10 mm del subcondral",
+        "Placa lateral de 4 orificios (2 tornillos bicorticales en A1)",
+        "Apretar tornillo de compresión al final (esencia del concepto DHS)"
+      ],
+      "implants": [
+        "Tornillo cefálico deslizante canulado (8 mm hilo)",
+        "Placa lateral 135°",
+        "Tornillo de compresión",
+        "± placa estabilizadora trocantérica (TSP) si pared lateral fina"
+      ],
+      "complications": [
+        "Cut-out (TAD >25 mm = factor #1 modificable)",
+        "Z-effect",
+        "Colapso en varo",
+        "Fallo del implante"
+      ],
+      "pearls": [
+        "TAD y CalTAD <25 mm: chequeo intraoperatorio no negociable",
+        "Posición central-central o centro-inferior del tornillo cefálico",
+        "Carga total inmediata POSTOP día 1 en patrones estables A1",
+        "Fractura de cadera del añoso = evento centinela de osteoporosis (tratar al alta)"
+      ],
+      "durationMin": 45,
+      "durationMax": 90,
+      "recovery": "Carga inmediata en A1; consolidación ~95% si reducción y fijación correctas",
+      "references": [
+        "AO Principles 3ª ed.",
+        "Baumgaertner JBJS (TAD)",
+        "Hsu Bone Joint J 2013 (pared lateral)",
+        "AAOS Hip Fracture CPG 2021",
+        "Mattisson Swedish Fracture Register"
+      ],
+      "level": "specialist",
+      "dataCompleteness": "full",
+      "tags": [
+        "cadera",
+        "pertrocantérica",
+        "añoso",
+        "fragilidad"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "enclavado-retrogrado-femur",
+      "name": "Enclavado endomedular retrógrado de fémur",
+      "aliases": [
+        "clavo retrógrado femoral",
+        "retrograde femoral nail"
+      ],
+      "anatomicRegion": "femur",
+      "specialty": "trauma",
+      "ageGroup": "adult",
+      "category": "intramedullary-nailing",
+      "approach": [
+        "anterior"
+      ],
+      "patientPosition": "Decúbito supino, rodilla flexionada ~40°",
+      "anesthesia": "General o regional",
+      "preopImaging": [
+        "Radiografía de fémur completo con articulaciones",
+        "Medir fémur sano (longitud/rotación)"
+      ],
+      "indications": [
+        "Fractura diafisaria/distal de fémur",
+        "Fractura ipsilateral de cuello/acetábulo/pelvis",
+        "Obesidad mórbida",
+        "Embarazo",
+        "Fracturas bilaterales",
+        "Fémur flotante"
+      ],
+      "contraindications": [
+        "Fisis distal abierta (relativo en pediatría)",
+        "Sepsis articular de rodilla activa"
+      ],
+      "classifications": [
+        "AO/OTA 32 y 33",
+        "Winquist-Hansen"
+      ],
+      "steps": [
+        "Punto de entrada: ápice del surco intercondíleo, justo anterior a la inserción tibial del LCP",
+        "Reducción y paso de guía",
+        "Fresado progresivo",
+        "Inserción del clavo",
+        "Bloqueo distal y proximal"
+      ],
+      "implants": [
+        "Clavo retrógrado femoral",
+        "Tornillos de bloqueo"
+      ],
+      "complications": [
+        "Dolor anterior de rodilla",
+        "Lesión condral patelofemoral",
+        "Malrotación",
+        "Rigidez de rodilla"
+      ],
+      "pearls": [
+        "Atención al cartílago patelofemoral y al LCA en el punto de entrada",
+        "Útil en politraumatizado para abordar varias lesiones en una posición"
+      ],
+      "durationMin": 60,
+      "durationMax": 120,
+      "recovery": "Carga según patrón; rehabilitación de rodilla precoz",
+      "references": [
+        "Rockwood & Green 9ª ed.",
+        "AO Principles 3ª ed."
+      ],
+      "level": "specialist",
+      "dataCompleteness": "partial",
+      "tags": [
+        "fémur",
+        "clavo",
+        "diáfisis",
+        "politrauma"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "limpieza-enclavado-tibia",
+      "name": "Limpieza quirúrgica + enclavado endomedular de tibia",
+      "aliases": [
+        "clavo de tibia",
+        "tibial nailing con desbridamiento"
+      ],
+      "anatomicRegion": "tibia",
+      "specialty": "trauma",
+      "ageGroup": "adult",
+      "category": "intramedullary-nailing",
+      "approach": [
+        "anterior"
+      ],
+      "patientPosition": "Decúbito supino, rodilla flexionada (semiextendida en abordajes suprapatelares)",
+      "anesthesia": "General o regional",
+      "preopImaging": [
+        "Radiografía de tibia con tobillo y rodilla",
+        "Evaluar partes blandas (Gustilo)"
+      ],
+      "indications": [
+        "Fractura diafisaria de tibia, incluidas expuestas tras desbridamiento"
+      ],
+      "contraindications": [
+        "Contaminación masiva no controlada (considerar fijador externo transitorio)"
+      ],
+      "classifications": [
+        "AO/OTA 42",
+        "Gustilo-Anderson (si expuesta)"
+      ],
+      "steps": [
+        "Desbridamiento y lavado de la herida en expuestas",
+        "Punto de entrada en tibia proximal",
+        "Reducción, fresado e inserción del clavo",
+        "Bloqueo proximal y distal"
+      ],
+      "implants": [
+        "Clavo endomedular de tibia",
+        "Tornillos de bloqueo",
+        "± perlas de ATB en expuestas"
+      ],
+      "complications": [
+        "Dolor anterior de rodilla",
+        "Infección (mayor en expuestas)",
+        "Malrotación",
+        "Síndrome compartimental"
+      ],
+      "pearls": [
+        "En expuestas, ATB precoz + desbridamiento es prioritario sobre la osteosíntesis",
+        "Vigilar síndrome compartimental en las primeras horas"
+      ],
+      "durationMin": 60,
+      "durationMax": 120,
+      "recovery": "Carga progresiva según estabilidad y partes blandas",
+      "references": [
+        "Rockwood & Green 9ª ed.",
+        "AO Principles 3ª ed."
+      ],
+      "level": "specialist",
+      "dataCompleteness": "standard",
+      "tags": [
+        "tibia",
+        "clavo",
+        "expuesta",
+        "infección"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "orif",
+      "name": "Reducción abierta y fijación interna (ORIF)",
+      "aliases": [
+        "RAFI",
+        "ORIF",
+        "open reduction internal fixation"
+      ],
+      "anatomicRegion": "other",
+      "specialty": "trauma",
+      "ageGroup": "both",
+      "category": "osteosynthesis",
+      "approach": [
+        "other"
+      ],
+      "patientPosition": "Según foco",
+      "anesthesia": "General o regional",
+      "preopImaging": [
+        "Radiografía en dos planos",
+        "TAC en fracturas articulares"
+      ],
+      "indications": [
+        "Fractura desplazada articular",
+        "Fractura inestable o irreductible por método cerrado",
+        "Fractura intraarticular con escalón >1-2 mm"
+      ],
+      "contraindications": [
+        "Partes blandas comprometidas (diferir / fijador externo puente)",
+        "Infección activa local"
+      ],
+      "classifications": [
+        "AO/OTA según segmento"
+      ],
+      "steps": [
+        "Abordaje específico del segmento",
+        "Reducción anatómica directa de la superficie articular",
+        "Fijación con tornillos de tracción y/o placa",
+        "Comprobación radiográfica intraoperatoria"
+      ],
+      "implants": [
+        "Placas (LCP/convencionales)",
+        "Tornillos",
+        "Agujas K transitorias"
+      ],
+      "complications": [
+        "Infección",
+        "Pseudoartrosis",
+        "Consolidación viciosa",
+        "Rigidez articular",
+        "Necrosis de partes blandas"
+      ],
+      "pearls": [
+        "Principio AO: reducción anatómica articular + fijación estable + movilización precoz",
+        "Respetar la biología de partes blandas (timing del abordaje)"
+      ],
+      "durationMin": 60,
+      "durationMax": 180,
+      "recovery": "Variable según segmento y estabilidad obtenida",
+      "references": [
+        "AO Principles of Fracture Management 3ª ed."
+      ],
+      "level": "resident",
+      "dataCompleteness": "partial",
+      "tags": [
+        "principios AO",
+        "fijación interna",
+        "articular"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "fijacion-externa",
+      "name": "Fijación externa / Fijador externo",
+      "aliases": [
+        "fijación externa",
+        "fijador externo",
+        "external fixation"
+      ],
+      "anatomicRegion": "other",
+      "specialty": "trauma",
+      "ageGroup": "both",
+      "category": "external-fixation",
+      "approach": [
+        "percutaneous"
+      ],
+      "patientPosition": "Según segmento",
+      "anesthesia": "General o regional",
+      "preopImaging": [
+        "Radiografía del segmento",
+        "Evaluar partes blandas"
+      ],
+      "indications": [
+        "Fractura expuesta grave (Gustilo II-III)",
+        "Control de daños en politrauma",
+        "Fractura con compromiso severo de partes blandas",
+        "Estabilización temporal puente",
+        "Corrección/transporte óseo (Ilizarov)"
+      ],
+      "contraindications": [
+        "Cuando un método definitivo es seguro y las partes blandas lo permiten"
+      ],
+      "classifications": [
+        "Gustilo-Anderson"
+      ],
+      "steps": [
+        "Colocación de pines/Schanz fuera de la zona de lesión y de la futura incisión definitiva",
+        "Montaje del marco (monolateral, circular Ilizarov, híbrido)",
+        "Reducción y bloqueo del montaje"
+      ],
+      "implants": [
+        "Pines de Schanz",
+        "Barras y rótulas",
+        "Aros y alambres (Ilizarov)"
+      ],
+      "complications": [
+        "Infección del trayecto de pines",
+        "Aflojamiento",
+        "Rigidez articular",
+        "Mala alineación"
+      ],
+      "pearls": [
+        "En control de daños: rápido, estabiliza y permite cuidado de partes blandas",
+        "Planificar la posición de los pines pensando en la conversión a fijación definitiva"
+      ],
+      "durationMin": 30,
+      "durationMax": 120,
+      "recovery": "Variable; permite movilización temprana del paciente politraumatizado",
+      "references": [
+        "AO Principles 3ª ed.",
+        "Rockwood & Green 9ª ed."
+      ],
+      "level": "resident",
+      "dataCompleteness": "partial",
+      "tags": [
+        "expuesta",
+        "control de daños",
+        "Ilizarov",
+        "politrauma"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "tornillos-de-traccion-lag-screws",
+      "name": "Fijación con tornillos de tracción (lag screws)",
+      "aliases": [
+        "tornillo interfragmentario",
+        "lag screw",
+        "tornillo de compresión interfragmentaria"
+      ],
+      "anatomicRegion": "other",
+      "specialty": "trauma",
+      "ageGroup": "both",
+      "category": "osteosynthesis",
+      "approach": [
+        "other"
+      ],
+      "patientPosition": "Según foco",
+      "anesthesia": "General o regional",
+      "preopImaging": [
+        "Radiografía en dos planos",
+        "TAC en articulares"
+      ],
+      "indications": [
+        "Fracturas simples oblicuas/espiroideas",
+        "Fragmentos articulares para compresión interfragmentaria"
+      ],
+      "contraindications": [
+        "Fracturas conminutas (compromete la reducción; preferir puente)"
+      ],
+      "classifications": [
+        "AO/OTA"
+      ],
+      "steps": [
+        "Reducción anatómica",
+        "Perforación de orificio deslizante en la cortical próxima",
+        "Orificio de rosca en la cortical lejana",
+        "Avellanado",
+        "Tornillo que comprime al apretarse"
+      ],
+      "implants": [
+        "Tornillos corticales/esponjosos",
+        "± placa de neutralización/protección"
+      ],
+      "complications": [
+        "Pérdida de compresión",
+        "Fisura del fragmento",
+        "Fallo en hueso osteoporótico"
+      ],
+      "pearls": [
+        "El tornillo de tracción solo no neutraliza fuerzas de flexión/rotación → suele requerir placa de protección",
+        "Perpendicular a la línea de fractura = compresión máxima; perpendicular a la cortical = mejor anclaje"
+      ],
+      "durationMin": 30,
+      "durationMax": 90,
+      "recovery": "Según fractura; la compresión interfragmentaria favorece consolidación primaria",
+      "references": [
+        "AO Principles of Fracture Management 3ª ed."
+      ],
+      "level": "resident",
+      "dataCompleteness": "partial",
+      "tags": [
+        "compresión",
+        "interfragmentario",
+        "AO"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "placa-buttress-anterolateral",
+      "name": "Placa de sostén / buttress (antiglide) anterolateral",
+      "aliases": [
+        "buttress plate",
+        "placa antideslizante",
+        "placa antiglide"
+      ],
+      "anatomicRegion": "other",
+      "specialty": "trauma",
+      "ageGroup": "both",
+      "category": "osteosynthesis",
+      "approach": [
+        "anterolateral",
+        "posterolateral"
+      ],
+      "patientPosition": "Según foco",
+      "anesthesia": "General o regional",
+      "preopImaging": [
+        "Radiografía en dos planos",
+        "TAC en articulares (platillo tibial, pilón, maléolo posterior)"
+      ],
+      "indications": [
+        "Fracturas metafisarias con fuerza de cizallamiento (platillo tibial, peroné distal, radio distal)",
+        "Patrones de Weber B (placa antiglide posterior)"
+      ],
+      "contraindications": [
+        "Patrones donde no hay vector de cizalla a neutralizar"
+      ],
+      "classifications": [
+        "AO/OTA",
+        "Schatzker (platillo tibial)"
+      ],
+      "steps": [
+        "Reducción del fragmento",
+        "Colocación de la placa en el vértice del fragmento para 'apuntalar'",
+        "Fijación que convierte fuerzas de cizalla en compresión"
+      ],
+      "implants": [
+        "Placa de sostén (1/3 tubular, LCP)",
+        "Tornillos"
+      ],
+      "complications": [
+        "Irritación de partes blandas",
+        "Pérdida de reducción si mal posicionada"
+      ],
+      "pearls": [
+        "Concepto antiglide de Brunner-Weber: placa posterior en peroné es más estable que la lateral en Weber B",
+        "La placa debe apoyar exactamente en el vértice proximal del fragmento"
+      ],
+      "durationMin": 45,
+      "durationMax": 120,
+      "recovery": "Según localización; descarga relativa en articulares de carga",
+      "references": [
+        "AO Principles 3ª ed.",
+        "Rockwood & Green 9ª ed."
+      ],
+      "level": "specialist",
+      "dataCompleteness": "partial",
+      "tags": [
+        "buttress",
+        "antiglide",
+        "cizallamiento",
+        "Weber B"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "placa-volar-radio-distal",
+      "name": "Placa volar de radio distal",
+      "aliases": [
+        "volar plate radio distal",
+        "placa palmar bloqueada"
+      ],
+      "anatomicRegion": "wrist",
+      "specialty": "trauma",
+      "ageGroup": "adult",
+      "category": "osteosynthesis",
+      "approach": [
+        "anterior"
+      ],
+      "patientPosition": "Decúbito supino, brazo en mesa de mano, supinación",
+      "anesthesia": "Regional (bloqueo) o general",
+      "preopImaging": [
+        "Radiografía AP y lateral de muñeca",
+        "TAC si conminución articular"
+      ],
+      "indications": [
+        "Fractura de radio distal desplazada/inestable",
+        "Compromiso articular o de la inclinación volar"
+      ],
+      "contraindications": [
+        "Conminución dorsal pura sin soporte volar (valorar alternativa)"
+      ],
+      "classifications": [
+        "AO/OTA 23",
+        "Frykman",
+        "Fernández"
+      ],
+      "steps": [
+        "Abordaje volar de Henry (entre flexor radial del carpo y arteria radial)",
+        "Reducción restaurando altura, inclinación radial y tilt volar",
+        "Placa volar bloqueada con tornillos/clavijas subcondrales",
+        "Control radioscópico (vista tangencial)"
+      ],
+      "implants": [
+        "Placa volar bloqueada de radio distal",
+        "Tornillos/pegs bloqueados"
+      ],
+      "complications": [
+        "Tenosinovitis/ruptura del flexor largo del pulgar (placa prominente)",
+        "Penetración intraarticular de tornillos",
+        "Síndrome del túnel carpiano"
+      ],
+      "pearls": [
+        "Evitar que la placa sobrepase la watershed line (riesgo de ruptura tendinosa)",
+        "Vista skyline/tangencial para descartar tornillos intraarticulares dorsales"
+      ],
+      "durationMin": 45,
+      "durationMax": 90,
+      "recovery": "Movilización precoz de muñeca y dedos; consolidación 6-8 semanas",
+      "references": [
+        "Rockwood & Green 9ª ed.",
+        "AO Principles 3ª ed."
+      ],
+      "level": "specialist",
+      "dataCompleteness": "standard",
+      "tags": [
+        "radio distal",
+        "muñeca",
+        "placa volar"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "artroscopia-asistida",
+      "name": "Artroscopia asistida",
+      "aliases": [
+        "arthroscopic assisted",
+        "cirugía artroscópica"
+      ],
+      "anatomicRegion": "knee",
+      "specialty": "arthroscopy",
+      "ageGroup": "both",
+      "category": "arthroscopy",
+      "approach": [
+        "arthroscopic"
+      ],
+      "patientPosition": "Según articulación (decúbito supino con soporte para rodilla; silla de playa/decúbito lateral para hombro)",
+      "anesthesia": "General o regional",
+      "preopImaging": [
+        "RMN de la articulación"
+      ],
+      "indications": [
+        "Lesiones meniscales y ligamentarias",
+        "Reparación del labrum",
+        "Fracturas articulares asistidas",
+        "Cuerpos libres, sinovectomía"
+      ],
+      "contraindications": [
+        "Infección periarticular activa",
+        "Anquilosis"
+      ],
+      "classifications": [
+        "Según patología específica"
+      ],
+      "steps": [
+        "Portales estándar",
+        "Diagnóstico artroscópico sistemático",
+        "Tratamiento de la lesión (sutura, resección, reconstrucción)"
+      ],
+      "implants": [
+        "Anclas, dispositivos de fijación meniscal, según procedimiento"
+      ],
+      "complications": [
+        "Infección",
+        "Lesión neurovascular por portales",
+        "Derrame, rigidez"
+      ],
+      "pearls": [
+        "Permite reparación/reconstrucción mínimamente invasiva con menor morbilidad",
+        "Mapeo sistemático de compartimentos para no pasar por alto lesiones asociadas"
+      ],
+      "durationMin": 30,
+      "durationMax": 120,
+      "recovery": "Variable según procedimiento; rehabilitación precoz",
+      "references": [
+        "Campbell's 14ª ed."
+      ],
+      "level": "specialist",
+      "dataCompleteness": "partial",
+      "tags": [
+        "artroscopia",
+        "menisco",
+        "hombro",
+        "rodilla"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "reconstruccion-monteggia-cronica",
+      "name": "Cirugía reconstructiva de Monteggia crónica",
+      "aliases": [
+        "Monteggia inveterada",
+        "Monteggia crónica"
+      ],
+      "anatomicRegion": "elbow",
+      "specialty": "pediatric",
+      "ageGroup": "both",
+      "category": "reduction",
+      "approach": [
+        "posterolateral"
+      ],
+      "patientPosition": "Decúbito supino con brazo sobre mesa, o lateral",
+      "anesthesia": "General",
+      "preopImaging": [
+        "Radiografía de codo y antebrazo (línea radiocapitelar)",
+        "Comparar con lado sano"
+      ],
+      "indications": [
+        "Luxación crónica de la cabeza radial por Monteggia no diagnosticada (>2-3 semanas)"
+      ],
+      "contraindications": [
+        "Deformación severa irreparable de la cabeza radial (valorar resección en el adulto)"
+      ],
+      "classifications": [
+        "Bado",
+        "Letts (equivalentes pediátricos)"
+      ],
+      "steps": [
+        "Abordaje posterolateral amplio",
+        "Desbridamiento fibrótico y liberación del bloqueo articular",
+        "Osteotomía del cúbito (alargamiento/angulación para reducir la cabeza radial por tensión)",
+        "Reducción de la cúpula con clavija transfixiante temporaria",
+        "Fijación de la osteotomía",
+        "Eventual reconstrucción del ligamento anular (Bell-Tawse con colgajo de tríceps)"
+      ],
+      "implants": [
+        "Placa o clavo del cúbito",
+        "Aguja K transfixiante temporaria",
+        "Injerto/fascia para ligamento anular"
+      ],
+      "complications": [
+        "Parálisis del nervio interóseo posterior",
+        "Reluxación",
+        "Rigidez",
+        "Pseudoartrosis de la osteotomía"
+      ],
+      "pearls": [
+        "Toda fractura aislada de cúbito en niño es Monteggia hasta demostrar lo contrario",
+        "El no diagnóstico es la complicación más importante; el pronóstico empeora con el tiempo de evolución"
+      ],
+      "durationMin": 90,
+      "durationMax": 180,
+      "recovery": "Inmovilización ~4-6 semanas; recuperación de pronosupinación variable",
+      "references": [
+        "Rockwood & Wilkins Fractures in Children 9ª ed."
+      ],
+      "level": "specialist",
+      "dataCompleteness": "full",
+      "tags": [
+        "codo",
+        "Monteggia",
+        "cabeza radial",
+        "pediátrico"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "reconstruccion-ligamento-anular",
+      "name": "Reconstrucción del ligamento anular",
+      "aliases": [
+        "Bell-Tawse",
+        "ligamento anular"
+      ],
+      "anatomicRegion": "elbow",
+      "specialty": "pediatric",
+      "ageGroup": "both",
+      "category": "ligament-reconstruction",
+      "approach": [
+        "posterolateral"
+      ],
+      "patientPosition": "Decúbito supino con brazo sobre mesa",
+      "anesthesia": "General",
+      "preopImaging": [
+        "Radiografía de codo (línea radiocapitelar)"
+      ],
+      "indications": [
+        "Inestabilidad/luxación de la cabeza radial (Monteggia crónica) cuando no se mantiene reducida"
+      ],
+      "contraindications": [
+        "Cabeza radial muy deformada/incongruente"
+      ],
+      "classifications": [
+        "Bado"
+      ],
+      "steps": [
+        "Reducción de la cabeza radial sobre el capitellum",
+        "Confección de neoligamento (colgajo de tríceps/fascia)",
+        "Rodeo del cuello radial y fijación al cúbito",
+        "Aguja K transfixiante temporaria mientras cicatriza"
+      ],
+      "implants": [
+        "Injerto autólogo (tríceps/fascia lata)",
+        "Aguja K temporaria"
+      ],
+      "complications": [
+        "Reluxación",
+        "Rigidez",
+        "Lesión del NIP",
+        "Migración de la aguja"
+      ],
+      "pearls": [
+        "Se asocia a osteotomía del cúbito en la Monteggia crónica para reducir por tensión",
+        "Mantener la reducción mientras cicatriza el neoligamento (4-6 semanas)"
+      ],
+      "durationMin": 60,
+      "durationMax": 150,
+      "recovery": "Inmovilización 4-6 semanas; retiro de aguja y movilización progresiva",
+      "references": [
+        "Rockwood & Wilkins Fractures in Children 9ª ed."
+      ],
+      "level": "specialist",
+      "dataCompleteness": "full",
+      "tags": [
+        "codo",
+        "ligamento anular",
+        "Monteggia",
+        "Bell-Tawse"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "cirugia-pie-cavo",
+      "name": "Tratamiento quirúrgico del pie cavo",
+      "aliases": [
+        "pie cavo",
+        "cavus foot surgery"
+      ],
+      "anatomicRegion": "foot",
+      "specialty": "deformity",
+      "ageGroup": "both",
+      "category": "osteotomy",
+      "approach": [
+        "medial",
+        "lateral"
+      ],
+      "patientPosition": "Decúbito supino, torniquete en muslo",
+      "anesthesia": "General o regional",
+      "preopImaging": [
+        "Radiografía de pie en carga (ángulo de Méary, inclinación calcánea)",
+        "Estudio neurológico (Charcot-Marie-Tooth)"
+      ],
+      "indications": [
+        "Pie cavo sintomático rígido o progresivo",
+        "Componentes de deformidad que fallan al tratamiento conservador"
+      ],
+      "contraindications": [
+        "Pie cavo flexible asintomático"
+      ],
+      "classifications": [
+        "Pie cavovaro / cavo puro / calcaneocavo"
+      ],
+      "steps": [
+        "Liberación de la fascia plantar (Steindler) para el componente cavo",
+        "Osteotomías según deformidad (1er metatarsiano dorsiflexora, calcánea de Dwyer en varo)",
+        "Transferencias tendinosas para reequilibrio (p.ej. tibial posterior/peroneo largo)",
+        "Triple artrodesis en deformidad rígida severa del adulto"
+      ],
+      "implants": [
+        "Tornillos, grapas, placas según osteotomía"
+      ],
+      "complications": [
+        "Recidiva",
+        "Sobrecorrección",
+        "Rigidez",
+        "Persistencia del desbalance muscular"
+      ],
+      "pearls": [
+        "Buscar siempre causa neurológica subyacente (Charcot-Marie-Tooth)",
+        "Test de Coleman (bloque) distingue retropié flexible vs rígido y guía la cirugía"
+      ],
+      "durationMin": 90,
+      "durationMax": 180,
+      "recovery": "Inmovilización y descarga 6-8 semanas según osteotomías",
+      "references": [
+        "Tachdjian's Pediatric Orthopaedics",
+        "Campbell's 14ª ed."
+      ],
+      "level": "specialist",
+      "dataCompleteness": "partial",
+      "tags": [
+        "pie cavo",
+        "deformidad",
+        "Coleman",
+        "CMT"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "cirugia-coalicion-astragalo-calcanea",
+      "name": "Cirugía de coalición astrágalo-calcánea",
+      "aliases": [
+        "coalición tarsiana",
+        "resección de coalición",
+        "talocalcaneal coalition"
+      ],
+      "anatomicRegion": "foot",
+      "specialty": "pediatric",
+      "ageGroup": "pediatric",
+      "category": "soft-tissue-release",
+      "approach": [
+        "medial"
+      ],
+      "patientPosition": "Decúbito supino, torniquete",
+      "anesthesia": "General",
+      "preopImaging": [
+        "Radiografía lateral (talar beak, signo de la C)",
+        "Proyección de Harris-Beath",
+        "TAC/RMN (tipo y extensión)"
+      ],
+      "indications": [
+        "Coalición sintomática que falla al tratamiento conservador",
+        "Pie plano rígido doloroso con espasmo peroneo"
+      ],
+      "contraindications": [
+        "Coalición extensa (>50% de la faceta) o con artrosis establecida → considerar artrodesis"
+      ],
+      "classifications": [
+        "Por localización (calcáneo-navicular vs astrágalo-calcánea faceta media)",
+        "Ósea / cartilaginosa / fibrosa"
+      ],
+      "steps": [
+        "Abordaje medial sobre el sustentaculum tali",
+        "Resección de la barra de coalición",
+        "Interposición de tejido (grasa/músculo) para evitar reosificación",
+        "Verificar movilidad subtalar intraoperatoria"
+      ],
+      "implants": [
+        "Ninguno (interposición de tejido autólogo)"
+      ],
+      "complications": [
+        "Reosificación/recidiva",
+        "Persistencia del dolor",
+        "Pie plano residual"
+      ],
+      "pearls": [
+        "La calcáneo-navicular es la más frecuente; la astrágalo-calcánea de faceta media se sospecha por talar beak y signo de la C",
+        "Resección + interposición previene la reosificación"
+      ],
+      "durationMin": 60,
+      "durationMax": 120,
+      "recovery": "Inmovilización breve y movilización subtalar precoz",
+      "references": [
+        "Tachdjian's Pediatric Orthopaedics",
+        "Herring's Tachdjian 2022"
+      ],
+      "level": "specialist",
+      "dataCompleteness": "full",
+      "tags": [
+        "coalición",
+        "pie plano rígido",
+        "tarsiana",
+        "pediátrico"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "tenotomia-aductores",
+      "name": "Tenotomía de aductores",
+      "aliases": [
+        "adductor tenotomy",
+        "liberación de aductores"
+      ],
+      "anatomicRegion": "hip",
+      "specialty": "pediatric",
+      "ageGroup": "pediatric",
+      "category": "soft-tissue-release",
+      "approach": [
+        "medial"
+      ],
+      "patientPosition": "Decúbito supino, caderas en abducción",
+      "anesthesia": "General",
+      "preopImaging": [
+        "Radiografía AP de pelvis (índice de migración de Reimers)"
+      ],
+      "indications": [
+        "Cadera espástica en parálisis cerebral con índice de migración aumentado",
+        "Contractura en aducción"
+      ],
+      "contraindications": [
+        "Subluxación avanzada que requiera cirugía reconstructiva ósea"
+      ],
+      "classifications": [
+        "GMFCS",
+        "Índice de migración de Reimers"
+      ],
+      "steps": [
+        "Abordaje medial sobre el origen de los aductores",
+        "Sección del tendón del aductor largo (± grácil)",
+        "± neurectomía del obturador anterior en casos seleccionados",
+        "Yeso/almohada de abducción postoperatoria"
+      ],
+      "implants": [
+        "Ninguno"
+      ],
+      "complications": [
+        "Lesión del nervio obturador",
+        "Tenotomía excesiva → cadera 'en viento barrido' (windswept)",
+        "Recidiva (pico puberal)"
+      ],
+      "pearls": [
+        "Seccionar el aductor largo lo más distal posible al pubis y bajo visión directa (protege obturador)",
+        "Si IM progresa pese a la tenotomía → cirugía reconstructiva (osteotomía femoral ± acetabular San Diego)"
+      ],
+      "durationMin": 30,
+      "durationMax": 60,
+      "recovery": "Yeso/almohada en abducción 4-6 semanas + fisioterapia",
+      "references": [
+        "Herring's Tachdjian 2022",
+        "programa CPUP"
+      ],
+      "level": "specialist",
+      "dataCompleteness": "full",
+      "tags": [
+        "parálisis cerebral",
+        "cadera espástica",
+        "Reimers",
+        "aductores"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "tenotomia-percutanea-aductores",
+      "name": "Tenotomía percutánea de aductores",
+      "aliases": [
+        "percutaneous adductor tenotomy"
+      ],
+      "anatomicRegion": "hip",
+      "specialty": "pediatric",
+      "ageGroup": "pediatric",
+      "category": "soft-tissue-release",
+      "approach": [
+        "percutaneous",
+        "medial"
+      ],
+      "patientPosition": "Decúbito supino, caderas en abducción",
+      "anesthesia": "General",
+      "preopImaging": [
+        "Radiografía AP de pelvis (Reimers)"
+      ],
+      "indications": [
+        "Contractura en aducción de la cadera espástica (variante mínimamente invasiva)"
+      ],
+      "contraindications": [
+        "Necesidad de gesto óseo asociado",
+        "Anatomía que no permita identificar el tendón con seguridad"
+      ],
+      "classifications": [
+        "GMFCS",
+        "Reimers"
+      ],
+      "steps": [
+        "Punción/incisión mínima sobre el aductor largo palpable",
+        "Sección percutánea del tendón con bisturí/tenótomo",
+        "Confirmación de la ganancia de abducción"
+      ],
+      "implants": [
+        "Ninguno"
+      ],
+      "complications": [
+        "Lesión del nervio obturador",
+        "Sección incompleta",
+        "Hematoma"
+      ],
+      "pearls": [
+        "Variante percutánea del gesto abierto; misma rehabilitación con almohada/yeso de abducción"
+      ],
+      "durationMin": 15,
+      "durationMax": 40,
+      "recovery": "Abducción 4-6 semanas + fisioterapia",
+      "references": [
+        "Herring's Tachdjian 2022"
+      ],
+      "level": "specialist",
+      "dataCompleteness": "partial",
+      "tags": [
+        "percutáneo",
+        "aductores",
+        "parálisis cerebral"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "tenotomia-percutanea-aquiles",
+      "name": "Tenotomía percutánea del tendón de Aquiles",
+      "aliases": [
+        "tenotomía de Aquiles",
+        "percutaneous Achilles tenotomy",
+        "Ponseti tenotomy"
+      ],
+      "anatomicRegion": "ankle",
+      "specialty": "pediatric",
+      "ageGroup": "pediatric",
+      "category": "soft-tissue-release",
+      "approach": [
+        "percutaneous"
+      ],
+      "patientPosition": "Decúbito supino",
+      "anesthesia": "Local (lactante) o general",
+      "preopImaging": [
+        "Clínico (corrección de cavo/aducto/varo previa con yesos de Ponseti)"
+      ],
+      "indications": [
+        "Equino residual al final del método de Ponseti (70-90% de los casos)"
+      ],
+      "contraindications": [
+        "Equino ya corregido (dorsiflexión adecuada)"
+      ],
+      "classifications": [
+        "Pirani",
+        "Dimeglio"
+      ],
+      "steps": [
+        "Identificación percutánea del Aquiles a ~1-1,5 cm de su inserción",
+        "Sección percutánea completa con bisturí fino",
+        "Dorsiflexión inmediata del pie",
+        "Yeso en máxima dorsiflexión 3 semanas"
+      ],
+      "implants": [
+        "Ninguno"
+      ],
+      "complications": [
+        "Sección incompleta",
+        "Sangrado",
+        "Lesión neurovascular (rara)"
+      ],
+      "pearls": [
+        "Última etapa del Ponseti para corregir el equino; secuencia de corrección CAVO→ADUCTO→VARO→EQUINO",
+        "Tras el yeso, férula de Denis-Browne: causa #1 de recidiva es el abandono de la ortesis"
+      ],
+      "durationMin": 10,
+      "durationMax": 20,
+      "recovery": "Yeso 3 semanas en dorsiflexión + férula de abducción posterior",
+      "references": [
+        "Ponseti",
+        "Rockwood & Wilkins Fractures in Children",
+        "Herring's Tachdjian 2022"
+      ],
+      "level": "specialist",
+      "dataCompleteness": "full",
+      "tags": [
+        "Ponseti",
+        "pie bot",
+        "Aquiles",
+        "equino"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "liberacion-posteromedial-pie-bot",
+      "name": "Liberación posteromedial (interna posterior) — pie bot",
+      "aliases": [
+        "LPM",
+        "liberación posteromedial",
+        "liberación interna posterior",
+        "posteromedial release",
+        "Turco",
+        "McKay",
+        "Cincinnati"
+      ],
+      "anatomicRegion": "foot",
+      "specialty": "pediatric",
+      "ageGroup": "pediatric",
+      "category": "soft-tissue-release",
+      "approach": [
+        "posteromedial",
+        "posterior"
+      ],
+      "patientPosition": "Decúbito prono o lateral, torniquete en muslo",
+      "anesthesia": "General",
+      "preopImaging": [
+        "Clínico/radiográfico del pie equinovaro"
+      ],
+      "indications": [
+        "Pie bot resistente o recidivante al Ponseti",
+        "Presentación tardía (>6-9 meses)",
+        "Pie bot sindromático/teratológico (artrogriposis, mielodisplasia)"
+      ],
+      "contraindications": [
+        "Pie corregible con tratamiento conservador"
+      ],
+      "classifications": [
+        "CAVE (cavo, aducto, varo, equino)"
+      ],
+      "steps": [
+        "Incisión de Cincinnati (circunferencial posterior) o Turco (posteromedial)",
+        "Fasciotomía plantar medial (cavo)",
+        "Alargamiento del Aquiles en Z (equino)",
+        "Capsulotomía posterior tibiotalar y subastragalina",
+        "Alargamiento del tibial posterior en Z (varo/aducto)",
+        "Liberaciones mediales (talonavicular, spring ligament) según rigidez",
+        "± acordamiento de peroneos"
+      ],
+      "implants": [
+        "Agujas K transarticulares temporarias"
+      ],
+      "complications": [
+        "Pie plano iatrogénico (alargamiento excesivo del tibial posterior)",
+        "Necrosis (sección del lig. interóseo subtalar)",
+        "Rigidez",
+        "Talus plano (flat-top talus)",
+        "Recidiva/sobrecorrección"
+      ],
+      "pearls": [
+        "No alargar el Aquiles >1,5 cm (riesgo de calcáneo)",
+        "No incidir la capa profunda del deltoideo (pie plano)",
+        "El ligamento interóseo subtalar solo si es estrictamente necesario (riesgo AVN)"
+      ],
+      "durationMin": 90,
+      "durationMax": 180,
+      "recovery": "Yeso 6-8 semanas; férula posterior y seguimiento prolongado",
+      "references": [
+        "Turco",
+        "McKay",
+        "Crawford (Cincinnati)",
+        "Herring's Tachdjian 2022"
+      ],
+      "level": "specialist",
+      "dataCompleteness": "full",
+      "tags": [
+        "pie bot",
+        "CTEV",
+        "liberación",
+        "Ponseti fallido"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "procedimiento-de-lemaire",
+      "name": "Procedimiento de Lemaire (tenodesis lateral extraarticular)",
+      "aliases": [
+        "Lemaire",
+        "tenodesis extraarticular lateral",
+        "LET"
+      ],
+      "anatomicRegion": "knee",
+      "specialty": "arthroscopy",
+      "ageGroup": "adult",
+      "category": "ligament-reconstruction",
+      "approach": [
+        "lateral"
+      ],
+      "patientPosition": "Decúbito supino",
+      "anesthesia": "General o regional",
+      "preopImaging": [
+        "RMN de rodilla",
+        "Evaluación del pivot-shift"
+      ],
+      "indications": [
+        "Aumento de la reconstrucción del LCA en alto riesgo de re-ruptura (pivot-shift alto, revisión, hiperlaxitud, deportes de pivote)"
+      ],
+      "contraindications": [
+        "Artrosis del compartimento lateral",
+        "Como procedimiento aislado en inestabilidad central"
+      ],
+      "classifications": [
+        "—"
+      ],
+      "steps": [
+        "Obtención de una banda de la cintilla iliotibial dejándola insertada distal en Gerdy",
+        "Paso profundo al ligamento colateral lateral",
+        "Fijación proximal-posterior al epicóndilo femoral lateral",
+        "Tensado con la rodilla en flexión y rotación neutra"
+      ],
+      "implants": [
+        "Grapa o ancla/tornillo interferencial para la fijación femoral"
+      ],
+      "complications": [
+        "Sobreconstricción del compartimento lateral",
+        "Rigidez",
+        "Dolor lateral residual"
+      ],
+      "pearls": [
+        "Se usa como refuerzo extraarticular del LCA, no como sustituto",
+        "Reduce la rotación interna residual / pivot-shift en pacientes seleccionados"
+      ],
+      "durationMin": 20,
+      "durationMax": 45,
+      "recovery": "Integrada al protocolo de la reconstrucción del LCA",
+      "references": [
+        "Bibliografía de cirugía de rodilla (no figura en sesiones previas — revisar/confirmar)"
+      ],
+      "level": "specialist",
+      "dataCompleteness": "standard",
+      "tags": [
+        "LCA",
+        "tenodesis lateral",
+        "pivot-shift",
+        "revisión"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "cirugia-de-mumford",
+      "name": "Cirugía de Mumford (resección de la clavícula distal)",
+      "aliases": [
+        "Mumford",
+        "resección clavícula distal",
+        "distal clavicle excision"
+      ],
+      "anatomicRegion": "shoulder",
+      "specialty": "arthroscopy",
+      "ageGroup": "adult",
+      "category": "tumor-resection",
+      "approach": [
+        "anterior",
+        "arthroscopic"
+      ],
+      "patientPosition": "Silla de playa o decúbito lateral",
+      "anesthesia": "General ± bloqueo interescalénico",
+      "preopImaging": [
+        "Radiografía de hombro (AC)",
+        "RMN si dudas"
+      ],
+      "indications": [
+        "Artrosis acromioclavicular sintomática",
+        "Osteólisis de la clavícula distal",
+        "Pinzamiento AC"
+      ],
+      "contraindications": [
+        "Inestabilidad AC no corregida (resección agrava la inestabilidad)"
+      ],
+      "classifications": [
+        "—"
+      ],
+      "steps": [
+        "Abordaje abierto superior o técnica artroscópica (directa/indirecta)",
+        "Resección de ~1-1,5 cm del extremo distal de la clavícula",
+        "Preservar los ligamentos coracoclaviculares"
+      ],
+      "implants": [
+        "Ninguno"
+      ],
+      "complications": [
+        "Inestabilidad AC si se reseca en exceso",
+        "Resección insuficiente (dolor persistente)",
+        "Osificación heterotópica"
+      ],
+      "pearls": [
+        "En nuestras sesiones figura como 'resección de la clavícula distal' por osteólisis/artrosis AC, no bajo el epónimo Mumford",
+        "Preservar los ligamentos CC para no desestabilizar la articulación"
+      ],
+      "durationMin": 30,
+      "durationMax": 60,
+      "recovery": "Movilización precoz; retorno a actividad en 6-12 semanas",
+      "references": [
+        "Rockwood The Shoulder"
+      ],
+      "level": "specialist",
+      "dataCompleteness": "partial",
+      "tags": [
+        "hombro",
+        "acromioclavicular",
+        "Mumford",
+        "osteólisis"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "reconstruccion-lca-btb",
+      "name": "Reconstrucción de LCA con injerto hueso-tendón-hueso (BTB)",
+      "aliases": [
+        "LCA BTB",
+        "BPTB",
+        "hueso-tendón rotuliano-hueso",
+        "ACL reconstruction BTB"
+      ],
+      "anatomicRegion": "knee",
+      "specialty": "arthroscopy",
+      "ageGroup": "both",
+      "category": "ligament-reconstruction",
+      "approach": [
+        "arthroscopic"
+      ],
+      "patientPosition": "Decúbito supino con soporte/poste lateral",
+      "anesthesia": "General o regional",
+      "preopImaging": [
+        "RMN de rodilla",
+        "Evaluación de fisis en adolescentes (Tanner/Risser)"
+      ],
+      "indications": [
+        "Rotura de LCA en paciente activo/deportista",
+        "Inestabilidad funcional",
+        "Lesiones meniscales asociadas"
+      ],
+      "contraindications": [
+        "Fisis muy abiertas (preferir técnicas que respetan la fisis)",
+        "Artrosis avanzada"
+      ],
+      "classifications": [
+        "—"
+      ],
+      "steps": [
+        "Obtención del injerto del tercio central del tendón rotuliano con pastillas óseas",
+        "Túneles femoral y tibial anatómicos",
+        "Paso del injerto",
+        "Fijación (tornillos de interferencia hueso-hueso)",
+        "Comprobación de isometría y ausencia de pinzamiento"
+      ],
+      "implants": [
+        "Tornillos de interferencia",
+        "Injerto BTB autólogo"
+      ],
+      "complications": [
+        "Dolor anterior de rodilla",
+        "Re-ruptura (20-25% en adolescentes muy activos)",
+        "Rigidez",
+        "Fractura de rótula (rara)"
+      ],
+      "pearls": [
+        "En fisis casi cerradas (Tanner 4-5, Risser 4) se puede usar la técnica estándar del adulto",
+        "En niños con fisis abierta, preferir técnicas físarias-sparing (all-epiphyseal/over-the-top)"
+      ],
+      "durationMin": 60,
+      "durationMax": 120,
+      "recovery": "Rehabilitación progresiva; retorno deportivo 9-12 meses",
+      "references": [
+        "Campbell's 14ª ed.",
+        "JBJS"
+      ],
+      "level": "specialist",
+      "dataCompleteness": "partial",
+      "tags": [
+        "LCA",
+        "BTB",
+        "rodilla",
+        "deportiva"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "tens-esin",
+      "name": "TENS / ESIN (enclavado endomedular elástico estable)",
+      "aliases": [
+        "TEN",
+        "ESIN",
+        "clavos de Nancy",
+        "clavos elásticos",
+        "Ender"
+      ],
+      "anatomicRegion": "other",
+      "specialty": "pediatric",
+      "ageGroup": "pediatric",
+      "category": "intramedullary-nailing",
+      "approach": [
+        "percutaneous"
+      ],
+      "patientPosition": "Decúbito supino en mesa radiolúcida",
+      "anesthesia": "General",
+      "preopImaging": [
+        "Radiografía del hueso con articulaciones",
+        "Medir diámetro del canal"
+      ],
+      "indications": [
+        "Fracturas diafisarias pediátricas (fémur, tibia, antebrazo, húmero) con fisis abierta"
+      ],
+      "contraindications": [
+        "Conminución severa",
+        "Peso elevado en fémur (>49 kg, preferir clavo rígido)",
+        "Patrones muy inestables"
+      ],
+      "classifications": [
+        "AO pediátrica (PCCF)"
+      ],
+      "steps": [
+        "Selección de 2 clavos de diámetro ~40% del canal cada uno",
+        "Puntos de entrada metafisarios respetando la fisis",
+        "Premoldeado en C de cada clavo",
+        "Avance retrógrado/anterógrado y enclavijado a tres puntos",
+        "Corte y enterramiento de los extremos"
+      ],
+      "implants": [
+        "Dos clavos elásticos de titanio/acero (Nancy/TEN)"
+      ],
+      "complications": [
+        "Irritación de partes blandas por el extremo del clavo",
+        "Pérdida de reducción",
+        "Malrotación",
+        "Refractura"
+      ],
+      "pearls": [
+        "Regla del 40%: cada clavo ~40% del diámetro del canal para estabilidad simétrica",
+        "Premoldeado simétrico de ambos clavos para reparto equilibrado de fuerzas"
+      ],
+      "durationMin": 45,
+      "durationMax": 90,
+      "recovery": "Consolidación rápida en niños; retiro del material a los 6-12 meses",
+      "references": [
+        "Flynn Skeletal Trauma in Children",
+        "Rockwood & Wilkins 9ª ed."
+      ],
+      "level": "specialist",
+      "dataCompleteness": "partial",
+      "tags": [
+        "pediátrico",
+        "clavo elástico",
+        "diáfisis",
+        "Nancy"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "enclavado-elastico-femur",
+      "name": "Enclavado elástico de fémur (TENS femoral)",
+      "aliases": [
+        "clavo elástico femoral",
+        "TEN fémur"
+      ],
+      "anatomicRegion": "femur",
+      "specialty": "pediatric",
+      "ageGroup": "pediatric",
+      "category": "intramedullary-nailing",
+      "approach": [
+        "percutaneous"
+      ],
+      "patientPosition": "Decúbito supino en mesa radiolúcida o de tracción",
+      "anesthesia": "General",
+      "preopImaging": [
+        "Radiografía de fémur con cadera y rodilla"
+      ],
+      "indications": [
+        "Fractura diafisaria de fémur en niños (~5-11 años) con peso <49 kg"
+      ],
+      "contraindications": [
+        "Peso >49 kg o patrón inestable (preferir clavo trocantérico rígido bloqueado)",
+        "Conminución"
+      ],
+      "classifications": [
+        "AO pediátrica",
+        "Winquist (referencia de conminución)"
+      ],
+      "steps": [
+        "Entrada metafisaria distal retrógrada (medial y lateral)",
+        "Premoldeado en C de los dos clavos",
+        "Avance hasta el cuello femoral con la punta divergente",
+        "Reducción y enclavijado a tres puntos"
+      ],
+      "implants": [
+        "Dos clavos elásticos (Nancy/TEN)"
+      ],
+      "complications": [
+        "Malrotación",
+        "Acortamiento/angulación en patrones inestables",
+        "Irritación distal del material"
+      ],
+      "pearls": [
+        "En adolescente con peso elevado preferir clavo trocantérico lateral rígido (no piriforme: riesgo de AVN)",
+        "Entrada lateral trocantérica en el adolescente, no fosita piriforme (<16-18 años)"
+      ],
+      "durationMin": 45,
+      "durationMax": 90,
+      "recovery": "Carga progresiva según patrón; consolidación rápida",
+      "references": [
+        "Flynn 2020",
+        "Tachdjian's Pediatric Orthopaedics",
+        "Rockwood & Wilkins 9ª ed."
+      ],
+      "level": "specialist",
+      "dataCompleteness": "full",
+      "tags": [
+        "fémur",
+        "pediátrico",
+        "clavo elástico"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "enclavado-elastico-tibia",
+      "name": "Enclavado elástico de tibia (TENS tibial)",
+      "aliases": [
+        "clavo elástico tibial",
+        "TEN tibia"
+      ],
+      "anatomicRegion": "tibia",
+      "specialty": "pediatric",
+      "ageGroup": "pediatric",
+      "category": "intramedullary-nailing",
+      "approach": [
+        "percutaneous"
+      ],
+      "patientPosition": "Decúbito supino en mesa radiolúcida",
+      "anesthesia": "General",
+      "preopImaging": [
+        "Radiografía de tibia con rodilla y tobillo"
+      ],
+      "indications": [
+        "Fractura diafisaria de tibia en niños con fisis abierta, inestable o irreductible por método cerrado"
+      ],
+      "contraindications": [
+        "Conminución severa",
+        "Compromiso grave de partes blandas (valorar fijador externo)"
+      ],
+      "classifications": [
+        "AO pediátrica"
+      ],
+      "steps": [
+        "Entrada metafisaria proximal (medial y lateral) respetando la fisis",
+        "Premoldeado de los clavos",
+        "Avance y enclavijado a tres puntos hasta la metáfisis distal"
+      ],
+      "implants": [
+        "Dos clavos elásticos (Nancy/TEN)"
+      ],
+      "complications": [
+        "Irritación de partes blandas",
+        "Pérdida de reducción",
+        "Síndrome compartimental",
+        "Malrotación"
+      ],
+      "pearls": [
+        "Vigilar síndrome compartimental en tibia pediátrica",
+        "Respetar las fisis proximal y distal en los puntos de entrada"
+      ],
+      "durationMin": 45,
+      "durationMax": 90,
+      "recovery": "Carga progresiva; consolidación rápida en niños",
+      "references": [
+        "Flynn Skeletal Trauma in Children",
+        "Rockwood & Wilkins 9ª ed."
+      ],
+      "level": "specialist",
+      "dataCompleteness": "partial",
+      "tags": [
+        "tibia",
+        "pediátrico",
+        "clavo elástico"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "enclavado-kuntscher",
+      "name": "Enclavado endomedular de Küntscher",
+      "aliases": [
+        "clavo de Küntscher",
+        "K-nail",
+        "clavo en trébol"
+      ],
+      "anatomicRegion": "femur",
+      "specialty": "trauma",
+      "ageGroup": "adult",
+      "category": "intramedullary-nailing",
+      "approach": [
+        "anterior"
+      ],
+      "patientPosition": "Decúbito supino o lateral en mesa de tracción",
+      "anesthesia": "General o regional",
+      "preopImaging": [
+        "Radiografía de fémur completo"
+      ],
+      "indications": [
+        "Fracturas diafisarias de fémur (clavo histórico, no bloqueado; hoy desplazado por clavos bloqueados)"
+      ],
+      "contraindications": [
+        "Fracturas inestables/conminutas (sin bloqueo no controla longitud ni rotación)",
+        "Fracturas metafisarias"
+      ],
+      "classifications": [
+        "AO/OTA 32"
+      ],
+      "steps": [
+        "Punto de entrada proximal",
+        "Fresado del canal",
+        "Inserción del clavo de sección en trébol a presión (press-fit)"
+      ],
+      "implants": [
+        "Clavo de Küntscher (no bloqueado)"
+      ],
+      "complications": [
+        "Acortamiento y malrotación (sin bloqueo)",
+        "Migración del clavo",
+        "Fallo en patrones inestables"
+      ],
+      "pearls": [
+        "Valor histórico: introdujo el enclavado endomedular; estabilidad por contacto a tres puntos en istmo",
+        "Reemplazado en la práctica por clavos bloqueados que controlan longitud y rotación"
+      ],
+      "durationMin": 60,
+      "durationMax": 120,
+      "recovery": "Histórico; según patrón",
+      "references": [
+        "Conocimiento general — no figura en sesiones previas (revisar)"
+      ],
+      "level": "resident",
+      "dataCompleteness": "standard",
+      "tags": [
+        "fémur",
+        "histórico",
+        "Küntscher"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "clavo-expert-femur",
+      "name": "Clavo Expert de fémur",
+      "aliases": [
+        "Expert Nail",
+        "clavo femoral Expert (DePuy Synthes)"
+      ],
+      "anatomicRegion": "femur",
+      "specialty": "trauma",
+      "ageGroup": "adult",
+      "category": "intramedullary-nailing",
+      "approach": [
+        "anterior",
+        "lateral"
+      ],
+      "patientPosition": "Decúbito supino o lateral en mesa de tracción",
+      "anesthesia": "General o regional",
+      "preopImaging": [
+        "Radiografía de fémur completo con articulaciones",
+        "Medir fémur sano"
+      ],
+      "indications": [
+        "Fracturas diafisarias y metafisarias de fémur (sistema de clavo bloqueado moderno)"
+      ],
+      "contraindications": [
+        "Canal medular incompatible con el diámetro mínimo del implante",
+        "Infección activa"
+      ],
+      "classifications": [
+        "AO/OTA 32 y 33"
+      ],
+      "steps": [
+        "Punto de entrada (trocantérico o retrógrado según versión)",
+        "Reducción y fresado",
+        "Inserción del clavo",
+        "Bloqueo proximal y distal multidireccional"
+      ],
+      "implants": [
+        "Clavo Expert femoral (anterógrado/retrógrado)",
+        "Tornillos de bloqueo multiplanares"
+      ],
+      "complications": [
+        "Malrotación",
+        "Dolor en el sitio de entrada",
+        "Fallo de bloqueo"
+      ],
+      "pearls": [
+        "Familia de clavos bloqueados con opciones de bloqueo multidireccional",
+        "Confirmar longitud/diámetro con plantillas y fémur contralateral"
+      ],
+      "durationMin": 60,
+      "durationMax": 120,
+      "recovery": "Carga según patrón y bloqueo",
+      "references": [
+        "Conocimiento general / técnica de fabricante — no figura en sesiones previas (revisar)"
+      ],
+      "level": "specialist",
+      "dataCompleteness": "standard",
+      "tags": [
+        "fémur",
+        "clavo bloqueado",
+        "Expert"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "cerclaje-de-rotula",
+      "name": "Cerclaje de rótula (banda de tensión)",
+      "aliases": [
+        "banda de tensión rotuliana",
+        "tension band patella",
+        "obenque"
+      ],
+      "anatomicRegion": "knee",
+      "specialty": "trauma",
+      "ageGroup": "adult",
+      "category": "osteosynthesis",
+      "approach": [
+        "anterior"
+      ],
+      "patientPosition": "Decúbito supino, rodilla en extensión",
+      "anesthesia": "General o regional",
+      "preopImaging": [
+        "Radiografía AP y lateral de rodilla"
+      ],
+      "indications": [
+        "Fractura transversa desplazada de rótula con disrupción del aparato extensor"
+      ],
+      "contraindications": [
+        "Conminución severa (considerar fijación con tornillos/cerclaje perimetral o patelectomía parcial)"
+      ],
+      "classifications": [
+        "AO/OTA 34"
+      ],
+      "steps": [
+        "Reducción anatómica de la superficie articular",
+        "Dos agujas K longitudinales paralelas",
+        "Cerclaje en 8 de alambre sobre las agujas (banda de tensión anterior)",
+        "Conversión de fuerzas de tracción del cuádriceps en compresión articular al flexionar"
+      ],
+      "implants": [
+        "Agujas de Kirschner",
+        "Alambre de cerclaje (o suturas/tornillos canulados con banda de tensión)"
+      ],
+      "complications": [
+        "Migración/protrusión del material (síntomas, retiro frecuente)",
+        "Pérdida de reducción",
+        "Rigidez"
+      ],
+      "pearls": [
+        "El principio de banda de tensión convierte la tracción del extensor en compresión del foco al flexionar",
+        "El material sintomático es la causa habitual de retiro"
+      ],
+      "durationMin": 45,
+      "durationMax": 90,
+      "recovery": "Movilización progresiva protegida del aparato extensor",
+      "references": [
+        "AO Principles 3ª ed. — no figura en sesiones previas (revisar)"
+      ],
+      "level": "specialist",
+      "dataCompleteness": "standard",
+      "tags": [
+        "rótula",
+        "banda de tensión",
+        "aparato extensor"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "placas-lcp",
+      "name": "Placas LCP (compresión bloqueada)",
+      "aliases": [
+        "LCP",
+        "locking compression plate",
+        "placa bloqueada"
+      ],
+      "anatomicRegion": "other",
+      "specialty": "trauma",
+      "ageGroup": "both",
+      "category": "osteosynthesis",
+      "approach": [
+        "other"
+      ],
+      "patientPosition": "Según foco",
+      "anesthesia": "General o regional",
+      "preopImaging": [
+        "Radiografía en dos planos",
+        "TAC en articulares"
+      ],
+      "indications": [
+        "Fracturas metafisarias/articulares",
+        "Hueso osteoporótico",
+        "Puente en conminutas (MIPO)"
+      ],
+      "contraindications": [
+        "Cuando un implante endomedular es biomecánicamente superior (ciertas diafisarias)"
+      ],
+      "classifications": [
+        "AO/OTA"
+      ],
+      "steps": [
+        "Reducción (directa o indirecta/MIPO)",
+        "Elección de tornillos bloqueados (fijación de ángulo fijo) y/o de compresión",
+        "Fijación según principio (compresión, neutralización, puente)"
+      ],
+      "implants": [
+        "Placa LCP con orificios combinados (Combi-holes)",
+        "Tornillos bloqueados y corticales"
+      ],
+      "complications": [
+        "Pseudoartrosis (constructo demasiado rígido en puente)",
+        "Infección",
+        "Irritación de partes blandas"
+      ],
+      "pearls": [
+        "Orificios combinados permiten mezclar tornillos de compresión y bloqueados en una misma placa",
+        "En puente: cuidar la longitud de trabajo y la densidad de tornillos para no sobrerrigidizar"
+      ],
+      "durationMin": 45,
+      "durationMax": 150,
+      "recovery": "Según fractura y principio aplicado",
+      "references": [
+        "AO Principles of Fracture Management 3ª ed."
+      ],
+      "level": "resident",
+      "dataCompleteness": "partial",
+      "tags": [
+        "LCP",
+        "placa bloqueada",
+        "MIPO",
+        "osteoporosis"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "tornillos-canulados",
+      "name": "Tornillos canulados",
+      "aliases": [
+        "cannulated screws",
+        "tornillos percutáneos canulados"
+      ],
+      "anatomicRegion": "other",
+      "specialty": "trauma",
+      "ageGroup": "both",
+      "category": "osteosynthesis",
+      "approach": [
+        "percutaneous"
+      ],
+      "patientPosition": "Según foco",
+      "anesthesia": "General o regional",
+      "preopImaging": [
+        "Radiografía/escopia",
+        "TAC en articulares"
+      ],
+      "indications": [
+        "Fractura de cuello femoral",
+        "Epifisiólisis femoral proximal (SCFE)",
+        "Maléolos",
+        "Fragmentos pequeños sobre guía"
+      ],
+      "contraindications": [
+        "Hueso muy conminuto donde el tornillo no logre anclaje"
+      ],
+      "classifications": [
+        "Según segmento (Garden en cuello femoral, etc.)"
+      ],
+      "steps": [
+        "Colocación de aguja guía bajo escopia",
+        "Medición y fresado canulado sobre la guía",
+        "Inserción del tornillo canulado siguiendo la guía"
+      ],
+      "implants": [
+        "Tornillos canulados (parcial o totalmente roscados, con arandela si necesario)"
+      ],
+      "complications": [
+        "Penetración articular",
+        "Mala posición sobre guía doblada",
+        "Necrosis (cuello femoral)"
+      ],
+      "pearls": [
+        "En SCFE: trayectoria perpendicular a la fisis, mínimo 5 roscas en la epífisis, fluoroscopia dinámica para descartar penetración",
+        "No forzar la reducción en SCFE estable"
+      ],
+      "durationMin": 30,
+      "durationMax": 75,
+      "recovery": "Según localización; descarga relativa en cuello femoral",
+      "references": [
+        "Rockwood & Green 9ª ed.",
+        "Tachdjian's (SCFE)"
+      ],
+      "level": "specialist",
+      "dataCompleteness": "full",
+      "tags": [
+        "canulados",
+        "SCFE",
+        "cuello femoral",
+        "percutáneo"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "clavos-percutaneos-radio-distal",
+      "name": "Clavos percutáneos de radio distal",
+      "aliases": [
+        "clavijas de Kirschner radio distal",
+        "percutaneous pinning radio distal",
+        "Kapandji"
+      ],
+      "anatomicRegion": "wrist",
+      "specialty": "pediatric",
+      "ageGroup": "both",
+      "category": "osteosynthesis",
+      "approach": [
+        "percutaneous"
+      ],
+      "patientPosition": "Decúbito supino, brazo en mesa de mano",
+      "anesthesia": "General o regional",
+      "preopImaging": [
+        "Radiografía AP y lateral de muñeca"
+      ],
+      "indications": [
+        "Fractura de radio distal desplazada inestable tras reducción cerrada (frecuente en el niño)"
+      ],
+      "contraindications": [
+        "Conminución articular que requiera reducción abierta/placa"
+      ],
+      "classifications": [
+        "Salter-Harris (si fisaria)",
+        "AO pediátrica"
+      ],
+      "steps": [
+        "Reducción cerrada",
+        "Paso de clavijas percutáneas (cruzadas o técnica de Kapandji intrafocal)",
+        "Doblar y cortar los extremos; inmovilización con yeso"
+      ],
+      "implants": [
+        "Agujas de Kirschner lisas"
+      ],
+      "complications": [
+        "Lesión de la rama sensitiva del nervio radial",
+        "Infección del trayecto",
+        "Pérdida de reducción",
+        "Rigidez"
+      ],
+      "pearls": [
+        "En fisarias: clavija lisa, lo más fina posible, un solo intento al atravesar la fisis, manipulación suave",
+        "Fracturas >7 días: mejor no reducir agresivamente (remodelación) para no dañar la fisis"
+      ],
+      "durationMin": 20,
+      "durationMax": 50,
+      "recovery": "Yeso 3-4 semanas; retiro de clavijas a las 4 semanas",
+      "references": [
+        "Rockwood & Wilkins Fractures in Children 9ª ed."
+      ],
+      "level": "specialist",
+      "dataCompleteness": "full",
+      "tags": [
+        "radio distal",
+        "muñeca",
+        "clavijas",
+        "pediátrico",
+        "Kapandji"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "puncion-aspiracion-cadera",
+      "name": "Punción-aspiración de cadera",
+      "aliases": [
+        "artrocentesis de cadera",
+        "hip aspiration"
+      ],
+      "anatomicRegion": "hip",
+      "specialty": "pediatric",
+      "ageGroup": "both",
+      "category": "aspiration",
+      "approach": [
+        "anterior"
+      ],
+      "patientPosition": "Decúbito supino, cadera en ligera flexión y rotación externa",
+      "anesthesia": "Local/sedación o general (niños)",
+      "preopImaging": [
+        "Ecografía (derrame articular)",
+        "Radiografía AP de pelvis",
+        "Laboratorio (PCR, VES, hemograma)"
+      ],
+      "indications": [
+        "Sospecha de artritis séptica de cadera (diagnóstica y terapéutica)",
+        "Diferenciar de sinovitis transitoria"
+      ],
+      "contraindications": [
+        "Infección de partes blandas en el trayecto de punción",
+        "Coagulopatía no corregida"
+      ],
+      "classifications": [
+        "Criterios de Kocher (cadera séptica pediátrica)"
+      ],
+      "steps": [
+        "Asepsia y guía ecográfica/fluoroscópica",
+        "Punción articular y aspiración de líquido sinovial",
+        "Envío a citoquímico, Gram y cultivo",
+        "Si pus franco → indicación de drenaje quirúrgico (artrotomía/artroscopia)"
+      ],
+      "implants": [
+        "Ninguno"
+      ],
+      "complications": [
+        "Punción seca falsa negativa",
+        "Lesión neurovascular (paquete femoral)",
+        "Diseminación"
+      ],
+      "pearls": [
+        "Criterios de Kocher (fiebre, no carga, VES, leucocitos) orientan probabilidad de artritis séptica",
+        "La artritis séptica de cadera es una urgencia: confirmada → lavado quirúrgico precoz"
+      ],
+      "durationMin": 10,
+      "durationMax": 30,
+      "recovery": "Según diagnóstico; séptica requiere drenaje y ATB",
+      "references": [
+        "Kocher JBJS 1999 — conocimiento general, no figura en sesiones previas (revisar)"
+      ],
+      "level": "resident",
+      "dataCompleteness": "standard",
+      "tags": [
+        "cadera séptica",
+        "Kocher",
+        "artrocentesis",
+        "pediátrico"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "reduccion-abierta-condilo-lateral",
+      "name": "Reducción abierta de cóndilo lateral (húmero)",
+      "aliases": [
+        "fractura cóndilo lateral húmero",
+        "lateral condyle ORIF"
+      ],
+      "anatomicRegion": "elbow",
+      "specialty": "pediatric",
+      "ageGroup": "pediatric",
+      "category": "osteosynthesis",
+      "approach": [
+        "lateral"
+      ],
+      "patientPosition": "Decúbito supino, brazo sobre mesa",
+      "anesthesia": "General",
+      "preopImaging": [
+        "Radiografía AP, lateral y oblicua interna de codo",
+        "Artrografía si dudas de congruencia"
+      ],
+      "indications": [
+        "Fractura del cóndilo lateral desplazada >2 mm o intraarticular inestable"
+      ],
+      "contraindications": [
+        "Desplazamiento <2 mm estable (tratamiento conservador con control estricto)"
+      ],
+      "classifications": [
+        "Milch I/II",
+        "Weiss (según desplazamiento)",
+        "Song"
+      ],
+      "steps": [
+        "Abordaje lateral (Kocher)",
+        "Evitar disección posterior excesiva (preserva irrigación → evita necrosis)",
+        "Reducción anatómica de la superficie articular",
+        "Fijación con agujas K divergentes o tornillo"
+      ],
+      "implants": [
+        "Agujas de Kirschner",
+        "± tornillo de tracción"
+      ],
+      "complications": [
+        "Necrosis avascular del cóndilo (disección posterior)",
+        "Pseudoartrosis (alta tendencia)",
+        "Cúbito valgo y parálisis tardía del nervio cubital",
+        "Espolón lateral"
+      ],
+      "pearls": [
+        "Alta tasa de pseudoartrosis: requiere reducción anatómica y seguimiento estricto",
+        "No desperiostizar la cara posterior del cóndilo (vascularización crítica)"
+      ],
+      "durationMin": 45,
+      "durationMax": 90,
+      "recovery": "Yeso 4-6 semanas; retiro de agujas y movilización",
+      "references": [
+        "Rockwood & Wilkins Fractures in Children 9ª ed."
+      ],
+      "level": "specialist",
+      "dataCompleteness": "full",
+      "tags": [
+        "codo",
+        "cóndilo lateral",
+        "pediátrico",
+        "pseudoartrosis"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "osteosintesis-agujas-kirschner",
+      "name": "Osteosíntesis con agujas de Kirschner",
+      "aliases": [
+        "agujas K",
+        "K-wires",
+        "clavijas de Kirschner"
+      ],
+      "anatomicRegion": "other",
+      "specialty": "trauma",
+      "ageGroup": "both",
+      "category": "osteosynthesis",
+      "approach": [
+        "percutaneous"
+      ],
+      "patientPosition": "Según foco",
+      "anesthesia": "General o regional",
+      "preopImaging": [
+        "Radiografía/escopia del segmento"
+      ],
+      "indications": [
+        "Fracturas pediátricas (supracondílea de húmero, cóndilo lateral, radio distal)",
+        "Fragmentos pequeños",
+        "Fijación provisional intraoperatoria"
+      ],
+      "contraindications": [
+        "Necesidad de carga inmediata / estabilidad rígida en hueso adulto grande"
+      ],
+      "classifications": [
+        "Según segmento (Gartland en supracondílea)"
+      ],
+      "steps": [
+        "Reducción cerrada o abierta",
+        "Paso de agujas (cruzadas o laterales divergentes)",
+        "Doblar y cortar extremos; inmovilización complementaria con yeso"
+      ],
+      "implants": [
+        "Agujas de Kirschner lisas o roscadas"
+      ],
+      "complications": [
+        "Lesión del nervio cubital (agujas mediales en codo)",
+        "Infección del trayecto",
+        "Migración",
+        "Pérdida de reducción"
+      ],
+      "pearls": [
+        "En supracondílea de húmero: configuración lateral divergente reduce el riesgo de lesión del cubital",
+        "Fijación versátil y de bajo costo; suele requerir inmovilización complementaria"
+      ],
+      "durationMin": 20,
+      "durationMax": 60,
+      "recovery": "Yeso 3-6 semanas; retiro de agujas en consultorio",
+      "references": [
+        "Rockwood & Wilkins Fractures in Children 9ª ed."
+      ],
+      "level": "resident",
+      "dataCompleteness": "partial",
+      "tags": [
+        "agujas K",
+        "supracondílea",
+        "pediátrico",
+        "provisional"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "reduccion-abierta-epitroclea",
+      "name": "Reducción abierta de epitróclea (epicóndilo medial)",
+      "aliases": [
+        "fractura epitróclea",
+        "medial epicondyle ORIF"
+      ],
+      "anatomicRegion": "elbow",
+      "specialty": "pediatric",
+      "ageGroup": "pediatric",
+      "category": "osteosynthesis",
+      "approach": [
+        "medial"
+      ],
+      "patientPosition": "Decúbito supino, brazo sobre mesa, hombro en rotación externa",
+      "anesthesia": "General",
+      "preopImaging": [
+        "Radiografía AP y lateral de codo (buscar fragmento intraarticular)"
+      ],
+      "indications": [
+        "Epitróclea intraarticular incarcerada (urgencia)",
+        "Desplazamiento significativo en deportista/inestabilidad en valgo"
+      ],
+      "contraindications": [
+        "Desplazamiento mínimo asintomático (controversia; muchos van a conservador)"
+      ],
+      "classifications": [
+        "Por desplazamiento / incarceración intraarticular"
+      ],
+      "steps": [
+        "Abordaje medial protegiendo el nervio cubital",
+        "Extracción del fragmento de la articulación si incarcerado",
+        "Reducción y fijación (tornillo o agujas)"
+      ],
+      "implants": [
+        "Tornillo (frecuente en adolescentes)",
+        "Agujas de Kirschner"
+      ],
+      "complications": [
+        "Lesión/neuropatía del nervio cubital",
+        "Pseudoartrosis (a menudo asintomática)",
+        "Rigidez",
+        "Inestabilidad en valgo"
+      ],
+      "pearls": [
+        "Fragmento intraarticular incarcerado = urgencia quirúrgica",
+        "Identificar y proteger el nervio cubital en el abordaje medial"
+      ],
+      "durationMin": 45,
+      "durationMax": 90,
+      "recovery": "Inmovilización breve y movilización precoz para evitar rigidez",
+      "references": [
+        "Rockwood & Wilkins Fractures in Children 9ª ed."
+      ],
+      "level": "specialist",
+      "dataCompleteness": "full",
+      "tags": [
+        "codo",
+        "epitróclea",
+        "cubital",
+        "pediátrico"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "cirugia-capitellum",
+      "name": "Cirugía del capitellum (cóndilo humeral)",
+      "aliases": [
+        "fractura de capitellum",
+        "capitellum ORIF",
+        "osteocondritis disecante del capitellum"
+      ],
+      "anatomicRegion": "elbow",
+      "specialty": "pediatric",
+      "ageGroup": "both",
+      "category": "osteosynthesis",
+      "approach": [
+        "lateral",
+        "anterolateral"
+      ],
+      "patientPosition": "Decúbito supino, brazo sobre mesa",
+      "anesthesia": "General",
+      "preopImaging": [
+        "Radiografía AP y lateral de codo",
+        "TAC/RMN (fragmento, OCD)"
+      ],
+      "indications": [
+        "Fractura desplazada del capitellum",
+        "Osteocondritis disecante con fragmento inestable"
+      ],
+      "contraindications": [
+        "Fragmento no reconstruible muy pequeño (valorar exéresis)"
+      ],
+      "classifications": [
+        "Bryan-Morrey (fracturas del capitellum)"
+      ],
+      "steps": [
+        "Abordaje lateral/anterolateral",
+        "Reducción del fragmento articular",
+        "Fijación con tornillos a compresión (Herbert, sin cabeza) embutidos en el cartílago",
+        "En OCD: microfracturas, fijación o mosaicoplastia según fragmento"
+      ],
+      "implants": [
+        "Tornillos sin cabeza (Herbert)",
+        "Agujas K"
+      ],
+      "complications": [
+        "Necrosis del fragmento",
+        "Rigidez",
+        "Artrosis postraumática",
+        "No unión"
+      ],
+      "pearls": [
+        "Tornillos sin cabeza embutidos para no interferir con la congruencia articular",
+        "En OCD juvenil del deportista lanzador, valorar estabilidad del fragmento"
+      ],
+      "durationMin": 60,
+      "durationMax": 120,
+      "recovery": "Movilización precoz protegida; evitar rigidez",
+      "references": [
+        "Rockwood & Wilkins Fractures in Children 9ª ed."
+      ],
+      "level": "specialist",
+      "dataCompleteness": "partial",
+      "tags": [
+        "codo",
+        "capitellum",
+        "OCD",
+        "articular"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "reduccion-cuello-radio",
+      "name": "Reducción quirúrgica de cuello de radio",
+      "aliases": [
+        "fractura cuello radial",
+        "radial neck reduction",
+        "Métaizeau"
+      ],
+      "anatomicRegion": "elbow",
+      "specialty": "pediatric",
+      "ageGroup": "pediatric",
+      "category": "reduction",
+      "approach": [
+        "lateral",
+        "percutaneous"
+      ],
+      "patientPosition": "Decúbito supino, brazo sobre mesa",
+      "anesthesia": "General",
+      "preopImaging": [
+        "Radiografía AP y lateral de codo (ángulo de inclinación de la cabeza radial)"
+      ],
+      "indications": [
+        "Fractura del cuello radial con angulación >30° o traslación significativa que no reduce cerrada"
+      ],
+      "contraindications": [
+        "Angulación leve con buen potencial de remodelación (conservador)"
+      ],
+      "classifications": [
+        "Judet (angulación de la cabeza radial)"
+      ],
+      "steps": [
+        "Intentar reducción cerrada (maniobra de Patterson / Israeli)",
+        "Si falla: reducción percutánea con clavija como palanca o técnica de Métaizeau (clavo intramedular retrógrado descendente que reduce y estabiliza)",
+        "Reducción abierta lateral solo si fracasan los métodos cerrados/percutáneos"
+      ],
+      "implants": [
+        "Clavo elástico intramedular (Métaizeau)",
+        "Agujas K"
+      ],
+      "complications": [
+        "Necrosis de la cabeza radial",
+        "Rigidez/pérdida de pronosupinación",
+        "Sinostosis radiocubital",
+        "Sobrecrecimiento"
+      ],
+      "pearls": [
+        "Preferir métodos cerrados/percutáneos: la reducción abierta aumenta la rigidez y la necrosis",
+        "Técnica de Métaizeau: el clavo intramedular reduce y estabiliza en un gesto mínimamente invasivo"
+      ],
+      "durationMin": 30,
+      "durationMax": 90,
+      "recovery": "Movilización precoz para preservar pronosupinación",
+      "references": [
+        "Rockwood & Wilkins Fractures in Children 9ª ed."
+      ],
+      "level": "specialist",
+      "dataCompleteness": "full",
+      "tags": [
+        "codo",
+        "cuello radial",
+        "Métaizeau",
+        "pediátrico"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "reduccion-monteggia",
+      "name": "Reducción de Monteggia (aguda)",
+      "aliases": [
+        "Monteggia aguda",
+        "Monteggia reduction"
+      ],
+      "anatomicRegion": "forearm",
+      "specialty": "pediatric",
+      "ageGroup": "pediatric",
+      "category": "reduction",
+      "approach": [
+        "percutaneous",
+        "other"
+      ],
+      "patientPosition": "Decúbito supino, brazo sobre mesa",
+      "anesthesia": "General",
+      "preopImaging": [
+        "Radiografía de antebrazo y codo (línea radiocapitelar en todas las proyecciones)"
+      ],
+      "indications": [
+        "Fractura-luxación de Monteggia aguda en el niño (<2-3 semanas)"
+      ],
+      "contraindications": [
+        "Monteggia crónica (requiere reconstrucción)"
+      ],
+      "classifications": [
+        "Bado I-IV",
+        "Letts (equivalentes pediátricos)"
+      ],
+      "steps": [
+        "Reducción de la fractura del cúbito (al alinear el cúbito se reduce la cabeza radial)",
+        "Verificar línea radiocapitelar en AP y lateral",
+        "Yeso BAB en flexión 90-110° + supinación (Bado I)",
+        "Si la reducción del cúbito falla o no se mantiene: fijación del cúbito (clavo elástico o placa)"
+      ],
+      "implants": [
+        "Yeso; eventual clavo elástico o placa del cúbito"
+      ],
+      "complications": [
+        "No diagnóstico → Monteggia crónica",
+        "Reluxación",
+        "Parálisis del NIP",
+        "Síndrome compartimental"
+      ],
+      "pearls": [
+        "El cúbito es la 'pértiga': bien alineado, la cabeza radial se reduce sola",
+        "La supinación tensa el ligamento anular y mantiene la reducción en Bado I"
+      ],
+      "durationMin": 30,
+      "durationMax": 75,
+      "recovery": "Yeso 4-6 semanas con control radiográfico semanal estricto",
+      "references": [
+        "Rockwood & Wilkins Fractures in Children 9ª ed."
+      ],
+      "level": "specialist",
+      "dataCompleteness": "full",
+      "tags": [
+        "Monteggia",
+        "antebrazo",
+        "Bado",
+        "pediátrico"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "reduccion-galeazzi",
+      "name": "Reducción de Galeazzi",
+      "aliases": [
+        "Galeazzi",
+        "fractura-luxación de Galeazzi"
+      ],
+      "anatomicRegion": "forearm",
+      "specialty": "trauma",
+      "ageGroup": "both",
+      "category": "reduction",
+      "approach": [
+        "anterior",
+        "other"
+      ],
+      "patientPosition": "Decúbito supino, brazo sobre mesa de mano",
+      "anesthesia": "General o regional",
+      "preopImaging": [
+        "Radiografía de antebrazo y muñeca (articulación radiocubital distal, RCD)"
+      ],
+      "indications": [
+        "Fractura del tercio distal del radio con luxación de la articulación radiocubital distal"
+      ],
+      "contraindications": [
+        "—"
+      ],
+      "classifications": [
+        "Por estabilidad de la RCD"
+      ],
+      "steps": [
+        "En el adulto: RAFI del radio con placa (estabiliza también la RCD)",
+        "Evaluar reducción y estabilidad de la RCD",
+        "Si RCD inestable tras fijar el radio: reducción y enclavijado radiocubital temporario en supinación",
+        "En el niño: reducción cerrada + yeso suele bastar"
+      ],
+      "implants": [
+        "Placa del radio (adulto)",
+        "Aguja K radiocubital temporaria si RCD inestable",
+        "Yeso (niño)"
+      ],
+      "complications": [
+        "Inestabilidad residual de la RCD",
+        "Consolidación viciosa",
+        "Lesión del nervio interóseo anterior"
+      ],
+      "pearls": [
+        "'Fractura de la necesidad' en el adulto: requiere fijación quirúrgica del radio",
+        "Siempre evaluar y documentar la estabilidad de la RCD tras fijar el radio"
+      ],
+      "durationMin": 45,
+      "durationMax": 90,
+      "recovery": "Inmovilización en supinación si se estabilizó la RCD",
+      "references": [
+        "Rockwood & Green 9ª ed.",
+        "Rockwood & Wilkins 9ª ed."
+      ],
+      "level": "specialist",
+      "dataCompleteness": "partial",
+      "tags": [
+        "Galeazzi",
+        "antebrazo",
+        "RCD",
+        "muñeca"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "fijacion-salter-harris-III-IV",
+      "name": "Fijación epifisaria Salter-Harris III-IV",
+      "aliases": [
+        "Salter-Harris III",
+        "Salter-Harris IV",
+        "fijación fisaria"
+      ],
+      "anatomicRegion": "other",
+      "specialty": "pediatric",
+      "ageGroup": "pediatric",
+      "category": "osteosynthesis",
+      "approach": [
+        "other"
+      ],
+      "patientPosition": "Según localización",
+      "anesthesia": "General",
+      "preopImaging": [
+        "Radiografía en dos planos",
+        "TAC para fracturas articulares (Tillaux, triplanar de tobillo)"
+      ],
+      "indications": [
+        "Fractura fisaria SH III o IV con compromiso articular y/o desplazamiento (requiere reducción anatómica)"
+      ],
+      "contraindications": [
+        "No desplazadas (<2 mm) estables → conservador con control estricto"
+      ],
+      "classifications": [
+        "Salter-Harris I-V"
+      ],
+      "steps": [
+        "Reducción anatómica de la superficie articular y de la fisis",
+        "Fijación con tornillos paralelos a la fisis (epífisis-epífisis o metáfisis-metáfisis, sin cruzar la fisis si es posible)"
+      ],
+      "implants": [
+        "Tornillos canulados",
+        "Agujas K lisas si deben cruzar la fisis"
+      ],
+      "complications": [
+        "Barra fisaria / cierre prematuro → deformidad angular o dismetría",
+        "Artrosis postraumática",
+        "Incongruencia articular"
+      ],
+      "pearls": [
+        "SH III-IV: la reducción anatómica articular es obligatoria",
+        "Evitar implantes roscados cruzando la fisis (riesgo de barra)"
+      ],
+      "durationMin": 45,
+      "durationMax": 90,
+      "recovery": "Inmovilización + seguimiento del crecimiento (barra fisaria) hasta la madurez",
+      "references": [
+        "Rockwood & Wilkins Fractures in Children 9ª ed."
+      ],
+      "level": "specialist",
+      "dataCompleteness": "full",
+      "tags": [
+        "Salter-Harris",
+        "fisis",
+        "articular",
+        "pediátrico"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "reduccion-abierta-ddc",
+      "name": "Reducción abierta de DDC (displasia del desarrollo de la cadera)",
+      "aliases": [
+        "reducción abierta de cadera",
+        "DDC open reduction",
+        "DDH"
+      ],
+      "anatomicRegion": "hip",
+      "specialty": "pediatric",
+      "ageGroup": "pediatric",
+      "category": "reduction",
+      "approach": [
+        "medial",
+        "anterolateral"
+      ],
+      "patientPosition": "Decúbito supino",
+      "anesthesia": "General",
+      "preopImaging": [
+        "Ecografía (Graf) en <6 meses",
+        "Radiografía AP de pelvis",
+        "Artrografía intraoperatoria"
+      ],
+      "indications": [
+        "DDC que no reduce de forma concéntrica con métodos cerrados",
+        "Edad/retraso diagnóstico que impide reducción cerrada"
+      ],
+      "contraindications": [
+        "Cadera reductible y estable por método cerrado"
+      ],
+      "classifications": [
+        "Graf (ecografía)",
+        "Tönnis (radiográfica)"
+      ],
+      "steps": [
+        "Abordaje medial (Ludloff) en lactante pequeño o anterolateral (Smith-Petersen) en mayor",
+        "Liberación de los obstáculos a la reducción (psoas, limbo, pulvinar, ligamento redondo, cápsula)",
+        "Reducción concéntrica + capsulorrafia",
+        "± osteotomías asociadas (femoral/pélvica) según edad",
+        "Yeso espica"
+      ],
+      "implants": [
+        "Ninguno primario (osteosíntesis si osteotomías asociadas)"
+      ],
+      "complications": [
+        "Necrosis avascular de la cabeza femoral",
+        "Reluxación",
+        "Rigidez",
+        "Displasia residual"
+      ],
+      "pearls": [
+        "Obstáculos a la reducción: limbo invertido, pulvinar, ligamento redondo hipertrófico, tendón del psoas, cápsula en reloj de arena",
+        "La AVN es la complicación más temida; cuidar el rango seguro de abducción"
+      ],
+      "durationMin": 90,
+      "durationMax": 180,
+      "recovery": "Yeso espica 6-12 semanas; seguimiento radiográfico prolongado",
+      "references": [
+        "Tachdjian's Pediatric Orthopaedics",
+        "Herring's Tachdjian 2022"
+      ],
+      "level": "specialist",
+      "dataCompleteness": "partial",
+      "tags": [
+        "DDC",
+        "cadera",
+        "pediátrico",
+        "reducción abierta"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "osteotomia-pelvica-ddc",
+      "name": "Osteotomía pélvica en DDC",
+      "aliases": [
+        "Salter",
+        "Dega",
+        "Pemberton",
+        "San Diego (acetabular)",
+        "pelvic osteotomy DDH"
+      ],
+      "anatomicRegion": "pelvis",
+      "specialty": "pediatric",
+      "ageGroup": "pediatric",
+      "category": "osteotomy",
+      "approach": [
+        "anterolateral"
+      ],
+      "patientPosition": "Decúbito supino con realce bajo la cadera",
+      "anesthesia": "General",
+      "preopImaging": [
+        "Radiografía AP de pelvis (índice acetabular, ángulo CE)",
+        "TAC 3D en casos complejos"
+      ],
+      "indications": [
+        "Displasia acetabular residual en DDC",
+        "Cobertura insuficiente de la cabeza femoral"
+      ],
+      "contraindications": [
+        "Cabeza no reducible/no concéntrica (reducir primero)",
+        "Artrosis avanzada"
+      ],
+      "classifications": [
+        "Reorientadoras (Salter, triple, periacetabular) vs remodeladoras (Pemberton, Dega) vs de salvataje (Chiari, shelf)"
+      ],
+      "steps": [
+        "Abordaje iliofemoral",
+        "Osteotomía según técnica (Salter: completa supraacetabular reorientadora; Dega/Pemberton: incompletas que remodelan la cúpula)",
+        "Injerto óseo en cuña (cresta ilíaca) y fijación con agujas/tornillos"
+      ],
+      "implants": [
+        "Injerto óseo autólogo",
+        "Agujas de Kirschner o tornillos"
+      ],
+      "complications": [
+        "Pérdida de corrección",
+        "Necrosis",
+        "Rigidez",
+        "Dismetría"
+      ],
+      "pearls": [
+        "Salter reorienta (bisagra en la sínfisis); Dega/Pemberton remodelan la forma del acetábulo",
+        "En PC suele combinarse con osteotomía femoral (técnica de San Diego)"
+      ],
+      "durationMin": 90,
+      "durationMax": 180,
+      "recovery": "Yeso espica 6 semanas; consolidación de la osteotomía y del injerto",
+      "references": [
+        "Tachdjian's Pediatric Orthopaedics",
+        "Herring's Tachdjian 2022"
+      ],
+      "level": "specialist",
+      "dataCompleteness": "partial",
+      "tags": [
+        "DDC",
+        "osteotomía pélvica",
+        "Salter",
+        "Dega",
+        "pediátrico"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "osteotomia-femoral-ddc",
+      "name": "Osteotomía femoral en DDC",
+      "aliases": [
+        "osteotomía varizante-desrotadora",
+        "femoral osteotomy DDH",
+        "VDRO"
+      ],
+      "anatomicRegion": "femur",
+      "specialty": "pediatric",
+      "ageGroup": "pediatric",
+      "category": "osteotomy",
+      "approach": [
+        "lateral"
+      ],
+      "patientPosition": "Decúbito supino",
+      "anesthesia": "General",
+      "preopImaging": [
+        "Radiografía AP de pelvis (ángulo cuello-diáfisis, anteversión)",
+        "TAC para anteversión si necesario"
+      ],
+      "indications": [
+        "Anteversión femoral aumentada y/o coxa valga en DDC",
+        "Mejorar la concentricidad/cobertura junto a reducción"
+      ],
+      "contraindications": [
+        "Deformidad principalmente acetabular (preferir osteotomía pélvica)"
+      ],
+      "classifications": [
+        "—"
+      ],
+      "steps": [
+        "Abordaje lateral del fémur proximal",
+        "Osteotomía intertrocantérica/subtrocantérica",
+        "Corrección de varo y desrotación (corregir anteversión excesiva)",
+        "Fijación con placa angulada o placa-tornillo"
+      ],
+      "implants": [
+        "Placa angulada infantil / placa-tornillo pediátrica"
+      ],
+      "complications": [
+        "Pérdida de corrección",
+        "Dismetría",
+        "Necrosis",
+        "Pseudoartrosis"
+      ],
+      "pearls": [
+        "Aplicar principios de Paley: realizar la osteotomía en el sitio de la deformidad (cerca del CORA)",
+        "Frecuentemente combinada con osteotomía pélvica (San Diego) en cadera neurológica"
+      ],
+      "durationMin": 90,
+      "durationMax": 150,
+      "recovery": "Yeso espica 6 semanas; retiro de material tras consolidación",
+      "references": [
+        "Tachdjian's Pediatric Orthopaedics",
+        "Paley (corrección de deformidades)"
+      ],
+      "level": "specialist",
+      "dataCompleteness": "partial",
+      "tags": [
+        "DDC",
+        "osteotomía femoral",
+        "anteversión",
+        "CORA",
+        "pediátrico"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "legrado-lavado-injerto-oseo",
+      "name": "Legrado + lavado + injerto óseo",
+      "aliases": [
+        "curetaje y relleno",
+        "curettage and bone grafting"
+      ],
+      "anatomicRegion": "other",
+      "specialty": "oncology",
+      "ageGroup": "both",
+      "category": "curettage",
+      "approach": [
+        "other"
+      ],
+      "patientPosition": "Según localización",
+      "anesthesia": "General o regional",
+      "preopImaging": [
+        "Radiografía",
+        "RMN/TAC",
+        "Biopsia previa"
+      ],
+      "indications": [
+        "Lesiones óseas benignas activas (quiste óseo aneurismático, fibroma, condroblastoma)",
+        "Defectos cavitarios"
+      ],
+      "contraindications": [
+        "Lesión maligna",
+        "Biopsia no realizada en lesión agresiva"
+      ],
+      "classifications": [
+        "Enneking"
+      ],
+      "steps": [
+        "Ventana cortical",
+        "Legrado completo de la cavidad",
+        "Lavado abundante (arrastre de restos)",
+        "± adyuvantes locales",
+        "Relleno con injerto óseo (autólogo/banco) o sustituto"
+      ],
+      "implants": [
+        "Injerto óseo / sustitutos",
+        "± osteosíntesis de soporte si riesgo de fractura"
+      ],
+      "complications": [
+        "Recidiva",
+        "Fractura patológica",
+        "Infección del injerto"
+      ],
+      "pearls": [
+        "Biopsia obligatoria antes del tratamiento definitivo en QOA (descartar osteosarcoma telangiectásico)",
+        "En fémur proximal con riesgo de fractura: curetaje + relleno + fijación cefalomedular"
+      ],
+      "durationMin": 60,
+      "durationMax": 150,
+      "recovery": "Descarga parcial 4-6 semanas según relleno y localización",
+      "references": [
+        "Tachdjian's Pediatric Orthopaedics",
+        "Campbell's 14ª ed."
+      ],
+      "level": "specialist",
+      "dataCompleteness": "full",
+      "tags": [
+        "quiste óseo",
+        "QOA",
+        "injerto",
+        "benigno"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "reseccion-marginal",
+      "name": "Resección quirúrgica marginal",
+      "aliases": [
+        "margen marginal",
+        "marginal resection"
+      ],
+      "anatomicRegion": "other",
+      "specialty": "oncology",
+      "ageGroup": "both",
+      "category": "tumor-resection",
+      "approach": [
+        "other"
+      ],
+      "patientPosition": "Según localización",
+      "anesthesia": "General",
+      "preopImaging": [
+        "RMN (extensión)",
+        "TAC de tórax (estadificación)",
+        "Biopsia"
+      ],
+      "indications": [
+        "Tumores benignos agresivos o ciertos de bajo grado donde el plano de disección pasa por la pseudocápsula"
+      ],
+      "contraindications": [
+        "Sarcomas de alto grado (requieren margen amplio)"
+      ],
+      "classifications": [
+        "Márgenes de Enneking: intralesional, marginal, amplio, radical"
+      ],
+      "steps": [
+        "Disección a través de la zona reactiva/pseudocápsula del tumor",
+        "Exéresis de la lesión con su pseudocápsula",
+        "Marcado y orientación de la pieza"
+      ],
+      "implants": [
+        "Según reconstrucción necesaria"
+      ],
+      "complications": [
+        "Recidiva local (mayor que con margen amplio)",
+        "Lesión de estructuras vecinas"
+      ],
+      "pearls": [
+        "Margen marginal = a través de la zona reactiva; mayor riesgo de dejar enfermedad satélite que el amplio",
+        "Insuficiente para sarcomas de alto grado"
+      ],
+      "durationMin": 60,
+      "durationMax": 180,
+      "recovery": "Según reconstrucción y patología",
+      "references": [
+        "Enneking",
+        "Campbell's 14ª ed."
+      ],
+      "level": "specialist",
+      "dataCompleteness": "full",
+      "tags": [
+        "tumor",
+        "margen",
+        "Enneking",
+        "oncología"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "curetaje-agresivo",
+      "name": "Curetaje agresivo (extendido)",
+      "aliases": [
+        "extended curettage",
+        "curetaje ampliado"
+      ],
+      "anatomicRegion": "other",
+      "specialty": "oncology",
+      "ageGroup": "both",
+      "category": "curettage",
+      "approach": [
+        "other"
+      ],
+      "patientPosition": "Según localización",
+      "anesthesia": "General",
+      "preopImaging": [
+        "Radiografía",
+        "RMN",
+        "TAC",
+        "Biopsia"
+      ],
+      "indications": [
+        "Tumor de células gigantes",
+        "Lesiones benignas agresivas (Enneking B3) para reducir recidiva"
+      ],
+      "contraindications": [
+        "Malignidad de alto grado"
+      ],
+      "classifications": [
+        "Campanacci (TCG)",
+        "Enneking"
+      ],
+      "steps": [
+        "Ventana cortical amplia",
+        "Curetaje mecánico completo",
+        "Fresado de alta velocidad de las paredes",
+        "Adyuvantes locales (fenol, nitrógeno líquido, electrocauterio)",
+        "Relleno con cemento (PMMA) o injerto"
+      ],
+      "implants": [
+        "Cemento PMMA (efecto térmico adyuvante)",
+        "Injerto óseo",
+        "± osteosíntesis"
+      ],
+      "complications": [
+        "Recidiva (menor que curetaje simple)",
+        "Fractura",
+        "Daño térmico a estructuras vecinas con adyuvantes"
+      ],
+      "pearls": [
+        "El curetaje extendido + adyuvantes baja la recidiva del TCG respecto al curetaje simple",
+        "El PMMA aporta soporte mecánico inmediato y efecto térmico citotóxico en las paredes"
+      ],
+      "durationMin": 90,
+      "durationMax": 180,
+      "recovery": "Carga según relleno y localización",
+      "references": [
+        "Campanacci",
+        "Campbell's 14ª ed."
+      ],
+      "level": "specialist",
+      "dataCompleteness": "full",
+      "tags": [
+        "TCG",
+        "curetaje extendido",
+        "adyuvantes",
+        "oncología"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "reseccion-en-block",
+      "name": "Resección en bloque (amplia)",
+      "aliases": [
+        "en bloc resection",
+        "resección amplia",
+        "resección oncológica"
+      ],
+      "anatomicRegion": "other",
+      "specialty": "oncology",
+      "ageGroup": "both",
+      "category": "tumor-resection",
+      "approach": [
+        "other"
+      ],
+      "patientPosition": "Según localización",
+      "anesthesia": "General",
+      "preopImaging": [
+        "RMN de toda la zona",
+        "TAC de tórax",
+        "Centellograma/PET",
+        "Biopsia con trayecto planificado"
+      ],
+      "indications": [
+        "Sarcomas óseos (osteosarcoma, Ewing) y de partes blandas — cirugía de salvataje de miembro"
+      ],
+      "contraindications": [
+        "Compromiso neurovascular masivo no reconstruible (valorar amputación)"
+      ],
+      "classifications": [
+        "Enneking (estadificación y márgenes)",
+        "Resección intercalar / transarticular / extraarticular"
+      ],
+      "steps": [
+        "Resección del bloque tumoral rodeado de tejido sano (margen amplio), incluyendo el trayecto de biopsia",
+        "Congelación intraoperatoria de los márgenes (medular proximal y distal)",
+        "Reconstrucción: prótesis no convencional, injerto de banco + osteosíntesis, o artrodesis"
+      ],
+      "implants": [
+        "Prótesis tumoral modular",
+        "Injerto masivo de banco",
+        "Osteosíntesis"
+      ],
+      "complications": [
+        "Recidiva si margen comprometido",
+        "Infección de la reconstrucción",
+        "Aflojamiento protésico",
+        "Dismetría en niños"
+      ],
+      "pearls": [
+        "El control local del tumor es la prioridad; la función es objetivo secundario",
+        "Resección extraarticular cuando el tumor invade la articulación (no abrir la articulación)"
+      ],
+      "durationMin": 180,
+      "durationMax": 420,
+      "recovery": "Prolongada; depende de la reconstrucción y de la quimioterapia",
+      "references": [
+        "Enneking",
+        "Tachdjian's Pediatric Orthopaedics, cap. tumores"
+      ],
+      "level": "specialist",
+      "dataCompleteness": "full",
+      "tags": [
+        "sarcoma",
+        "salvataje de miembro",
+        "margen amplio",
+        "oncología"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "abordaje-kocher-langenbeck",
+      "name": "Abordaje de Kocher-Langenbeck",
+      "aliases": [
+        "Kocher-Langenbeck",
+        "abordaje posterior de acetábulo/cadera"
+      ],
+      "anatomicRegion": "pelvis",
+      "specialty": "trauma",
+      "ageGroup": "adult",
+      "category": "other",
+      "approach": [
+        "posterior"
+      ],
+      "patientPosition": "Decúbito prono o lateral",
+      "anesthesia": "General",
+      "preopImaging": [
+        "Radiografía de pelvis (Judet, AP)",
+        "TAC con reconstrucción 3D"
+      ],
+      "indications": [
+        "Acceso a la columna y pared posterior del acetábulo",
+        "Fractura de pared/columna posterior",
+        "Luxación posterior de cadera con fragmento"
+      ],
+      "contraindications": [
+        "Fracturas de columna anterior aisladas (preferir ilioinguinal/Stoppa)"
+      ],
+      "classifications": [
+        "Letournel-Judet (fracturas de acetábulo)"
+      ],
+      "steps": [
+        "Incisión centrada en el trocánter mayor hacia la EIPS",
+        "División del glúteo mayor",
+        "Identificación y protección del nervio ciático",
+        "Desinserción de rotadores cortos (preservar la arteria circunfleja femoral medial)",
+        "Exposición de la columna y pared posterior"
+      ],
+      "implants": [
+        "Placas de reconstrucción pélvica",
+        "Tornillos"
+      ],
+      "complications": [
+        "Lesión del nervio ciático",
+        "Necrosis de la cabeza femoral",
+        "Osificación heterotópica",
+        "Lesión de la arteria glútea"
+      ],
+      "pearls": [
+        "Proteger el ciático (rodilla flexionada, cadera extendida) durante toda la exposición",
+        "Preservar la arteria circunfleja femoral medial para no devascularizar la cabeza"
+      ],
+      "durationMin": 120,
+      "durationMax": 240,
+      "recovery": "Descarga prolongada; profilaxis de osificación heterotópica",
+      "references": [
+        "Letournel & Judet — conocimiento general, no figura en sesiones previas (revisar)"
+      ],
+      "level": "specialist",
+      "dataCompleteness": "standard",
+      "tags": [
+        "acetábulo",
+        "pelvis",
+        "abordaje posterior",
+        "ciático"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "abordaje-anterolateral-cervical",
+      "name": "Abordaje anterior/anterolateral cervical",
+      "aliases": [
+        "abordaje de Smith-Robinson",
+        "anterior cervical approach",
+        "ACDF approach"
+      ],
+      "anatomicRegion": "spine",
+      "specialty": "spine",
+      "ageGroup": "both",
+      "category": "decompression",
+      "approach": [
+        "anterolateral",
+        "anterior"
+      ],
+      "patientPosition": "Decúbito supino con ligera extensión cervical",
+      "anesthesia": "General",
+      "preopImaging": [
+        "Radiografía cervical dinámica",
+        "TAC",
+        "RMN"
+      ],
+      "indications": [
+        "Discopatía/hernia cervical",
+        "Mielopatía/radiculopatía anterior",
+        "Fractura subaxial (SLIC ≥4)"
+      ],
+      "contraindications": [
+        "Patología predominantemente posterior (preferir abordaje posterior)"
+      ],
+      "classifications": [
+        "SLIC (subaxial)"
+      ],
+      "steps": [
+        "Incisión transversa anterior sobre el nivel",
+        "Disección por el intervalo medial (entre vaina carotídea y tráquea/esófago)",
+        "Exposición del cuerpo vertebral y disco bajo fluoroscopía"
+      ],
+      "implants": [
+        "—(es la vía; ver discectomía/artrodesis para implantes)"
+      ],
+      "complications": [
+        "Lesión del nervio laríngeo recurrente (disfonía)",
+        "Lesión esofágica/traqueal",
+        "Lesión de la arteria vertebral o carótida",
+        "Disfagia"
+      ],
+      "pearls": [
+        "Intervalo seguro entre la vaina carotídea (lateral) y la tráquea/esófago (medial)",
+        "Confirmar el nivel con fluoroscopía antes de la discectomía"
+      ],
+      "durationMin": 60,
+      "durationMax": 150,
+      "recovery": "Collarín cervical; según procedimiento asociado",
+      "references": [
+        "Smith-Robinson",
+        "Rockwood & Wilkins (trauma pediátrico de columna)"
+      ],
+      "level": "specialist",
+      "dataCompleteness": "partial",
+      "tags": [
+        "columna cervical",
+        "abordaje anterior",
+        "ACDF"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "abordaje-posterior-cervical",
+      "name": "Abordaje posterior cervical",
+      "aliases": [
+        "posterior cervical approach"
+      ],
+      "anatomicRegion": "spine",
+      "specialty": "spine",
+      "ageGroup": "both",
+      "category": "decompression",
+      "approach": [
+        "posterior"
+      ],
+      "patientPosition": "Decúbito prono, cabeza fijada (Mayfield), cuello en posición neutra",
+      "anesthesia": "General",
+      "preopImaging": [
+        "Radiografía cervical",
+        "TAC (trayecto de arterias vertebrales)",
+        "RMN"
+      ],
+      "indications": [
+        "Compresión posterior (laminectomía/laminoplastia)",
+        "Fractura de elementos posteriores",
+        "Artrodesis posterior (C1-C2, occipitocervical, subaxial)"
+      ],
+      "contraindications": [
+        "Patología predominantemente anterior aislada"
+      ],
+      "classifications": [
+        "SLIC",
+        "clasificaciones de la unión craneocervical"
+      ],
+      "steps": [
+        "Incisión posterior medial",
+        "Disección subperióstica de la musculatura paraespinal",
+        "Exposición de láminas, apófisis y masas laterales",
+        "Descompresión y/o instrumentación según objetivo"
+      ],
+      "implants": [
+        "Tornillos de masa lateral / pediculares",
+        "Tornillos C1-C2 (Harms/Magerl)",
+        "Barras",
+        "Injerto óseo"
+      ],
+      "complications": [
+        "Lesión de la arteria vertebral",
+        "Lesión medular en el posicionamiento",
+        "Pseudoartrosis",
+        "Síndrome del segmento adyacente"
+      ],
+      "pearls": [
+        "TAC preoperatorio para el trayecto de las arterias vertebrales (tornillos C1-C2)",
+        "El posicionamiento es el momento de mayor riesgo medular en inestabilidad alta"
+      ],
+      "durationMin": 90,
+      "durationMax": 240,
+      "recovery": "Collarín/halo según nivel; rehabilitación según déficit",
+      "references": [
+        "Harms & Melcher (C1-C2)",
+        "Rockwood & Wilkins (columna pediátrica)"
+      ],
+      "level": "specialist",
+      "dataCompleteness": "partial",
+      "tags": [
+        "columna cervical",
+        "abordaje posterior",
+        "artrodesis"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "abordaje-supraclavicular-operculo-toracico",
+      "name": "Abordaje supraclavicular / opérculo torácico",
+      "aliases": [
+        "abordaje supraclavicular",
+        "desfiladero torácico",
+        "thoracic outlet approach"
+      ],
+      "anatomicRegion": "shoulder",
+      "specialty": "other",
+      "ageGroup": "adult",
+      "category": "decompression",
+      "approach": [
+        "supraclavicular"
+      ],
+      "patientPosition": "Decúbito supino con cuello en ligera extensión y rotación contralateral",
+      "anesthesia": "General",
+      "preopImaging": [
+        "Radiografía cervical (costilla cervical)",
+        "Angio-TAC/RMN",
+        "Estudios electrofisiológicos"
+      ],
+      "indications": [
+        "Síndrome del opérculo torácico (neurogénico/vascular)",
+        "Acceso al plexo braquial supraclavicular y vasos subclavios"
+      ],
+      "contraindications": [
+        "Síndrome del opérculo no confirmado / causa alternativa"
+      ],
+      "classifications": [
+        "TOS neurogénico / venoso / arterial"
+      ],
+      "steps": [
+        "Incisión supraclavicular transversa",
+        "Sección del músculo escaleno anterior protegiendo el nervio frénico",
+        "Identificación del plexo braquial y de la arteria subclavia",
+        "Resección de la costilla cervical / primera costilla o banda fibrosa según causa"
+      ],
+      "implants": [
+        "Ninguno"
+      ],
+      "complications": [
+        "Lesión del plexo braquial",
+        "Lesión del nervio frénico (parálisis diafragmática)",
+        "Neumotórax",
+        "Lesión del conducto torácico (izquierda)",
+        "Lesión vascular subclavia"
+      ],
+      "pearls": [
+        "Identificar y proteger el nervio frénico sobre el escaleno anterior",
+        "En el lado izquierdo, cuidado con el conducto torácico (quilotórax)"
+      ],
+      "durationMin": 90,
+      "durationMax": 180,
+      "recovery": "Según descompresión; rehabilitación del miembro superior",
+      "references": [
+        "Conocimiento general de cirugía de plexo / vascular — no figura en sesiones previas (revisar)"
+      ],
+      "level": "specialist",
+      "dataCompleteness": "standard",
+      "tags": [
+        "opérculo torácico",
+        "plexo braquial",
+        "supraclavicular",
+        "frénico"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "artrodesis-cervical",
+      "name": "Artrodesis cervical",
+      "aliases": [
+        "fusión cervical",
+        "cervical fusion",
+        "ACDF (componente de fusión)"
+      ],
+      "anatomicRegion": "spine",
+      "specialty": "spine",
+      "ageGroup": "both",
+      "category": "arthrodesis",
+      "approach": [
+        "anterior",
+        "posterior"
+      ],
+      "patientPosition": "Supino (anterior) o prono (posterior) según vía",
+      "anesthesia": "General",
+      "preopImaging": [
+        "Radiografía dinámica",
+        "TAC",
+        "RMN"
+      ],
+      "indications": [
+        "Inestabilidad cervical (SLIC ≥4)",
+        "Tras discectomía/corpectomía descompresiva",
+        "Lesiones C1-C2 inestables"
+      ],
+      "contraindications": [
+        "Infección activa no controlada en el sitio"
+      ],
+      "classifications": [
+        "SLIC",
+        "clasificaciones de unión craneocervical"
+      ],
+      "steps": [
+        "Descompresión del nivel",
+        "Preparación de las superficies (decorticación)",
+        "Colocación de injerto óseo / cage",
+        "Instrumentación (placa anterior con tornillos; o tornillos-barra posteriores)",
+        "Inmovilización postoperatoria"
+      ],
+      "implants": [
+        "Cage de PEEK con injerto",
+        "Placa cervical anterior",
+        "Tornillos de masa lateral/pediculares",
+        "Tornillos C1-C2"
+      ],
+      "complications": [
+        "Pseudoartrosis",
+        "Síndrome del segmento adyacente",
+        "Lesión de la arteria vertebral",
+        "Disfagia (anterior)"
+      ],
+      "pearls": [
+        "La artrodesis C1-C2 es una de las articulaciones más difíciles de fusionar (pseudoartrosis 5-10%)",
+        "En el niño <6 años, pines del halo de baja presión (calota fina)"
+      ],
+      "durationMin": 90,
+      "durationMax": 240,
+      "recovery": "Collarín rígido 6-12 semanas; halo-chaleco en lesiones altas",
+      "references": [
+        "Harms & Melcher (C1-C2)",
+        "Rockwood & Wilkins (columna pediátrica)"
+      ],
+      "level": "specialist",
+      "dataCompleteness": "partial",
+      "tags": [
+        "columna cervical",
+        "artrodesis",
+        "C1-C2",
+        "fusión"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "discectomia",
+      "name": "Discectomía (cervical)",
+      "aliases": [
+        "discectomy",
+        "ACDF (componente de discectomía)"
+      ],
+      "anatomicRegion": "spine",
+      "specialty": "spine",
+      "ageGroup": "both",
+      "category": "decompression",
+      "approach": [
+        "anterior"
+      ],
+      "patientPosition": "Decúbito supino con ligera extensión cervical",
+      "anesthesia": "General",
+      "preopImaging": [
+        "RMN (hernia/compresión)",
+        "TAC",
+        "Radiografía dinámica"
+      ],
+      "indications": [
+        "Hernia discal sintomática con radiculopatía/mielopatía",
+        "Disco lesionado en fractura subaxial"
+      ],
+      "contraindications": [
+        "Compresión exclusivamente posterior"
+      ],
+      "classifications": [
+        "SLIC (en trauma)"
+      ],
+      "steps": [
+        "Abordaje anterior cervical",
+        "Exposición del disco bajo fluoroscopía",
+        "Discectomía completa del nivel afectado",
+        "Descompresión del canal (exéresis de osteofitos/fragmentos)",
+        "Colocación de cage + injerto y placa (ACDF)"
+      ],
+      "implants": [
+        "Cage de PEEK con injerto",
+        "Placa cervical anterior + tornillos"
+      ],
+      "complications": [
+        "Lesión del laríngeo recurrente",
+        "Lesión esofágica",
+        "Pseudoartrosis",
+        "Disfagia"
+      ],
+      "pearls": [
+        "La discectomía sola suele acompañarse de fusión (ACDF) para estabilizar el segmento",
+        "Confirmar el nivel por fluoroscopía antes de la exéresis"
+      ],
+      "durationMin": 60,
+      "durationMax": 150,
+      "recovery": "Collarín; movilización progresiva",
+      "references": [
+        "Smith-Robinson",
+        "Rockwood & Wilkins (columna pediátrica)"
+      ],
+      "level": "specialist",
+      "dataCompleteness": "partial",
+      "tags": [
+        "columna cervical",
+        "discectomía",
+        "ACDF",
+        "hernia"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    },
+    {
+      "id": "descompresion-cervical",
+      "name": "Descompresión cervical",
+      "aliases": [
+        "cervical decompression",
+        "corpectomía/laminectomía descompresiva"
+      ],
+      "anatomicRegion": "spine",
+      "specialty": "spine",
+      "ageGroup": "both",
+      "category": "decompression",
+      "approach": [
+        "anterior",
+        "posterior"
+      ],
+      "patientPosition": "Supino (anterior) o prono (posterior)",
+      "anesthesia": "General",
+      "preopImaging": [
+        "RMN (nivel y dirección de la compresión)",
+        "TAC",
+        "Radiografía dinámica"
+      ],
+      "indications": [
+        "Mielopatía/radiculopatía cervical compresiva",
+        "Compresión por hematoma/hernia postraumática (urgente <24 h)"
+      ],
+      "contraindications": [
+        "Ausencia de compresión estructural identificable"
+      ],
+      "classifications": [
+        "SLIC (en trauma)"
+      ],
+      "steps": [
+        "Elegir vía según dirección de la compresión (anterior: discectomía/corpectomía; posterior: laminectomía/laminoplastia)",
+        "Exéresis del agente compresivo",
+        "Verificar descompresión del cordón",
+        "± estabilización/artrodesis si se genera inestabilidad"
+      ],
+      "implants": [
+        "Según procedimiento (cage, placa, tornillos)"
+      ],
+      "complications": [
+        "Lesión medular/radicular",
+        "Inestabilidad iatrogénica",
+        "Lesión vascular",
+        "Pseudoartrosis si se fusiona"
+      ],
+      "pearls": [
+        "En lesión medular con causa compresiva en RMN → descompresión dentro de las primeras 24 h (evidencia nivel II)",
+        "La descompresión amplia puede requerir artrodesis para evitar inestabilidad"
+      ],
+      "durationMin": 90,
+      "durationMax": 240,
+      "recovery": "Según déficit; rehabilitación neurológica precoz en lesión medular",
+      "references": [
+        "AANS guidelines",
+        "Rockwood & Wilkins (columna pediátrica)"
+      ],
+      "level": "specialist",
+      "dataCompleteness": "partial",
+      "tags": [
+        "columna cervical",
+        "descompresión",
+        "mielopatía",
+        "urgencia"
+      ],
+      "videoUrl": "",
+      "source": "kb",
+      "userEdited": false
+    }
+  ]
+}

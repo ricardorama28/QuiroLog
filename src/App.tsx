@@ -3,25 +3,25 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import { BottomNav } from './components/ui/BottomNav'
 import { Dashboard } from './pages/Dashboard'
+import { CasesPage } from './pages/CasesPage'
 import { CalendarPage } from './pages/CalendarPage'
 import { ProceduresPage } from './pages/ProceduresPage'
 import { SettingsPage } from './pages/SettingsPage'
 import { AuthPage } from './pages/AuthPage'
 import { useSettings } from './hooks/useSettings'
-import { useProcedures } from './hooks/useProcedures'
+import { useProcedures, seedKnowledgeBaseIfNeeded } from './hooks/useProcedures'
 
 function AppInner() {
   const { user, localOnly, loading } = useAuth()
   const { settings } = useSettings()
   const { enrichExisting } = useProcedures()
 
-  // Apply dark mode
   useEffect(() => {
     document.documentElement.classList.toggle('dark', settings.darkMode)
   }, [settings.darkMode])
 
-  // Auto-enrich procedures on mount
   useEffect(() => {
+    seedKnowledgeBaseIfNeeded()
     if (settings.autoEnrich) enrichExisting()
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -41,6 +41,7 @@ function AppInner() {
     <div className="bg-gray-50 dark:bg-gray-950 min-h-dvh">
       <Routes>
         <Route path="/" element={<Dashboard />} />
+        <Route path="/cases" element={<CasesPage />} />
         <Route path="/calendar" element={<CalendarPage />} />
         <Route path="/procedures" element={<ProceduresPage />} />
         <Route path="/settings" element={<SettingsPage />} />
