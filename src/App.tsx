@@ -9,7 +9,7 @@ import { ProceduresPage } from './pages/ProceduresPage'
 import { SettingsPage } from './pages/SettingsPage'
 import { AuthPage } from './pages/AuthPage'
 import { useSettings } from './hooks/useSettings'
-import { useProcedures } from './hooks/useProcedures'
+import { useProcedures, seedKnowledgeBaseIfNeeded } from './hooks/useProcedures'
 
 function AppInner() {
   const { user, localOnly, loading } = useAuth()
@@ -21,6 +21,7 @@ function AppInner() {
   }, [settings.darkMode])
 
   useEffect(() => {
+    seedKnowledgeBaseIfNeeded()
     if (settings.autoEnrich) enrichExisting()
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 

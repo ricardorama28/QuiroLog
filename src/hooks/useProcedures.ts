@@ -1,7 +1,19 @@
 import { useState, useCallback } from 'react'
 import type { Procedure } from '../types'
-import { getProcedures, saveProcedures } from '../lib/storage'
-import { normalize, kbBySlug, kbByAlias } from '../data/procedureKnowledgeBase'
+import { getProcedures, saveProcedures, getKbSeededVersion, setKbSeededVersion } from '../lib/storage'
+import { normalize, kbBySlug, kbByAlias, knowledgeBase, KB_VERSION } from '../data/procedureKnowledgeBase'
+
+export function seedKnowledgeBaseIfNeeded(): void {
+  const storedVersion = getKbSeededVersion()
+  if (storedVersion === KB_VERSION) return
+  const stored = getProcedures()
+  const storedIds = new Set(stored.map((p) => p.id))
+  const missing = knowledgeBase.filter((p) => !storedIds.has(p.id))
+  if (missing.length > 0) {
+    saveProcedures([...missing, ...stored])
+  }
+  setKbSeededVersion(KB_VERSION)
+}
 
 function newId(): string {
   return `proc-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`

@@ -4,6 +4,7 @@ const KEYS = {
   cases: 'quirolog_cases',
   procedures: 'quirolog_procedures',
   settings: 'quirolog_settings',
+  kbSeededVersion: 'quirolog_kb_seeded_version',
 }
 
 const DEFAULT_SETTINGS: Settings = {
@@ -53,6 +54,14 @@ export function getSettings(): Settings {
 
 export function saveSettings(settings: Settings) {
   save(KEYS.settings, settings)
+}
+
+export function getKbSeededVersion(): string {
+  return localStorage.getItem(KEYS.kbSeededVersion) ?? ''
+}
+
+export function setKbSeededVersion(version: string) {
+  localStorage.setItem(KEYS.kbSeededVersion, version)
 }
 
 export function hasLocalData(): boolean {
