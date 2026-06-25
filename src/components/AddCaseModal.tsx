@@ -1,43 +1,83 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect, useRef } from 'react'
 import { X } from 'lucide-react'
 import { useCases } from '../hooks/useCases'
 import { useProcedures } from '../hooks/useProcedures'
 import { knowledgeBase } from '../data/procedureKnowledgeBase'
-import type { SurgeonRole, Laterality } from '../types'
-import { ROLE_LABELS, LATERALITY_LABELS } from '../types'
+import type { SurgeonRole, Laterality, SurgicalCase, SurgicalCaseStatus } from '../types'
+import { ROLE_LABELS, LATERALITY_LABELS, STATUS_LABELS } from '../types'
 
 interface Props {
   initialDate?: string
+  initial?: SurgicalCase
   onClose: () => void
+}
+
+function todayLocal(): string {
+  return new Date().toLocaleDateString('sv') // YYYY-MM-DD in local time
 }
 
 const inputCls = 'w-full px-3 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm'
 const labelCls = 'block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1'
 
-export function AddCaseModal({ initialDate, onClose }: Props) {
-  const { addCase } = useCases()
+export function AddCaseModal({ initialDate, initial, onClose }: Props) {
+  const { addCase, updateCase, cases } = useCases()
   const { procedures } = useProcedures()
+
+  const usageMap = useMemo(() => {
+    const map: Record<string, number> = {}
+    cases.forEach(c => { if (c.procedureId) map[c.procedureId] = (map[c.procedureId] ?? 0) + 1 })
+    return map
+  }, [cases])
 
   const allProcedures = useMemo(() => {
     const userIds = new Set(procedures.map(p => p.id))
     const kbOnly = knowledgeBase.filter(p => !userIds.has(p.id))
-    return [...procedures, ...kbOnly]
-  }, [procedures])
+    const all = [...procedures, ...kbOnly]
+    return all.sort((a, b) => {
+      if (!!a.pinned !== !!b.pinned) return a.pinned ? -1 : 1
+      const diff = (usageMap[b.id] ?? 0) - (usageMap[a.id] ?? 0)
+      if (diff !== 0) return diff
+      return a.name.localeCompare(b.name)
+    })
+  }, [procedures, usageMap])
 
-  const today = new Date().toISOString().slice(0, 10)
+  const today = todayLocal()
+  const defaultDate = initial?.date ?? initialDate ?? today
 
-  const [procedureId, setProcedureId] = useState('')
-  const [procedureNameSnapshot, setProcedureNameSnapshot] = useState('')
-  const [date, setDate] = useState(initialDate ?? today)
-  const [role, setRole] = useState<SurgeonRole>('primary')
-  const [patientLabel, setPatientLabel] = useState('')
-  const [diagnosis, setDiagnosis] = useState('')
-  const [laterality, setLaterality] = useState<Laterality | ''>('')
-  const [institution, setInstitution] = useState('')
-  const [implantUsed, setImplantUsed] = useState('')
-  const [actualDurationMin, setActualDurationMin] = useState('')
-  const [intraopNotes, setIntraopNotes] = useState('')
-  const [notes, setNotes] = useState('')
+  function defaultStatus(d: string): SurgicalCaseStatus {
+    return d.slice(0, 10) > today ? 'planned' : 'done'
+  }
+
+  const [procedureId, setProcedureId] = useState(initial?.procedureId ?? '')
+  const [procedureNameSnapshot, setProcedureNameSnapshot] = useState(initial?.procedureNameSnapshot ?? '')
+  const [date, setDate] = useState(defaultDate)
+  const [role, setRole] = useState<SurgeonRole>(initial?.role ?? 'primary')
+  const [status, setStatus] = useState<SurgicalCaseStatus>(
+    initial ? (initial.status ?? 'done') : defaultStatus(defaultDate)
+  )
+  const [patientLabel, setPatientLabel] = useState(initial?.patientLabel ?? '')
+  const [diagnosis, setDiagnosis] = useState(initial?.diagnosis ?? '')
+  const [laterality, setLaterality] = useState<Laterality | ''>(initial?.laterality ?? '')
+  const [institution, setInstitution] = useState(initial?.institution ?? '')
+  const [implantUsed, setImplantUsed] = useState(initial?.implantUsed ?? '')
+  const [actualDurationMin, setActualDurationMin] = useState(
+    initial?.actualDurationMin != null ? String(initial.actualDurationMin) : ''
+  )
+  const [intraopNotes, setIntraopNotes] = useState(initial?.intraopNotes ?? '')
+  const [notes, setNotes] = useState(initial?.notes ?? '')
+
+  const statusTouched = useRef(false)
+
+  // Auto-update status when date changes, unless user manually picked a status or we're in edit mode
+  useEffect(() => {
+    if (statusTouched.current || initial) return
+    setStatus(defaultStatus(date))
+  }, [date]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  function handleStatusChange(s: SurgicalCaseStatus) {
+    statusTouched.current = true
+    setStatus(s)
+  }
 
   function handleProcedureChange(e: React.ChangeEvent<HTMLSelectElement>) {
     const id = e.target.value
@@ -49,11 +89,12 @@ export function AddCaseModal({ initialDate, onClose }: Props) {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (!procedureNameSnapshot.trim()) return
-    addCase({
+    const payload = {
       procedureId,
       procedureNameSnapshot: procedureNameSnapshot.trim(),
       date,
       role,
+      status,
       patientLabel: patientLabel.trim() || undefined,
       diagnosis: diagnosis.trim() || undefined,
       laterality: (laterality as Laterality) || undefined,
@@ -62,7 +103,12 @@ export function AddCaseModal({ initialDate, onClose }: Props) {
       actualDurationMin: actualDurationMin ? parseInt(actualDurationMin) : undefined,
       intraopNotes: intraopNotes.trim() || undefined,
       notes: notes.trim() || undefined,
-    })
+    }
+    if (initial) {
+      updateCase(initial.id, payload)
+    } else {
+      addCase(payload)
+    }
     onClose()
   }
 
@@ -70,7 +116,9 @@ export function AddCaseModal({ initialDate, onClose }: Props) {
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 p-4">
       <div className="bg-white dark:bg-gray-900 rounded-2xl w-full max-w-sm max-h-[90dvh] flex flex-col">
         <div className="flex items-center justify-between px-5 pt-5 pb-3 border-b border-gray-100 dark:border-gray-800 flex-shrink-0">
-          <h2 className="font-bold text-gray-900 dark:text-white">Nuevo caso quirúrgico</h2>
+          <h2 className="font-bold text-gray-900 dark:text-white">
+            {initial ? 'Editar caso' : 'Nuevo caso quirúrgico'}
+          </h2>
           <button onClick={onClose} className="p-1 text-gray-400 hover:text-gray-600">
             <X className="w-5 h-5" />
           </button>
@@ -91,9 +139,11 @@ export function AddCaseModal({ initialDate, onClose }: Props) {
                 )}
                 {knowledgeBase.filter(p => !new Set(procedures.map(x => x.id)).has(p.id)).length > 0 && (
                   <optgroup label="Base de conocimiento">
-                    {knowledgeBase.filter(p => !new Set(procedures.map(x => x.id)).has(p.id)).map(p => (
-                      <option key={p.id} value={p.id}>{p.name}</option>
-                    ))}
+                    {allProcedures
+                      .filter(p => !new Set(procedures.map(x => x.id)).has(p.id))
+                      .map(p => (
+                        <option key={p.id} value={p.id}>{p.name}</option>
+                      ))}
                   </optgroup>
                 )}
               </select>
@@ -106,6 +156,29 @@ export function AddCaseModal({ initialDate, onClose }: Props) {
                 className={inputCls}
               />
             )}
+          </div>
+
+          {/* Status toggle */}
+          <div>
+            <label className={labelCls}>Estado</label>
+            <div className="flex rounded-xl overflow-hidden border border-gray-300 dark:border-gray-700">
+              {(Object.entries(STATUS_LABELS) as [SurgicalCaseStatus, string][]).map(([v, l]) => (
+                <button
+                  key={v}
+                  type="button"
+                  onClick={() => handleStatusChange(v)}
+                  className={`flex-1 py-2 text-sm font-medium transition-colors ${
+                    status === v
+                      ? v === 'done'
+                        ? 'bg-primary-600 text-white'
+                        : 'bg-amber-500 text-white'
+                      : 'bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-400'
+                  }`}
+                >
+                  {l}
+                </button>
+              ))}
+            </div>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
@@ -220,7 +293,7 @@ export function AddCaseModal({ initialDate, onClose }: Props) {
               Cancelar
             </button>
             <button type="submit" className="flex-1 py-2.5 rounded-xl bg-primary-600 text-white font-medium text-sm hover:bg-primary-700">
-              Agregar caso
+              {initial ? 'Guardar cambios' : 'Agregar caso'}
             </button>
           </div>
         </form>

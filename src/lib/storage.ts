@@ -1,4 +1,4 @@
-import type { SurgicalCase, Procedure, Settings, AppData } from '../types'
+import type { SurgicalCase, SurgicalCaseStatus, Procedure, Settings, AppData } from '../types'
 
 const KEYS = {
   cases: 'quirolog_cases',
@@ -32,7 +32,8 @@ function save(key: string, value: unknown) {
 }
 
 export function getCases(): SurgicalCase[] {
-  return parse<SurgicalCase[]>(KEYS.cases, [])
+  const raw = parse<SurgicalCase[]>(KEYS.cases, [])
+  return raw.map(c => ({ ...c, status: (c.status as SurgicalCaseStatus | undefined) ?? 'done' }))
 }
 
 export function saveCases(cases: SurgicalCase[]) {

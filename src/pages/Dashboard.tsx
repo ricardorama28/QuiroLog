@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Calendar, Stethoscope, BookOpen, TrendingUp, Users } from 'lucide-react'
+import { Calendar, Stethoscope, BookOpen, TrendingUp, Users, Clock, CheckCircle } from 'lucide-react'
 import { useCases } from '../hooks/useCases'
 import { useProcedures } from '../hooks/useProcedures'
 import { useSettings } from '../hooks/useSettings'
@@ -9,6 +9,10 @@ import { ROLE_LABELS } from '../types'
 import type { SurgeonRole } from '../types'
 import { startOfWeek, endOfWeek, startOfMonth, endOfMonth, isWithinInterval, parseISO } from 'date-fns'
 
+function todayLocal(): string {
+  return new Date().toLocaleDateString('sv')
+}
+
 function greeting(name?: string | null): string {
   const hour = new Date().getHours()
   const saludo = hour < 12 ? 'Buenos días' : hour < 19 ? 'Buenas tardes' : 'Buenas noches'
@@ -16,10 +20,17 @@ function greeting(name?: string | null): string {
 }
 
 export function Dashboard() {
-  const { cases } = useCases()
+  const { cases, updateCase } = useCases()
   const { procedures } = useProcedures()
   const { settings } = useSettings()
   const { user } = useAuth()
+
+  const today = todayLocal()
+  const doneCases = cases.filter(c => c.status !== 'planned')
+  const upcomingCases = cases
+    .filter(c => c.status === 'planned' && c.date.slice(0, 10) >= today)
+    .sort((a, b) => a.date.localeCompare(b.date))
+    .slice(0, 5)
 
   const now = new Date()
   const weekStart = startOfWeek(now, { weekStartsOn: 1 })
@@ -27,23 +38,23 @@ export function Dashboard() {
   const monthStart = startOfMonth(now)
   const monthEnd = endOfMonth(now)
 
-  const thisWeek = cases.filter(c => {
+  const thisWeek = doneCases.filter(c => {
     try { return isWithinInterval(parseISO(c.date), { start: weekStart, end: weekEnd }) } catch { return false }
   })
 
-  const thisMonth = cases.filter(c => {
+  const thisMonth = doneCases.filter(c => {
     try { return isWithinInterval(parseISO(c.date), { start: monthStart, end: monthEnd }) } catch { return false }
   })
 
   const goal = settings.weeklyGoal
   const weekPct = Math.min(100, goal > 0 ? Math.round((thisWeek.length / goal) * 100) : 0)
 
-  const roleCounts = cases.reduce<Record<string, number>>((acc, c) => {
+  const roleCounts = doneCases.reduce<Record<string, number>>((acc, c) => {
     acc[c.role] = (acc[c.role] ?? 0) + 1
     return acc
   }, {})
 
-  const lastCase = [...cases].sort((a, b) => b.date.localeCompare(a.date))[0]
+  const lastCase = [...doneCases].sort((a, b) => b.date.localeCompare(a.date))[0]
 
   return (
     <div className="pb-20 min-h-dvh bg-gray-50 dark:bg-gray-950">
@@ -56,6 +67,33 @@ export function Dashboard() {
         </div>
 
         <DailyContext />
+
+        {/* Upcoming surgeries */}
+        {upcomingCases.length > 0 && (
+          <div className="bg-white dark:bg-gray-900 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800">
+            <div className="flex items-center gap-2 mb-3">
+              <Clock className="w-4 h-4 text-amber-500" />
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Próximas cirugías</span>
+            </div>
+            <div className="space-y-2">
+              {upcomingCases.map(c => (
+                <div key={c.id} className="flex items-center gap-2">
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium text-gray-900 dark:text-white truncate">{c.procedureNameSnapshot}</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">{c.date} · {ROLE_LABELS[c.role]}</p>
+                  </div>
+                  <button
+                    onClick={() => updateCase(c.id, { status: 'done' })}
+                    className="flex-shrink-0 p-1.5 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20"
+                    title="Marcar como realizada"
+                  >
+                    <CheckCircle className="w-4 h-4" />
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Weekly progress */}
         <div className="bg-white dark:bg-gray-900 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800">
@@ -80,7 +118,7 @@ export function Dashboard() {
               <BookOpen className="w-4 h-4 text-primary-600 dark:text-primary-400" />
               <span className="text-xs font-medium text-gray-500 dark:text-gray-400">Total casos</span>
             </div>
-            <span className="text-2xl font-bold text-gray-900 dark:text-white">{cases.length}</span>
+            <span className="text-2xl font-bold text-gray-900 dark:text-white">{doneCases.length}</span>
           </div>
           <div className="bg-white dark:bg-gray-900 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800">
             <div className="flex items-center gap-2 mb-1">
@@ -92,7 +130,7 @@ export function Dashboard() {
         </div>
 
         {/* Role breakdown */}
-        {cases.length > 0 && (
+        {doneCases.length > 0 && (
           <div className="bg-white dark:bg-gray-900 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800">
             <div className="flex items-center gap-2 mb-3">
               <Users className="w-4 h-4 text-primary-600 dark:text-primary-400" />
@@ -101,7 +139,7 @@ export function Dashboard() {
             <div className="space-y-2">
               {(Object.keys(ROLE_LABELS) as SurgeonRole[]).filter(r => roleCounts[r]).map(role => {
                 const count = roleCounts[role] ?? 0
-                const pct = Math.round((count / cases.length) * 100)
+                const pct = Math.round((count / doneCases.length) * 100)
                 return (
                   <div key={role}>
                     <div className="flex justify-between text-xs text-gray-600 dark:text-gray-400 mb-0.5">

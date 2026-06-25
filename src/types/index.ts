@@ -28,12 +28,15 @@ export type ProcedureSource = 'kb' | 'user'
 
 export type SyncState = 'local' | 'synced' | 'pending'
 
+export type SurgicalCaseStatus = 'planned' | 'done'
+
 // ─── Procedure (catalog) ──────────────────────────────────────────────────────
 
 export interface Procedure {
   id: string                     // stable slug (primary key)
   name: string
   aliases: string[]
+  pinned?: boolean
   anatomicRegion: AnatomicRegion
   specialty: Specialty
   ageGroup: AgeGroup
@@ -69,6 +72,7 @@ export interface SurgicalCase {
   procedureNameSnapshot: string  // copy of name; survives catalog renames
   date: string                   // ISO yyyy-MM-dd
   role: SurgeonRole
+  status: SurgicalCaseStatus
   patientLabel?: string          // free text, NOT PII by design
   diagnosis?: string
   laterality?: Laterality
@@ -168,6 +172,11 @@ export const COMPLETENESS_LABELS: Record<DataCompleteness, string> = {
   full: 'Completo',
   partial: 'Parcial',
   standard: 'Estándar',
+}
+
+export const STATUS_LABELS: Record<SurgicalCaseStatus, string> = {
+  planned: 'Agendada',
+  done: 'Realizada',
 }
 
 export const PROCEDURE_CATEGORIES = [
