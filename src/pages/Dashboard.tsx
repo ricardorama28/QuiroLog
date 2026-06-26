@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Calendar, Stethoscope, BookOpen, TrendingUp, Users, Clock, CheckCircle, Bone } from 'lucide-react'
+import { Calendar, Stethoscope, BookOpen, TrendingUp, Users, Clock, CheckCircle, Cross } from 'lucide-react'
 import { FloatingBackground } from '../components/FloatingBackground'
 import { useCases } from '../hooks/useCases'
 import { useProcedures } from '../hooks/useProcedures'
@@ -69,7 +69,7 @@ export function Dashboard() {
       <div className="relative z-10 max-w-lg mx-auto px-4 pt-6 space-y-4">
         <div className="flex items-center gap-3">
           <div className="flex-shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-xl bg-primary-600 text-white shadow-sm">
-            <Bone className="w-5 h-5" />
+            <Cross className="w-5 h-5" />
           </div>
           <div>
             <h1 className="text-xl font-bold text-gray-900 dark:text-white">
@@ -83,7 +83,7 @@ export function Dashboard() {
 
         {/* Upcoming surgeries */}
         {upcomingCases.length > 0 && (
-          <div className="bg-white dark:bg-gray-900 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800">
+          <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800">
             <div className="flex items-center gap-2 mb-3">
               <Clock className="w-4 h-4 text-amber-500" />
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Próximas cirugías</span>
@@ -109,7 +109,7 @@ export function Dashboard() {
         )}
 
         {/* Weekly progress */}
-        <div className="bg-white dark:bg-gray-900 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800">
+        <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800">
           <div className="flex items-center gap-2 mb-3">
             <TrendingUp className="w-4 h-4 text-primary-600 dark:text-primary-400" />
             <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Esta semana</span>
@@ -126,14 +126,14 @@ export function Dashboard() {
 
         {/* Counters */}
         <div className="grid grid-cols-2 gap-3">
-          <div className="bg-white dark:bg-gray-900 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800">
+          <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800">
             <div className="flex items-center gap-2 mb-1">
               <BookOpen className="w-4 h-4 text-primary-600 dark:text-primary-400" />
               <span className="text-xs font-medium text-gray-500 dark:text-gray-400">Total cirugías</span>
             </div>
             <span className="text-2xl font-bold text-gray-900 dark:text-white">{doneCases.length}</span>
           </div>
-          <div className="bg-white dark:bg-gray-900 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800">
+          <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800">
             <div className="flex items-center gap-2 mb-1">
               <Stethoscope className="w-4 h-4 text-primary-600 dark:text-primary-400" />
               <span className="text-xs font-medium text-gray-500 dark:text-gray-400">Procedimientos</span>
@@ -144,7 +144,7 @@ export function Dashboard() {
 
         {/* Role breakdown */}
         {doneCases.length > 0 && (
-          <div className="bg-white dark:bg-gray-900 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800">
+          <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800">
             <div className="flex items-center gap-2 mb-3">
               <Users className="w-4 h-4 text-primary-600 dark:text-primary-400" />
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Por rol</span>
@@ -171,7 +171,7 @@ export function Dashboard() {
 
         {/* Last case */}
         {lastCase ? (
-          <div className="bg-white dark:bg-gray-900 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800">
+          <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800">
             <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">Última cirugía</h2>
             <p className="font-semibold text-gray-900 dark:text-white">{lastCase.procedureNameSnapshot}</p>
             <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm text-gray-500 dark:text-gray-400">
@@ -189,7 +189,7 @@ export function Dashboard() {
             )}
           </div>
         ) : (
-          <div className="bg-white dark:bg-gray-900 rounded-xl p-6 text-center shadow-sm border border-gray-100 dark:border-gray-800">
+          <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl p-6 text-center shadow-sm border border-gray-100 dark:border-gray-800">
             <Stethoscope className="w-8 h-8 mx-auto text-gray-300 dark:text-gray-600 mb-2" />
             <p className="text-gray-500 dark:text-gray-400 text-sm">Sin cirugías registradas todavía</p>
           </div>
@@ -206,7 +206,7 @@ export function Dashboard() {
           </Link>
           <Link
             to="/procedures"
-            className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-xl p-4 flex flex-col gap-1 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors shadow-sm"
+            className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm text-gray-900 dark:text-white rounded-xl p-4 flex flex-col gap-1 border border-gray-200 dark:border-gray-700 hover:bg-white/90 dark:hover:bg-gray-900/90 transition-colors shadow-sm"
           >
             <Stethoscope className="w-5 h-5" />
             <span className="font-medium text-sm">Procedimientos</span>
