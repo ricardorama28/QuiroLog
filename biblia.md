@@ -16,6 +16,8 @@ QuiroLog es una **PWA mobile-first** para que médicos de traumatología y ortop
 
 **Modelo de negocio:** no definido como prioridad en esta etapa. La herramienta es de uso profesional individual; la monetización (suscripción / institucional) queda fuera de alcance hasta después de Fase 2. **No se debe diseñar nada que asuma un modelo de cobro todavía.**
 
+**DECISIÓN ABIERTA — Facturación mensual:** idea del README original (initial commit, ~4 meses atrás), **SIN decidir** si sigue vigente. El desarrollo real se enfocó en logbook + catálogo + colaboradores, sin facturación. **Fuera de alcance. Prohibido diseñar nada que la asuma hasta resolverlo.**
+
 ---
 
 ## 2. CONTEXTO DEL USUARIO / EQUIPO
@@ -119,7 +121,7 @@ Bundleado en el build (`KB_VERSION` desde `seed.meta.version`). `seedKnowledgeBa
 **Fuera de alcance (explícito):**
 - **PII de pacientes en la nube** — diferido a Fase 3 y, por decisión, **el dato identificable jamás se sincroniza** (ver § 6, Fase 3). No se agregan columnas PII a `cases` nunca.
 - **Edición colaborativa / co-propiedad** — los colaboradores son **solo-lectura**. No hay edición multi-usuario ni merge de escrituras concurrentes entre usuarios.
-- **Modelo de cobro / facturación automática** — la facturación mensual figura en la visión original pero NO está en alcance todavía; no diseñar sobre supuestos de pricing.
+- **Facturación mensual / modelo de cobro** — **DECISIÓN ABIERTA** (ver § 1): viene del README original pero NO se decidió si sigue vigente. Fuera de alcance. Prohibido diseñar nada que la asuma hasta resolverlo.
 - **Búsqueda externa / enriquecimiento por IA en runtime** — flag `externalSearch` existe pero apagado; fuera de alcance.
 
 ---
