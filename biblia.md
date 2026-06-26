@@ -222,13 +222,13 @@ Defectos encontrados fuera del flujo normal de etapas.
 
 ---
 
-### ⏳ BUG-001 — Blank screen post-Fase 1
-- **Estado:** Abierto (en debug, sin resolver)
+### ✅ BUG-001 — Blank screen post-Fase 1
+- **Estado:** Resuelto
 - **Etapa reconocida:** Fase 1 (post-implementación de sync en la nube)
-- **Fecha:** 2026-06-26
-- **Duración:** —
-- **Descripción:** En ciertas condiciones, tras el flujo de Fase 1 (login/reconcile), la app muestra pantalla en blanco en vez de renderizar el Dashboard. Hipótesis principal: **no hay `ErrorBoundary`** en `App.tsx`; cualquier excepción no capturada en render (ej. durante `reconcile`, el seed del catálogo, o datos remotos inesperados) desmonta todo el árbol y deja pantalla blanca. Vectores sospechosos: `reconcile(user.id)` resolviendo datos remotos malformados, `seedKnowledgeBaseIfNeeded()` / `enrichExisting()` en el `useEffect` de arranque, o estado transitorio entre `loading` → `user` → render.
-- **Fix:** Pendiente. Línea de ataque propuesta (no ejecutada): (1) envolver `AppInner`/rutas en un `ErrorBoundary` que muestre fallback en vez de blanco y loguee el stack; (2) reproducir con datos remotos reales para capturar el throw exacto; (3) endurecer `reconcile`/`rowToCase` ante filas inesperadas.
+- **Fecha:** 2026-06-26 (causa identificada en historial git)
+- **Duración:** ~30 s entre regresión y fix (commits `2ffd042` → `b68098d`, mismo día 2026-06-25)
+- **Descripción:** Tras el flujo de Fase 1 la app mostraba pantalla en blanco. **Causa real:** el merge `2ffd042` (`Merge branch 'main' into claude/modest-mendel-lkcdo6`, que junta Fase 1 con Fase 0.5) resolvió mal un conflicto en `src/hooks/useProcedures.ts` y dejó **`togglePin` declarado dos veces con `const` en el mismo scope** (la versión con sync de Fase 1 + la versión simple de main). Dos `const` con el mismo nombre en el mismo bloque ⇒ `SyntaxError` ⇒ el bundle entero no carga ⇒ pantalla en blanco. (No era la hipótesis original de "falta de `ErrorBoundary`".)
+- **Fix:** Commit **`b68098d`** (`fix: remove duplicate togglePin introduced by merge`) eliminó la copia duplicada (la versión simple sin sync), dejando la `togglePin` que sincroniza vía `upsertOverride`/`deleteRemoteOverride`. El módulo volvió a compilar y la app a renderizar.
 
 ---
 
@@ -240,12 +240,12 @@ Cambios de calidad técnica que no son feature ni bug.
 ---
 
 ### ⏳ MT-001 — ErrorBoundary global
-- **Estado:** Propuesta (ligada a BUG-001)
-- **Etapa de referencia:** Fase 1 / arranque de Fase 2
+- **Estado:** Propuesta (opcional — ya NO es prerrequisito de Fase 2)
+- **Etapa de referencia:** Fase 1 / cuando convenga
 - **Fecha:** 2026-06-26
 - **Duración:** —
-- **Impacto:** elimina la clase entera de fallas "pantalla en blanco"; convierte crashes silenciosos en un fallback visible + log. Prerrequisito sano antes de sumar la complejidad de Fase 2.
-- **Descripción:** `App.tsx` no tiene `ErrorBoundary`. Agregar uno que capture errores de render, muestre un fallback y registre el error. Ver BUG-001.
+- **Impacto:** robustez general: convierte cualquier crash de render futuro en un fallback visible + log, en vez de pantalla en blanco. **No** estaba ligada a BUG-001 (cuya causa real fue un `togglePin` duplicado, ya resuelto en `b68098d`), así que deja de ser bloqueante para arrancar Fase 2.
+- **Descripción:** `App.tsx` no tiene `ErrorBoundary`. Agregar uno que capture errores de render, muestre un fallback y registre el error. Mejora de defensa en profundidad, tomable en cualquier momento.
 
 ---
 

@@ -22,10 +22,10 @@ Al iniciar una sesión sobre este repo:
 
 - **Fase activa:** Arquitectura formalizada. Próxima fase de desarrollo: **Fase 2 — Colaboradores** (también disponible Fase 0.6 — Export PDF).
 - **Etapa activa:** ninguna en curso. Arrancar por **Etapa 2.1 — Esquema y RLS** (o 0.6.1 si se prioriza el PDF).
-- **Último paso completado:** reconstrucción de `biblia.md` + `CLAUDE.md` a partir del código en producción; cierre de los bordes de Fase 2 y Fase 3; registro de BUG-001 (blank screen).
-- **Próximo paso:** Etapa 2.1 — crear migración `case_collaborators` + policy SELECT-only en `cases` para colaboradores (ver `biblia.md` § 6, Fase 2). **Recomendado antes de empezar:** resolver MT-001 / BUG-001 (ErrorBoundary) para no construir Fase 2 sobre un crash silencioso.
+- **Último paso completado:** reconstrucción de `biblia.md` + `CLAUDE.md`; cierre de bordes de Fase 2 y Fase 3; **BUG-001 cerrado** (causa real = `togglePin` duplicado por mal merge `2ffd042`, ya resuelto en `b68098d`; no era falta de `ErrorBoundary`). MT-001 (ErrorBoundary) bajado a mejora opcional.
+- **Próximo paso:** Etapa 2.1 — crear migración `case_collaborators` + policy SELECT-only en `cases` para colaboradores (ver `biblia.md` § 6, Fase 2). Vía libre: ya no hay crash de arranque que bloquee.
 - **Último archivo tocado:** `biblia.md`, `CLAUDE.md` (nuevos).
-- **Notas de sesión:** Bordes cerrados en esta sesión → colab: solo-lectura, por caso, invitación por email de cuenta existente. PII (Fase 3): solo local, jamás en la nube. Todo volcado en `biblia.md`; nada pendiente de migrar.
+- **Notas de sesión:** Bordes cerrados → colab: solo-lectura, por caso, invitación por email de cuenta existente. PII (Fase 3): solo local, jamás en la nube. BUG-001 investigado y cerrado vía historial git (`b68098d`). Todo volcado en `biblia.md`; nada pendiente de migrar.
 
 ---
 
