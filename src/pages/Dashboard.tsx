@@ -7,16 +7,22 @@ import { useAuth } from '../context/AuthContext'
 import { DailyContext } from '../components/dashboard/DailyContext'
 import { ROLE_LABELS } from '../types'
 import type { SurgeonRole } from '../types'
+import type { User } from '@supabase/supabase-js'
 import { startOfWeek, endOfWeek, startOfMonth, endOfMonth, isWithinInterval, parseISO } from 'date-fns'
 
 function todayLocal(): string {
   return new Date().toLocaleDateString('sv')
 }
 
-function greeting(name?: string | null): string {
+function greeting(user?: User | null): string {
   const hour = new Date().getHours()
   const saludo = hour < 12 ? 'Buenos días' : hour < 19 ? 'Buenas tardes' : 'Buenas noches'
-  return name ? `${saludo}, ${name.split(' ')[0]}` : saludo
+  const fullName: string | undefined =
+    user?.user_metadata?.full_name ??
+    user?.user_metadata?.name ??
+    user?.email?.split('@')[0]?.replace(/[._]/g, ' ')
+  const firstName = fullName?.split(' ')[0]
+  return firstName ? `${saludo}, ${firstName}` : saludo
 }
 
 export function Dashboard() {
@@ -61,9 +67,9 @@ export function Dashboard() {
       <div className="max-w-lg mx-auto px-4 pt-6 space-y-4">
         <div>
           <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-            {greeting(user?.email)}
+            {greeting(user)}
           </h1>
-          <p className="text-sm text-gray-500 dark:text-gray-400">QuiroLog</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">TraumaLog</p>
         </div>
 
         <DailyContext />
@@ -116,7 +122,7 @@ export function Dashboard() {
           <div className="bg-white dark:bg-gray-900 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800">
             <div className="flex items-center gap-2 mb-1">
               <BookOpen className="w-4 h-4 text-primary-600 dark:text-primary-400" />
-              <span className="text-xs font-medium text-gray-500 dark:text-gray-400">Total casos</span>
+              <span className="text-xs font-medium text-gray-500 dark:text-gray-400">Total cirugías</span>
             </div>
             <span className="text-2xl font-bold text-gray-900 dark:text-white">{doneCases.length}</span>
           </div>
@@ -159,7 +165,7 @@ export function Dashboard() {
         {/* Last case */}
         {lastCase ? (
           <div className="bg-white dark:bg-gray-900 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800">
-            <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">Último caso</h2>
+            <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">Última cirugía</h2>
             <p className="font-semibold text-gray-900 dark:text-white">{lastCase.procedureNameSnapshot}</p>
             <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm text-gray-500 dark:text-gray-400">
               <span className="flex items-center gap-1">
@@ -178,7 +184,7 @@ export function Dashboard() {
         ) : (
           <div className="bg-white dark:bg-gray-900 rounded-xl p-6 text-center shadow-sm border border-gray-100 dark:border-gray-800">
             <Stethoscope className="w-8 h-8 mx-auto text-gray-300 dark:text-gray-600 mb-2" />
-            <p className="text-gray-500 dark:text-gray-400 text-sm">Sin casos registrados todavía</p>
+            <p className="text-gray-500 dark:text-gray-400 text-sm">Sin cirugías registradas todavía</p>
           </div>
         )}
 
@@ -189,7 +195,7 @@ export function Dashboard() {
             className="bg-primary-600 text-white rounded-xl p-4 flex flex-col gap-1 hover:bg-primary-700 transition-colors"
           >
             <BookOpen className="w-5 h-5" />
-            <span className="font-medium text-sm">Registrar caso</span>
+            <span className="font-medium text-sm">Registrar cirugía</span>
           </Link>
           <Link
             to="/procedures"

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Scissors, Mail, Lock, Chrome } from 'lucide-react'
+import { Bone, Mail, Lock, Chrome } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 import { supabase } from '../lib/supabase'
 
@@ -36,9 +36,9 @@ export function AuthPage() {
         {/* Logo */}
         <div className="text-center space-y-2">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary-600 text-white">
-            <Scissors className="w-8 h-8" />
+            <Bone className="w-8 h-8" />
           </div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">QuiroLog</h1>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">TraumaLog</h1>
           <p className="text-sm text-gray-500 dark:text-gray-400">Registro de cirugías para traumatología</p>
         </div>
 

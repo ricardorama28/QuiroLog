@@ -1,11 +1,11 @@
 {
-  "name": "QuiroLog",
-  "short_name": "QuiroLog",
+  "name": "TraumaLog",
+  "short_name": "TraumaLog",
   "description": "Registro de cirugías para residentes y cirujanos de traumatología",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#0284c7",
+  "theme_color": "#0d9488",
   "orientation": "portrait",
   "categories": ["medical", "productivity"],
   "icons": [

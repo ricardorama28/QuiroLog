@@ -25,7 +25,7 @@ function DayModal({ date, onClose }: { date: string; onClose: () => void }) {
 
   return (
     <>
-      <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 p-4">
+      <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 p-4 pb-16 sm:pb-4">
         <div className="bg-white dark:bg-gray-900 rounded-2xl w-full max-w-sm max-h-[80dvh] flex flex-col">
           <div className="flex items-center justify-between px-5 pt-5 pb-3 border-b border-gray-100 dark:border-gray-800 flex-shrink-0">
             <h2 className="font-bold text-gray-900 dark:text-white capitalize">{label}</h2>
@@ -64,7 +64,7 @@ function DayModal({ date, onClose }: { date: string; onClose: () => void }) {
               onClick={() => setShowAddModal(true)}
               className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border-2 border-dashed border-primary-300 dark:border-primary-700 text-primary-600 dark:text-primary-400 text-sm font-medium hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
             >
-              <Plus className="w-4 h-4" /> Agregar caso
+              <Plus className="w-4 h-4" /> Agregar cirugía
             </button>
           </div>
         </div>

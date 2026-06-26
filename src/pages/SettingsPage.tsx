@@ -76,7 +76,7 @@ export function SettingsPage() {
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">{user.email}</p>
             <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
               {pendingCount > 0
-                ? `${pendingCount} caso${pendingCount > 1 ? 's' : ''} pendiente${pendingCount > 1 ? 's' : ''} de sincronizar`
+                ? `${pendingCount} cirugía${pendingCount > 1 ? 's' : ''} pendiente${pendingCount > 1 ? 's' : ''} de sincronizar`
                 : 'Datos sincronizados'}
             </p>
             <div className="flex gap-2">
@@ -148,7 +148,7 @@ export function SettingsPage() {
           </div>
         </Section>
 
-        <p className="text-xs text-center text-gray-400 dark:text-gray-600 pb-2">QuiroLog v2.0</p>
+        <p className="text-xs text-center text-gray-400 dark:text-gray-600 pb-2">TraumaLog v2.0</p>
       </div>
     </div>
   )

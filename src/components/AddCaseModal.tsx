@@ -113,11 +113,11 @@ export function AddCaseModal({ initialDate, initial, onClose }: Props) {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 p-4">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 p-4 pb-16 sm:pb-4">
       <div className="bg-white dark:bg-gray-900 rounded-2xl w-full max-w-sm max-h-[90dvh] flex flex-col">
         <div className="flex items-center justify-between px-5 pt-5 pb-3 border-b border-gray-100 dark:border-gray-800 flex-shrink-0">
           <h2 className="font-bold text-gray-900 dark:text-white">
-            {initial ? 'Editar caso' : 'Nuevo caso quirúrgico'}
+            {initial ? 'Editar cirugía' : 'Nueva cirugía'}
           </h2>
           <button onClick={onClose} className="p-1 text-gray-400 hover:text-gray-600">
             <X className="w-5 h-5" />
@@ -293,7 +293,7 @@ export function AddCaseModal({ initialDate, initial, onClose }: Props) {
               Cancelar
             </button>
             <button type="submit" className="flex-1 py-2.5 rounded-xl bg-primary-600 text-white font-medium text-sm hover:bg-primary-700">
-              {initial ? 'Guardar cambios' : 'Agregar caso'}
+              {initial ? 'Guardar cambios' : 'Agregar cirugía'}
             </button>
           </div>
         </form>

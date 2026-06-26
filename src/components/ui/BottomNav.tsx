@@ -3,7 +3,7 @@ import { Home, BookOpen, Calendar, Stethoscope, Settings2 } from 'lucide-react'
 
 const tabs = [
   { to: '/', icon: Home, label: 'Inicio' },
-  { to: '/cases', icon: BookOpen, label: 'Casos' },
+  { to: '/cases', icon: BookOpen, label: 'Cirugías' },
   { to: '/calendar', icon: Calendar, label: 'Calendario' },
   { to: '/procedures', icon: Stethoscope, label: 'Procedimientos' },
   { to: '/settings', icon: Settings2, label: 'Ajustes' },

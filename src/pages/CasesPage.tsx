@@ -21,10 +21,10 @@ function CaseDetailModal({
   onDelete: () => void
 }) {
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 p-4">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 p-4 pb-16 sm:pb-4">
       <div className="bg-white dark:bg-gray-900 rounded-2xl w-full max-w-sm max-h-[90dvh] flex flex-col">
         <div className="flex items-center justify-between px-5 pt-5 pb-3 border-b border-gray-100 dark:border-gray-800 flex-shrink-0">
-          <h2 className="font-bold text-gray-900 dark:text-white">Detalle del caso</h2>
+          <h2 className="font-bold text-gray-900 dark:text-white">Detalle de cirugía</h2>
           <button onClick={onClose} className="p-1 text-gray-400 hover:text-gray-600">
             <X className="w-5 h-5" />
           </button>
@@ -166,7 +166,7 @@ export function CasesPage() {
   }, [cases])
 
   function confirmDelete(id: string) {
-    if (confirm('¿Eliminar este caso?')) {
+    if (confirm('¿Eliminar esta cirugía?')) {
       deleteCase(id)
       setDetailCase(null)
     }
@@ -181,7 +181,7 @@ export function CasesPage() {
     <div className="pb-24 min-h-dvh bg-gray-50 dark:bg-gray-950">
       <div className="max-w-lg mx-auto px-4 pt-6 space-y-4">
         <div className="flex items-center justify-between">
-          <h1 className="text-xl font-bold text-gray-900 dark:text-white">Mis casos</h1>
+          <h1 className="text-xl font-bold text-gray-900 dark:text-white">Mis cirugías</h1>
           <button
             onClick={() => setShowModal(true)}
             className="p-2 rounded-xl bg-primary-600 text-white hover:bg-primary-700 transition-colors"
@@ -222,13 +222,13 @@ export function CasesPage() {
         {filtered.length === 0 ? (
           <div className="flex flex-col items-center py-16 text-center text-gray-400 dark:text-gray-600">
             <BookOpen className="w-10 h-10 mb-2" />
-            <p className="text-sm">{cases.length === 0 ? 'Sin casos todavía. Registra tu primera cirugía.' : 'Sin resultados'}</p>
+            <p className="text-sm">{cases.length === 0 ? 'Sin cirugías todavía. Registrá la primera.' : 'Sin resultados'}</p>
             {cases.length === 0 && (
               <button
                 onClick={() => setShowModal(true)}
                 className="mt-4 px-5 py-2.5 rounded-xl bg-primary-600 text-white text-sm font-medium hover:bg-primary-700"
               >
-                Agregar caso
+                Agregar cirugía
               </button>
             )}
           </div>

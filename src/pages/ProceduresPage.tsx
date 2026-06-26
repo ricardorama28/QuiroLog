@@ -450,7 +450,7 @@ function ProcedureModal({
   onSave: (f: FormState) => void
 }) {
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 p-4">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 p-4 pb-16 sm:pb-4">
       <div className="bg-white dark:bg-gray-900 rounded-2xl w-full max-w-sm max-h-[90dvh] flex flex-col">
         <div className="px-5 pt-5 pb-3 border-b border-gray-100 dark:border-gray-800 flex-shrink-0">
           <h2 className="font-bold text-gray-900 dark:text-white">
