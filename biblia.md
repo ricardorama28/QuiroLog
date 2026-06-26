@@ -199,7 +199,8 @@ El desarrollo se corta en fases. Cada fase tiene etapas; cada etapa, work-orders
 Las tareas repetibles con un workflow propio NO viven como sección de esta biblia: se modularizan en su propio archivo MD (ej: `EXPORT_PDF.md`), con el formato de `.claude/skills/berserk-arquitect/assets/modulo.template.md`, y se referencian desde acá.
 
 **Módulos del proyecto:**
-- _(ninguno todavía)_ — candidato natural: `EXPORT_PDF.md` cuando arranque Fase 0.6 (crear bajo demanda).
+- [`DESIGN_BRIEF.md`](./DESIGN_BRIEF.md) — brief de **dirección visual** (look & feel) para hand-off a Claude Design. Derivado de esta biblia; lleva sello de frescura. Restyling, no rediseño de producto.
+- _(candidato natural)_ `EXPORT_PDF.md` cuando arranque Fase 0.6 (crear bajo demanda).
 
 ---
 
