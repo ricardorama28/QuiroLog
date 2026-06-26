@@ -44,6 +44,7 @@ Al retomar: leer ESTADO ACTUAL antes que nada y continuar desde el próximo paso
 
 - Tomar de a **una etapa** por sesión. No mezclar etapas.
 - Trabajar en bloques chicos y auditables. Validar antes de seguir.
+- **Guardia de frescura:** antes de ejecutar, mandar, entregar o cerrar cualquier acción sobre un artefacto **derivado** de `biblia.md` (brief, módulo de tarea, docx, entregable), verificá que no esté viejo. Leé su línea de sello (`Sincronizado con biblia.md hasta: AAAA-MM-DD — última entrada: <ref>`) y escaneá STEPS / BUGS / MEJORAS TÉCNICAS de la biblia por entradas con **fecha posterior** a ese sello (el `mtime` del archivo es señal secundaria, frágil ante git/copias). Si hay algo más nuevo que toca el alcance del artefacto → **reconciliá primero** (regenerá o parchá) y avisá qué lo desactualizaba; recién después procedé. Si regenerás, actualizá el sello.
 - {Reglas operativas específicas del proyecto: setup, comandos, convenciones de commit.}
 
 ---

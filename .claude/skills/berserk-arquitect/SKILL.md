@@ -33,6 +33,21 @@ Por eso la separación es tajante:
 
 Cuando este skill corre y algo cambia, actualizá **el archivo que corresponde**, no los dos. Como no hay duplicación, no hay nada que "chequear si quedó sincronizado". Eso reemplaza un `PROGRESS.md` suelto: el protocolo de corte de contexto vive integrado en CLAUDE.md.
 
+## Guardia de frescura: nunca actuar sobre un derivado viejo
+
+`biblia.md` es la fuente de verdad **viva**. Todo archivo que se *deriva* de ella —un brief para otra herramienta, un módulo de tarea, el export docx, o cualquier entregable que dependa del estado del proyecto— es una **foto** que envejece en cuanto la biblia avanza. El error clásico (y caro) es tomar uno de esos derivados como vigente sin verificar que la biblia no haya cambiado después de generarlo.
+
+Por eso, **antes de ejecutar, mandar, entregar o cerrar cualquier acción sobre un artefacto derivado de la biblia**, corré esta guardia:
+
+1. **Leé el sello del artefacto.** Todo derivado debe llevar al pie una línea de sello:
+   > `Sincronizado con biblia.md hasta: AAAA-MM-DD — última entrada considerada: <ref, p.ej. MT-003 / Etapa 2.2>`
+   Si el artefacto no tiene sello, tratalo como **potencialmente desactualizado** y revisá de cero.
+2. **Comparalo contra las secciones vivas de la biblia.** Escaneá STEPS, BUGS y MEJORAS TÉCNICAS buscando entradas con **fecha > la fecha del sello** (o, si no hay sello, posteriores al `mtime` del archivo como señal secundaria, sabiendo que el mtime es frágil ante `git`/copias).
+3. **Si hay entradas más nuevas que tocan el alcance del artefacto:** está **stale**. Reconciliá primero (regenerá o parchá el derivado para incorporar esos cambios) y recién después ejecutá la acción. Avisá explícitamente al usuario qué entradas lo desactualizaban.
+4. **Si no hay nada más nuevo:** está vigente; procedé y, si lo regeneraste, **actualizá el sello** a la fecha de la última entrada considerada.
+
+Esta guardia aplica tanto al uso recurrente del skill como a cualquier hand-off. Es barata (un escaneo de fechas) y evita mandar a otra herramienta —o a un dev— una foto vieja del proyecto.
+
 ## Flujo del skill
 
 ### Paso 1 — Interrogatorio sin piedad (autocontenido)
@@ -87,13 +102,13 @@ Durante la arquitectura, este skill **no genera módulos** — solo deja escrita
 
 > Las tareas repetibles con un workflow propio se modularizan en su propio MD, con formato definido (ver `assets/modulo.template.md`), y se referencian de vuelta desde la biblia.
 
-El usuario los crea después, explícitamente ("generá un md del flujo X reutilizable"). Cuando eso pase, usá `assets/modulo.template.md` para que salgan consistentes y dejá el link en la biblia.
+El usuario los crea después, explícitamente ("generá un md del flujo X reutilizable"). Cuando eso pase, usá `assets/modulo.template.md` para que salgan consistentes, dejá el link en la biblia y ponele el **sello de frescura** al módulo (ver "Guardia de frescura").
 
 ### Paso 6 — Export docx (opcional, snapshot)
 
 Si el usuario lo pide ("pasame la biblia a docx", "una versión presentable para los devs"), generá un **snapshot** de la biblia en docx. Es para devs y para el propio usuario.
 
-Importante: el docx **no es un cuarto archivo a sincronizar.** Es una foto con fecha. Tratarlo como archivo vivo devolvería el problema de drift. Para generarlo, usá la skill `docx`.
+Importante: el docx **no es un cuarto archivo a sincronizar.** Es una foto con fecha. Tratarlo como archivo vivo devolvería el problema de drift. Para generarlo, usá la skill `docx`. Como todo derivado, **lleva el sello de frescura** (ver "Guardia de frescura"): fecha y última entrada de la biblia considerada.
 
 ## Mantener sincronizado (uso recurrente)
 
@@ -104,6 +119,8 @@ Este skill también se usa cada vez que se avanza en el proyecto, dentro del cha
 3. No copies el cambio al otro. La separación garantiza que sigan coherentes.
 
 Así el usuario nunca tiene que revisar manualmente si los dos están al día.
+
+Y antes de actuar sobre cualquier artefacto **derivado** (brief, módulo, docx, entregable), corré primero la **Guardia de frescura**: comparar su sello contra las fechas de las secciones vivas de la biblia y reconciliar si hay algo más nuevo.
 
 ## Qué NO hace este skill
 
