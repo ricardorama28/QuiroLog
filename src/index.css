@@ -30,3 +30,21 @@ body {
 #root {
   min-height: 100dvh;
 }
+
+/* Subtle floating background icons (tech-med ambient motion) */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+  50% { transform: translateY(-16px) rotate(calc(var(--rot, 0deg) + 5deg)); }
+}
+
+.animate-floaty {
+  animation: floaty var(--dur, 12s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-floaty {
+    animation: none;
+  }
+}

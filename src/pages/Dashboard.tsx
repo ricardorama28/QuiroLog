@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import { Calendar, Stethoscope, BookOpen, TrendingUp, Users, Clock, CheckCircle } from 'lucide-react'
+import { Calendar, Stethoscope, BookOpen, TrendingUp, Users, Clock, CheckCircle, Bone } from 'lucide-react'
+import { FloatingBackground } from '../components/FloatingBackground'
 import { useCases } from '../hooks/useCases'
 import { useProcedures } from '../hooks/useProcedures'
 import { useSettings } from '../hooks/useSettings'
@@ -63,13 +64,19 @@ export function Dashboard() {
   const lastCase = [...doneCases].sort((a, b) => b.date.localeCompare(a.date))[0]
 
   return (
-    <div className="pb-20 min-h-dvh bg-gray-50 dark:bg-gray-950">
-      <div className="max-w-lg mx-auto px-4 pt-6 space-y-4">
-        <div>
-          <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-            {greeting(user)}
-          </h1>
-          <p className="text-sm text-gray-500 dark:text-gray-400">TraumaLog</p>
+    <div className="relative overflow-hidden pb-20 min-h-dvh bg-gray-50 dark:bg-gray-950">
+      <FloatingBackground />
+      <div className="relative z-10 max-w-lg mx-auto px-4 pt-6 space-y-4">
+        <div className="flex items-center gap-3">
+          <div className="flex-shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-xl bg-primary-600 text-white shadow-sm">
+            <Bone className="w-5 h-5" />
+          </div>
+          <div>
+            <h1 className="text-xl font-bold text-gray-900 dark:text-white">
+              {greeting(user)}
+            </h1>
+            <p className="text-sm text-gray-500 dark:text-gray-400">TraumaLog</p>
+          </div>
         </div>
 
         <DailyContext />
